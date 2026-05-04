@@ -1,0 +1,92 @@
+{
+  "homepage": {
+    "hero": {
+      "eyebrow": "360° Creative & Marketing Studio · Est. 2018",
+      "tagline": "We're a full-spectrum agency that designs, builds and grows brands across every surface your customer touches.",
+      "cta1": "Let's build something",
+      "cta2": "See our work",
+      "subLeft": "↳ Brand · Web · App · Growth"
+    },
+    "clients": {
+      "label": "Trusted by teams building real things",
+      "names": ["Ummah Travel", "Daewoo Battery", "IMC Hospital", "Skynet", "Northwind Retail", "Parable Foods"]
+    },
+    "stats": [
+      { "count": 180, "suffix": "+", "label": "Projects shipped" },
+      { "count": 47, "suffix": "M", "label": "Paid media managed" },
+      { "count": 94, "suffix": "%", "label": "Retention rate" },
+      { "count": 12, "suffix": " countries", "label": "Clients worldwide" }
+    ],
+    "work": {
+      "eyebrow": "Selected work",
+      "heading": "Brands we've helped move from good to unmissable.",
+      "cta": "View all 48 projects",
+      "cards": [
+        { "cat": "Travel · Brand · Web", "title": "Ummah Travel — pilgrimage, reimagined" },
+        { "cat": "Industrial · Growth", "title": "Daewoo Battery — charging ahead" },
+        { "cat": "Healthcare · Web · App", "title": "IMC Hospital — care, on demand" },
+        { "cat": "Telecom · Paid Media", "title": "Skynet — going national" }
+      ]
+    },
+    "process": {
+      "eyebrow": "The way we work",
+      "heading": "From napkin sketch to measurable growth.",
+      "steps": [
+        { "num": "01 · DISCOVER", "title": "Listen and learn", "desc": "We start with your audience, your metrics, and the truth about what's working — and what isn't." },
+        { "num": "02 · DESIGN", "title": "Shape the story", "desc": "Brand, positioning, experiences. We design the system that your whole marketing engine will run on." },
+        { "num": "03 · BUILD", "title": "Ship the work", "desc": "Websites, apps, campaigns, content. Built fast, built right, built to be handed over cleanly." },
+        { "num": "04 · GROW", "title": "Turn it up", "desc": "Paid media, SEO, content cadence and analytics — the engine that compounds over quarters, not weeks." }
+      ]
+    },
+    "testimonial": {
+      "quote": "Digibit didn't just hand us a website — they rebuilt how we think about our brand. Bookings are up 212% and we finally sound like ourselves online.",
+      "author": "Amira Qadri",
+      "role": "MARKETING DIR · UMMAH TRAVEL"
+    },
+    "finalCta": {
+      "heading": "Got a brand that deserves to be unmissable?",
+      "cta1": "Start a project",
+      "cta2": "See pricing"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About Digibit",
+      "heading": "A studio with a point of view.",
+      "sub": "Founded in 2018, we've shipped over 180 projects for brands across 12 countries — and we still care about every single brief."
+    },
+    "mission": "We believe that the best agencies are obsessed with outcomes, not aesthetics for their own sake. We make things that work.",
+    "values": [
+      { "title": "Clarity over cleverness", "desc": "We ask what a piece of work is supposed to do before we do it. Cleverness is a side-effect, never the goal." },
+      { "title": "Own the whole thing", "desc": "Brand, site, media, analytics — one team, one outcome. No passing the buck between vendors." },
+      { "title": "Honest about what we don't know", "desc": "We'd rather tell you we need a week to figure something out than fake an answer." },
+      { "title": "Ship, then improve", "desc": "Shipping unlocks information you can't get any other way. We iterate with the work in the world." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Let's start something",
+    "heading": "Tell us about your brand. We'll reply within 24 hours.",
+    "email": "hello@digibit.co",
+    "phone": "+1 (415) 555-0142",
+    "offices": [
+      { "city": "Lahore HQ", "address": "27 Gulberg Ave\nLahore, Pakistan" },
+      { "city": "Dubai", "address": "Al Quoz Creative Zone\nDubai, UAE" },
+      { "city": "Toronto", "address": "312 Adelaide W\nToronto, Canada" }
+    ]
+  },
+  "footer": {
+    "tagline": "360° Creative & Marketing Studio",
+    "founded": "Est. 2018 · Lahore, Dubai, Toronto",
+    "copyright": "© 2026 Digibit Studio Ltd. All rights reserved."
+  },
+  "nav": {
+    "links": [
+      { "label": "Work", "href": "/work" },
+      { "label": "Services", "href": "/services" },
+      { "label": "About", "href": "/about" },
+      { "label": "Pricing", "href": "/pricing" },
+      { "label": "Insights", "href": "/insights" }
+    ],
+    "cta": "Let's talk"
+  }
+}

@@ -1,0 +1,11 @@
+.faqSec { padding: 80px 0; }
+.faqGrid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; }
+.faqGrid h2 { max-width: 14ch; position: sticky; top: 120px; align-self: start; }
+.faqList { border-top: 1px solid var(--line); }
+.faqQ { padding: 24px 0; border-bottom: 1px solid var(--line); cursor: pointer; display: grid; grid-template-columns: 1fr 32px; gap: 24px; align-items: start; }
+.faqQ h4 { font-size: 20px; font-weight: 500; margin-bottom: 0; }
+.a { color: rgba(13,18,64,0.68); font-size: 15px; line-height: 1.55; max-width: 60ch; max-height: 0; overflow: hidden; transition: max-height 0.4s, margin-top 0.4s; }
+.open .a { max-height: 200px; margin-top: 12px; }
+.ico { width: 28px; height: 28px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 14px; margin-top: 2px; }
+.open .ico { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (max-width: 860px) { .faqGrid { grid-template-columns: 1fr; gap: 32px; } .faqGrid h2 { position: static; } }

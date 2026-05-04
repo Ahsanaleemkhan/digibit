@@ -1,0 +1,23 @@
+{
+  "colors": {
+    "ink": "#0d1240",
+    "cyan": "#2bb6ea",
+    "cyanDeep": "#1a96c8",
+    "cyan2": "#5ccdf2",
+    "paper": "#f6f5f0",
+    "paper2": "#eeecea",
+    "white": "#ffffff"
+  },
+  "borderRadius": {
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "pill": "100px"
+  },
+  "typography": {
+    "displayFont": "Bricolage Grotesque",
+    "bodyFont": "Inter",
+    "monoFont": "JetBrains Mono"
+  }
+}

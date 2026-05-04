@@ -1,0 +1,45 @@
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const DIGIBIT_MARK = (
+  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+    <path d="M4 6 C4 4.9 4.9 4 6 4 L20 4 C28.8 4 36 11.2 36 20 C36 28.8 28.8 36 20 36 L6 36 C4.9 36 4 35.1 4 34 Z" fill="#1a1f5c"/>
+    <circle cx="20" cy="20" r="9" fill="#f6f5f0"/>
+    <circle cx="20" cy="20" r="4" fill="#2bb6ea"/>
+    <path d="M30 11 C33 14 34.5 16.8 34.5 20 C34.5 23.2 33 26 30 29" stroke="#2bb6ea" strokeWidth="3" strokeLinecap="round" fill="none"/>
+  </svg>
+);
+
+const links = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/services', label: 'Services', key: 'services' },
+  { href: '/work', label: 'Work', key: 'work' },
+  { href: '/insights', label: 'Insights', key: 'insights' },
+  { href: '/pricing', label: 'Pricing', key: 'pricing' },
+  { href: '/careers', label: 'Careers', key: 'careers' },
+];
+
+export default function Nav() {
+  const pathname = usePathname();
+  return (
+    <nav className="nav">
+      <div className="nav-inner">
+        <Link href="/" className="nav-brand">
+          <span className="nav-brand-mark">{DIGIBIT_MARK}</span>
+          <span>digibit</span>
+        </Link>
+        <div className="nav-links">
+          {links.map(l => (
+            <Link key={l.key} href={l.href} className={`nav-link${pathname === l.href ? ' active' : ''}`}>{l.label}</Link>
+          ))}
+        </div>
+        <Link href="/contact" className="nav-cta">
+          Start a project
+          <span className="arrow">→</span>
+        </Link>
+      </div>
+    </nav>
+  );
+}

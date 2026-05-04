@@ -1,0 +1,25 @@
+.compareSec { padding: 80px 0; border-top: 1px solid var(--line); }
+.compareHead { text-align: center; margin-bottom: 40px; }
+.compareHead h2 { max-width: 20ch; margin: 0 auto; }
+.compareToggle { display: inline-flex; padding: 4px; background: rgba(13,18,64,0.06); border-radius: var(--r-pill); margin: 24px auto 40px; }
+.compareToggle button { padding: 10px 20px; font-family: inherit; font-size: 13px; color: var(--ink); border-radius: var(--r-pill); transition: all 0.3s; background: none; border: none; cursor: pointer; }
+.compareToggle button.active { background: var(--ink); color: var(--paper); }
+.compareVis { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.compareCardThem {
+  padding: 32px; border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: var(--white); opacity: 0.6;
+}
+.compareCardUs {
+  padding: 32px; border: 1px solid var(--ink); border-radius: var(--r-lg);
+  background: var(--ink); color: var(--paper); position: relative; overflow: hidden;
+}
+.compareCardUs::before { content:""; position:absolute; top:-50%; right:-20%; width:300px; height:300px; background:radial-gradient(circle,var(--cyan),transparent 60%); opacity:0.25; filter:blur(30px); }
+.compareCardThem h4, .compareCardUs h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; margin-bottom: 20px; }
+.compareCardThem h4 { color: var(--muted); }
+.compareCardUs h4 { color: var(--cyan); }
+.compareCardThem ul, .compareCardUs ul { list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
+.compareCardThem li, .compareCardUs li { padding: 10px 0; font-size: 14px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 20px 1fr; gap: 10px; }
+.compareCardUs li { border-color: rgba(246,245,240,0.12); color: rgba(246,245,240,0.85); }
+.compareCardThem li::before { content: "✕"; color: var(--muted); }
+.compareCardUs li::before { content: "✓"; color: var(--cyan); font-weight: 600; }
+@media (max-width: 860px) { .compareVis { grid-template-columns: 1fr; } }
