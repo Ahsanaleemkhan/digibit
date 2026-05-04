@@ -7,17 +7,6 @@ export const metadata: Metadata = {
   description: 'We\'re a studio of strategists, designers and engineers building the full 360° for modern brands.',
 };
 
-const team = [
-  { name: 'Hassan Malik', role: 'FOUNDER / STRATEGY', g: 'g1' },
-  { name: 'Sara Nadeem', role: 'CREATIVE DIRECTOR', g: 'g2' },
-  { name: 'Bilal Ahmed', role: 'HEAD OF ENGINEERING', g: 'g3' },
-  { name: 'Zara Iqbal', role: 'GROWTH LEAD', g: 'g4' },
-  { name: 'Omar Farooq', role: 'DESIGN LEAD', g: 'g5' },
-  { name: 'Mariam Shah', role: 'CONTENT LEAD', g: 'g6' },
-  { name: 'Faizan Khan', role: 'SR. DEVELOPER', g: 'g7' },
-  { name: 'Ayesha Raza', role: 'ACCOUNT DIRECTOR', g: 'g8' },
-];
-
 const timeline = [
   { year: '2018', title: 'Three desks, one idea', desc: 'Digibit starts in a co-working space in Lahore, with three founders and a shared frustration: agencies that could design but not build, or build but not grow.' },
   { year: '2020', title: 'We meet the pandemic', desc: 'We go remote-first, double the team, and ship our first 7-figure e-commerce platform. Retention becomes our obsession.' },
@@ -25,17 +14,6 @@ const timeline = [
   { year: '2024', title: 'The Toronto pod', desc: 'North American clients come onboard. We formalize our 360° model: one retainer, every surface.' },
   { year: '2026', title: 'Today', desc: '24 people, 3 cities, 180+ projects shipped, and a very clear idea of what we want to be when we grow up: the one partner a founder actually trusts.' },
 ];
-
-const gradients: Record<string, string> = {
-  g1: 'linear-gradient(135deg, #2bb6ea 0%, #1a1f5c 100%)',
-  g2: 'linear-gradient(135deg, #ff8a5b 0%, #1a1f5c 100%)',
-  g3: 'linear-gradient(135deg, #a8c5a0 0%, #2bb6ea 100%)',
-  g4: 'linear-gradient(135deg, #1a1f5c 0%, #5ccdf2 100%)',
-  g5: 'linear-gradient(135deg, #5a4fff 0%, #2bb6ea 100%)',
-  g6: 'linear-gradient(135deg, #f4b942 0%, #1a1f5c 100%)',
-  g7: 'linear-gradient(135deg, #2bb6ea 0%, #5a4fff 100%)',
-  g8: 'linear-gradient(135deg, #1a1f5c 0%, #ff8a5b 100%)',
-};
 
 export default function About() {
   return (
@@ -80,28 +58,6 @@ export default function About() {
         </div>
       </section>
 
-      <section style={{ padding: '140px 0' }}>
-        <div className="container">
-          <ScrollReveal style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
-            <div>
-              <div className="eyebrow" style={{ marginBottom: '14px' }}><span className="dot" />The people</div>
-              <h2>A team that actually<br/>does the work.</h2>
-            </div>
-            <Link href="/careers" className="btn btn-ghost">We&apos;re hiring →</Link>
-          </ScrollReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '24px' }}>
-            {team.map((t, i) => (
-              <ScrollReveal key={i} style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '4/5', position: 'relative', background: 'var(--ink-2)' }}>
-                <div style={{ position: 'absolute', inset: 0, background: gradients[t.g] }} />
-                <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(14px)', padding: '14px 16px', borderRadius: 'var(--r-md)' }}>
-                  <h4 style={{ fontSize: '16px', fontWeight: 500, margin: 0 }}>{t.name}</h4>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.08em', marginTop: '4px' }}>{t.role}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section style={{ padding: '120px 0', borderTop: '1px solid var(--line)' }}>
         <div className="container">
