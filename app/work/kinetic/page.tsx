@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Kinetic Labs — Digibit Case Study'
 export default function CaseKinetic() {
   return <CasePage
     title="Kinetic Labs" desc="Developer-tool growth"
-    meta={{ Client:'Kinetic Labs', Industry:'SaaS · Developer Tools', Engagement:'Web · Content · SEO', Timeline:'Ongoing', Year:'2023' }}
+    meta={{ client:'Kinetic Labs', industry:'SaaS · Developer Tools', engagement:'Web · Content · SEO', timeline:'Ongoing', year:'2023' }}
     h1={<>Developer-tool growth, <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>without</em> the dev-rel theater.</>}
     lede="Kinetic builds infrastructure for ML teams. Their growth was stuck at the engineer-to-engineer level, and their site read like a feature list. We rebuilt their content engine and information architecture around the actual problem their users were trying to solve."
     visualBg="linear-gradient(135deg, #1a1a2e 0%, #5a4fff 60%, #ff6b9d 100%)"

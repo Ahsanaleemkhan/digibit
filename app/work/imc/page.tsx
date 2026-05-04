@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'IMC Hospital — Digibit Case Study'
 export default function CaseImc() {
   return <CasePage
     title="IMC Hospital" desc="Care, on demand"
-    meta={{ Client:'IMC Hospital', Industry:'Healthcare', Engagement:'Web · App · Brand', Timeline:'16 weeks', Year:'2024' }}
+    meta={{ client:'IMC Hospital', industry:'Healthcare', engagement:'Web · App · Brand', timeline:'16 weeks', year:'2024' }}
     h1={<>Making a hospital feel <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>human</em> online.</>}
     lede="IMC is one of the country's busiest private hospitals. Their digital experience felt like every other hospital's: cold, confusing, and hostile to people in a hurry. We rebuilt the brand and the booking experience to feel like the place people actually trust."
     visualBg="linear-gradient(135deg, #0a3f7a 0%, #1e7bc4 60%, #e8f0fa 100%)"

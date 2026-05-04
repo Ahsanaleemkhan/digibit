@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Parable Foods — Digibit Case Study
 export default function CaseParable() {
   return <CasePage
     title="Parable Foods" desc="Plant-based without the preachiness"
-    meta={{ Client:'Parable Foods', Industry:'Food · CPG', Engagement:'Brand · Packaging · Web', Timeline:'20 weeks', Year:'2023' }}
+    meta={{ client:'Parable Foods', industry:'Food · CPG', engagement:'Brand · Packaging · Web', timeline:'20 weeks', year:'2023' }}
     h1={<>Plant-based food without the <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>preachy</em> brand.</>}
     lede="Parable was building the next category-leading plant-based brand. They had the products and the science — what they needed was a brand that didn't sound like every other plant-based brand. We built the identity from naming through to the first 14 export markets."
     visualBg="linear-gradient(135deg, #3d5a3a 0%, #8fb08a 60%, #f0e8d5 100%)"

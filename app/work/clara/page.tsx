@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Clara & Co — Digibit Case Study', 
 export default function CaseClara() {
   return <CasePage
     title="Clara & Co" desc="$1.2M Y1"
-    meta={{ Client:'Clara & Co', Industry:'Beauty · DTC', Engagement:'Brand · DTC Launch · Content', Timeline:'24 weeks', Year:'2022' }}
+    meta={{ client:'Clara & Co', industry:'Beauty · DTC', engagement:'Brand · DTC Launch · Content', timeline:'24 weeks', year:'2022' }}
     h1={<>A beauty brand that doesn&apos;t shout to <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>be heard</em>.</>}
     lede="Clara was a perfumer with a notebook full of formulations and a clear point of view. We helped her launch the brand, the storefront, and the content engine — and watched it cross $1.2M in its first year on the strength of word-of-mouth and a brand worth talking about."
     visualBg="linear-gradient(135deg, #faf4e7 0%, #e8c4a0 60%, #b07856 100%)"

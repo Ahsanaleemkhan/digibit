@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Skynet — Digibit Case Study', desc
 export default function CaseSkynet() {
   return <CasePage
     title="Skynet" desc="Going national"
-    meta={{ Client:'Skynet', Industry:'Telecom · Logistics', Engagement:'Paid Media · App · CRO', Timeline:'8 months', Year:'2024' }}
+    meta={{ client:'Skynet', industry:'Telecom · Logistics', engagement:'Paid Media · App · CRO', timeline:'8 months', year:'2024' }}
     h1={<>Three times the spend. <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>Half</em> the cost per acquisition.</>}
     lede="Skynet was already the biggest courier in the country. We were brought in to scale paid media as they expanded into two new markets — without watching efficiency collapse the way it usually does at that pace."
     visualBg="linear-gradient(135deg, #1a1f5c 0%, #2bb6ea 100%)"

@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Northwind Provisions — Digibit Cas
 export default function CaseNorthwind() {
   return <CasePage
     title="Northwind Provisions" desc="DTC that finally worked"
-    meta={{ Client:'Northwind Provisions', Industry:'Retail · Specialty Food', Engagement:'Brand · E-comm · Content', Timeline:'12 weeks', Year:'2024' }}
+    meta={{ client:'Northwind Provisions', industry:'Retail · Specialty Food', engagement:'Brand · E-comm · Content', timeline:'12 weeks', year:'2024' }}
     h1={<>A pantry brand that <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>tastes</em> as good as it looks.</>}
     lede="Northwind made some of the best small-batch preserves in the country. Their wholesale game was strong; their DTC site was a Squarespace template. We rebuilt the brand and the storefront so the taste came through online too."
     visualBg="linear-gradient(135deg, #2d1810 0%, #8b4513 60%, #d4a373 100%)"

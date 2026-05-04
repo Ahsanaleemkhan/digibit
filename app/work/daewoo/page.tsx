@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Daewoo Battery — Digibit Case Stud
 export default function CaseDaewoo() {
   return <CasePage
     title="Daewoo Battery" desc="Charging ahead"
-    meta={{ Client:'Daewoo Battery', Industry:'Industrial · Energy', Engagement:'Web · Content · Paid Media', Timeline:'14 weeks', Year:'2025' }}
+    meta={{ client:'Daewoo Battery', industry:'Industrial · Energy', engagement:'Web · Content · Paid Media', timeline:'14 weeks', year:'2025' }}
     h1={<>Making car batteries <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>shareable</em>.</>}
     lede="Daewoo Battery is everywhere — but invisible online. We rebuilt their digital presence around the dealers and installers who actually live with the product, and turned a category nobody talks about into a feed people stop scrolling for."
     visualBg="linear-gradient(135deg, #7a1020 0%, #c41e3a 60%, #f4b942 100%)"

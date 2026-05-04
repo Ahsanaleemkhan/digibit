@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Ummah Travel — Digibit Case Study'
 export default function CaseUmmah() {
   return <CasePage
     title="Ummah Travel" desc="Pilgrimage, reimagined"
-    meta={{ Client: 'Ummah Travel', Industry: 'Travel · Pilgrimage', Engagement: 'Brand · Web · Growth', Timeline: '8 weeks', Year: '2025' }}
+    meta={{ client: 'Ummah Travel', industry: 'Travel · Pilgrimage', engagement: 'Brand · Web · Growth', timeline: '8 weeks', year: '2025' }}
     h1={<>Pilgrimage, <em style={{fontStyle:'italic',color:'var(--cyan-deep)',fontWeight:400}}>reimagined</em> for the phone in your pocket.</>}
     lede="Ummah Travel runs Hajj and Umrah trips for thousands of families a year. Their brand looked like a travel agent from 2009 — even though their service was anything but. We rebuilt it end-to-end in eight weeks."
     visualBg="linear-gradient(135deg, #0a4d3a 0%, #1a8a65 50%, #f4d03f 100%)"
