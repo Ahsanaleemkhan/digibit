@@ -1,4 +1,5 @@
-import NextAuth from "next-auth";
+import NextAuth, { type NextAuthOptions } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import fs from "fs";
 import path from "path";
@@ -14,7 +15,7 @@ function readAdmins() {
   }
 }
 
-export const { auth, signIn, signOut, handlers } = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -81,4 +82,10 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       return session;
     },
   },
-});
+};
+
+export function auth() {
+  return getServerSession(authOptions);
+}
+
+export const authHandler = NextAuth(authOptions);
