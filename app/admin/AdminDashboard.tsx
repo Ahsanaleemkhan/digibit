@@ -4,7 +4,6 @@ import SubmissionsPanel from './panels/SubmissionsPanel';
 import ThemePanel from './panels/ThemePanel';
 import ContentPanel from './panels/ContentPanel';
 
-const ADMIN_KEY = 'digibit-admin-2026';
 const S = {
   shell: { display: 'flex', minHeight: '100vh', fontFamily: 'Inter, sans-serif', background: '#0f1117' } as React.CSSProperties,
   sidebar: { width: '240px', minHeight: '100vh', background: '#0d1240', display: 'flex', flexDirection: 'column' as const, flexShrink: 0, borderRight: '1px solid rgba(246,245,240,0.07)' },
@@ -30,7 +29,7 @@ export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [subCount, setSubCount] = useState(0);
 
   useEffect(() => {
-    fetch('/api/submissions', { headers: { 'x-admin-key': ADMIN_KEY } })
+    fetch('/api/submissions')
       .then(r => r.json()).then(d => Array.isArray(d) && setSubCount(d.filter((s: { read: boolean }) => !s.read).length)).catch(() => {});
   }, [active]);
 

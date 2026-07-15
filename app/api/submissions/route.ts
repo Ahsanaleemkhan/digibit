@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { auth } from '@/lib/auth';
 
 const FILE = path.join(process.cwd(), 'data', 'submissions.json');
 
@@ -20,16 +21,16 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  const auth = req.headers.get('x-admin-key');
-  if (auth !== (process.env.ADMIN_KEY || 'digibit-admin-2026')) {
+  const session = await auth();
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   return NextResponse.json(readSubs());
 }
 
 export async function PATCH(req: NextRequest) {
-  const auth = req.headers.get('x-admin-key');
-  if (auth !== (process.env.ADMIN_KEY || 'digibit-admin-2026')) {
+  const session = await auth();
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const { id, read } = await req.json();
@@ -39,8 +40,8 @@ export async function PATCH(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const auth = req.headers.get('x-admin-key');
-  if (auth !== (process.env.ADMIN_KEY || 'digibit-admin-2026')) {
+  const session = await auth();
+  if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const { id } = await req.json();

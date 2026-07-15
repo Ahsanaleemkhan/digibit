@@ -1,53 +1,44 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
+import { getPageData } from '@/lib/graphql';
 
 export const metadata: Metadata = {
   title: 'About — Digibit',
   description: 'We\'re a studio of strategists, designers and engineers building the full 360° for modern brands.',
 };
 
-const timeline = [
-  { year: '2018', title: 'Three desks, one idea', desc: 'Digibit starts in a co-working space in Lahore, with three founders and a shared frustration: agencies that could design but not build, or build but not grow.' },
-  { year: '2020', title: 'We meet the pandemic', desc: 'We go remote-first, double the team, and ship our first 7-figure e-commerce platform. Retention becomes our obsession.' },
-  { year: '2022', title: 'Dubai office opens', desc: 'Expansion to MENA. Ummah Travel becomes a flagship client. We start managing paid media at scale for the first time.' },
-  { year: '2024', title: 'The Toronto pod', desc: 'North American clients come onboard. We formalize our 360° model: one retainer, every surface.' },
-  { year: '2026', title: 'Today', desc: '24 people, 3 cities, 180+ projects shipped, and a very clear idea of what we want to be when we grow up: the one partner a founder actually trusts.' },
-];
+export default async function About() {
+  const d = await getPageData('about') as Record<string, any>;
 
-export default function About() {
   return (
     <>
       <section className="page-hero container">
         <div className="blob cyan med" style={{ top: '-20%', right: '-10%', opacity: 0.35, position: 'absolute' }} />
-        <div className="eyebrow"><span className="dot" />About Digibit</div>
+        <div className="eyebrow"><span className="dot" />{d.hero_eyebrow}</div>
         <h1>We&apos;re a studio of <em style={{ fontStyle: 'italic', color: 'var(--cyan-deep)', fontWeight: 400 }}>strategists, designers and engineers</em> building the full 360° for modern brands.</h1>
       </section>
 
       <section style={{ padding: '60px 0 120px' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', paddingTop: '60px', borderTop: '1px solid var(--line)' }}>
-            <div><div className="eyebrow"><span className="dot" />Our reason</div></div>
+            <div><div className="eyebrow"><span className="dot" />{d.reason_eyebrow}</div></div>
             <div>
-              <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'rgba(13,18,64,0.8)', marginBottom: '20px' }}>Most agencies hand you off. Brand studio does brand, a separate team builds the site, another runs your ads, and nobody talks to each other. You end up being the integration layer.</p>
-              <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'rgba(13,18,64,0.8)', marginBottom: '20px' }}>Digibit was built to be the integration layer for you. One team, one system, one plan — across strategy, design, engineering and media. So the thing we ship in Q1 still shows up in the ad you run in Q4.</p>
-              <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'rgba(13,18,64,0.8)' }}>We&apos;re 24 people across Lahore, Dubai and Toronto. We take on fewer projects than we&apos;re asked to, and we stick around long after launch.</p>
+              {(d.reason_paragraphs || []).map((p: string, i: number) => (
+                <p key={i} style={{ fontSize: '18px', lineHeight: 1.55, color: 'rgba(13,18,64,0.8)', marginBottom: i < d.reason_paragraphs.length - 1 ? '20px' : 0 }}>{p}</p>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       <section style={{ background: 'var(--ink)', color: 'var(--paper)', padding: '120px 0', borderRadius: 'var(--r-xl)', margin: '0 20px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ content: '""', position: 'absolute', top: '-30%', right: '-20%', width: '700px', height: '700px', background: 'radial-gradient(circle, var(--cyan), transparent 65%)', opacity: 0.25, filter: 'blur(20px)' }} />
+        <div style={{ position: 'absolute', top: '-30%', right: '-20%', width: '700px', height: '700px', background: 'radial-gradient(circle, var(--cyan), transparent 65%)', opacity: 0.25, filter: 'blur(20px)' }} />
         <div className="container">
-          <div className="eyebrow" style={{ color: 'rgba(246,245,240,0.5)', marginBottom: '18px' }}><span className="dot" />How we show up</div>
-          <h2 style={{ color: 'var(--paper)', maxWidth: '14ch', marginBottom: '60px' }}>Four beliefs we bring to every project.</h2>
+          <div className="eyebrow" style={{ color: 'rgba(246,245,240,0.5)', marginBottom: '18px' }}><span className="dot" />{d.beliefs_eyebrow}</div>
+          <h2 style={{ color: 'var(--paper)', maxWidth: '14ch', marginBottom: '60px' }}>{d.beliefs_heading}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '32px', position: 'relative', zIndex: 1 }}>
-            {[
-              { tag: '01 · CRAFT', title: 'Taste is a feature.', desc: 'Every pixel, sentence and ad unit is a chance to be better or worse than average. We choose better, even when nobody\'s looking.' },
-              { tag: '02 · CLARITY', title: 'Say the real thing.', desc: 'Jargon is a tax. We write and design for the human on the other end — the one with a phone, a deadline, and better things to do.' },
-              { tag: '03 · SHIP', title: 'Momentum beats polish.', desc: 'A live v1 outperforms a beautiful v3 that never launches. We optimize for getting real, then getting better in public.' },
-            ].map((v, i) => (
+            {(d.beliefs_cards || []).map((v: any, i: number) => (
               <ScrollReveal key={i} style={{ padding: '32px', border: '1px solid rgba(246,245,240,0.12)', borderRadius: 'var(--r-lg)', background: 'rgba(246,245,240,0.03)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.14em', color: 'var(--cyan)', marginBottom: '32px' }}>{v.tag}</div>
                 <h4 style={{ color: 'var(--paper)', fontSize: '22px', marginBottom: '12px' }}>{v.title}</h4>
@@ -58,15 +49,14 @@ export default function About() {
         </div>
       </section>
 
-
       <section style={{ padding: '120px 0', borderTop: '1px solid var(--line)' }}>
         <div className="container">
           <ScrollReveal style={{ marginBottom: '80px', maxWidth: '620px' }}>
-            <div className="eyebrow" style={{ marginBottom: '14px' }}><span className="dot" />A short history</div>
-            <h2>Eight years of building, in public.</h2>
+            <div className="eyebrow" style={{ marginBottom: '14px' }}><span className="dot" />{d.timeline_eyebrow}</div>
+            <h2>{d.timeline_heading}</h2>
           </ScrollReveal>
           <div>
-            {timeline.map((t, i) => (
+            {(d.timeline_entries || []).map((t: any, i: number) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '140px 1fr 2fr', gap: '40px', padding: '28px 0', borderTop: '1px solid var(--line)', alignItems: 'baseline' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: 'var(--cyan-deep)' }}>{t.year}</div>
                 <h4 style={{ fontSize: '24px', fontWeight: 500 }}>{t.title}</h4>
@@ -80,8 +70,8 @@ export default function About() {
       <section className="final-cta" style={{ padding: '120px 40px' }}>
         <div className="blob cyan big" style={{ top: '-30%', left: '50%', transform: 'translateX(-50%)', opacity: 0.4, position: 'absolute' }} />
         <div className="container-tight" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <h2 style={{ fontSize: 'clamp(40px,5vw,72px)', margin: '0 auto 24px', maxWidth: '16ch' }}>Want to see if we&apos;re the right team for your next thing?</h2>
-          <Link href="/contact" className="btn btn-primary">Say hello <span className="circle">→</span></Link>
+          <h2 style={{ fontSize: 'clamp(40px,5vw,72px)', margin: '0 auto 24px', maxWidth: '16ch' }}>{d.cta_heading}</h2>
+          <Link href="/contact" className="btn btn-primary">{d.cta_button} <span className="circle">→</span></Link>
         </div>
       </section>
     </>

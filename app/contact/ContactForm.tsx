@@ -1,8 +1,6 @@
 'use client';
 import { useState } from 'react';
 
-const services = ['Brand', 'Website', 'Mobile App', 'Paid Media', 'Social', 'SEO', 'Content', 'Not sure yet'];
-
 const iStyle: React.CSSProperties = {
   width: '100%', padding: '16px 18px', background: 'var(--paper)', border: '1px solid var(--line)',
   borderRadius: 'var(--r-md)', fontFamily: 'inherit', fontSize: '16px', color: 'var(--ink)',
@@ -13,7 +11,14 @@ const lStyle: React.CSSProperties = {
   letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '10px',
 };
 
-export default function ContactForm() {
+interface ContactFormProps {
+  email?: string;
+  phone?: string;
+  offices?: { label: string; address: string }[];
+  services?: string[];
+}
+
+export default function ContactForm({ email: emailAddr = '', phone: phoneNum = '', offices: officeList = [], services: svcList = [] }: ContactFormProps) {
   const [selected, setSelected] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -57,13 +62,11 @@ export default function ContactForm() {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', padding: '40px 0 120px', alignItems: 'start' }}>
       <aside style={{ position: 'sticky', top: '120px' }}>
         {[
-          { label: 'Email', val: <a href="mailto:hello@digibit.co" key="e">hello@digibit.co</a> },
-          { label: 'Phone', val: <a href="tel:+14155550142" key="p">+1 (415) 555-0142</a> },
-          { label: 'Lahore HQ', val: <>27 Gulberg Ave<br />Lahore, Pakistan</> },
-          { label: 'Dubai', val: <>Al Quoz Creative Zone<br />Dubai, UAE</> },
-          { label: 'Toronto', val: <>312 Adelaide W<br />Toronto, Canada</> },
-        ].map((item, i) => (
-          <div key={i} style={{ padding: '24px 0', borderTop: '1px solid var(--line)', ...(i === 4 ? { borderBottom: '1px solid var(--line)' } : {}) }}>
+          { label: 'Email', val: <a href={`mailto:${emailAddr}`}>{emailAddr}</a> },
+          { label: 'Phone', val: <a href={`tel:${phoneNum.replace(/[^+\d]/g,'')}`}>{phoneNum}</a> },
+          ...officeList.map(o => ({ label: o.label, val: <>{o.address.split('\n').map((line, li) => <span key={li}>{li > 0 && <br />}{line}</span>)}</> })),
+        ].map((item, i, arr) => (
+          <div key={i} style={{ padding: '24px 0', borderTop: '1px solid var(--line)', ...(i === arr.length - 1 ? { borderBottom: '1px solid var(--line)' } : {}) }}>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.14em', marginBottom: '8px', textTransform: 'uppercase' as const }}>{item.label}</div>
             <div style={{ fontSize: '18px', color: 'var(--ink)', fontWeight: 500 }}>{item.val}</div>
           </div>
@@ -92,7 +95,7 @@ export default function ContactForm() {
         <div style={{ marginBottom: '28px' }}>
           <label style={lStyle}>What do you need help with?</label>
           <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '8px' }}>
-            {services.map(s => (
+            {svcList.map(s => (
               <div key={s} onClick={() => toggle(s)} style={{ padding: '10px 14px', border: '1px solid', borderColor: selected.includes(s) ? 'var(--ink)' : 'var(--line)', borderRadius: 'var(--r-pill)', fontSize: '13px', cursor: 'pointer', userSelect: 'none' as const, background: selected.includes(s) ? 'var(--ink)' : 'transparent', color: selected.includes(s) ? 'var(--paper)' : 'var(--ink)', transition: 'all 0.2s' }}>{s}</div>
             ))}
           </div>

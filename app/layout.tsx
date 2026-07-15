@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CursorBlob from "@/components/CursorBlob";
+import { AuthProvider } from "./providers";
 
 export const metadata: Metadata = {
   title: "Digibit — 360° Marketing, Design & Development",
@@ -13,10 +14,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <CursorBlob />
-        <Nav />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <CursorBlob />
+          <Nav />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -3,13 +3,15 @@ import ScrollReveal from '@/components/ScrollReveal';
 import StatNum from '@/components/StatNum';
 import type { Metadata } from 'next';
 import styles from './page.module.css';
+import { getPageData } from '@/lib/graphql';
 
 export const metadata: Metadata = {
   title: 'Digibit — 360° Marketing, Design & Development',
   description: 'A full-spectrum agency that designs, builds and grows brands across every surface your customer touches.',
 };
 
-export default function Home() {
+export default async function Home() {
+  const wp = await getPageData('homepage') as Record<string, any>;
   return (
     <>
       {/* SVG gooey filter */}
@@ -32,8 +34,8 @@ export default function Home() {
         </div>
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroTop}>
-            <div className="eyebrow"><span className="dot" />360° Creative &amp; Marketing Studio · Est. 2018</div>
-            <p className={styles.heroTagline}>We&apos;re a full-spectrum agency that designs, builds and grows brands across every surface your customer touches.</p>
+            <div className="eyebrow"><span className="dot" />{wp.hero_eyebrow || '360° Creative & Marketing Studio · Est. 2018'}</div>
+            <p className={styles.heroTagline}>{wp.hero_tagline || "We're a full-spectrum agency that designs, builds and grows brands across every surface your customer touches."}</p>
           </div>
           <div className={styles.wordmarkWrap}>
             <div className={styles.wordmark}>
@@ -47,10 +49,10 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroSub}>
-            <div className={styles.heroSubLeft}>↳ Brand · Web · App · Growth</div>
+            <div className={styles.heroSubLeft}>{wp.hero_subleft || '↳ Brand · Web · App · Growth'}</div>
             <div className={styles.heroCta}>
-              <Link href="/contact" className="btn btn-primary">Let&apos;s build something <span className="circle">→</span></Link>
-              <Link href="/work" className="btn btn-ghost">See our work</Link>
+              <Link href="/contact" className="btn btn-primary">{wp.hero_cta1 || "Let's build something"} <span className="circle">→</span></Link>
+              <Link href="/work" className="btn btn-ghost">{wp.hero_cta2 || 'See our work'}</Link>
             </div>
             <div className={styles.heroSubRight}>Scroll ↓</div>
           </div>
@@ -60,11 +62,11 @@ export default function Home() {
       {/* CLIENTS */}
       <section className={styles.clients}>
         <div className="container">
-          <div className="eyebrow clients-label" style={{justifyContent:'center',marginBottom:'20px'}}><span className="dot"/>Trusted by teams building real things</div>
+          <div className="eyebrow clients-label" style={{justifyContent:'center',marginBottom:'20px'}}><span className="dot"/>{wp.clients_label || 'Trusted by teams building real things'}</div>
           <div className="marquee">
             <div className="marquee-track">
-              {['Ummah Travel','Daewoo Battery','IMC Hospital','Skynet','Northwind Retail','Parable Foods',
-                'Ummah Travel','Daewoo Battery','IMC Hospital','Skynet','Northwind Retail','Parable Foods'].map((name,i) => (
+              {[...(wp.clients_names || ['Ummah Travel','Daewoo Battery','IMC Hospital','Skynet','Northwind Retail','Parable Foods']),
+                ...(wp.clients_names || ['Ummah Travel','Daewoo Battery','IMC Hospital','Skynet','Northwind Retail','Parable Foods'])].map((name,i) => (
                 <span key={i}>{i % 2 === 0 ? name : <><span className="sep" />{name}</>}</span>
               ))}
             </div>
@@ -123,10 +125,9 @@ export default function Home() {
       <section className="section-pad-sm">
         <div className="container">
           <div className={styles.statsStrip}>
-            <ScrollReveal><StatNum count={180} suffix="+" /><div className="stat-label">Projects shipped</div></ScrollReveal>
-            <ScrollReveal><StatNum count={47} suffix="M" /><div className="stat-label">Paid media managed</div></ScrollReveal>
-            <ScrollReveal><StatNum count={94} suffix="%" /><div className="stat-label">Retention rate</div></ScrollReveal>
-            <ScrollReveal><StatNum count={12} suffix=" countries" /><div className="stat-label">Clients worldwide</div></ScrollReveal>
+            {(wp.stats || []).map((s: any, i: number) => (
+              <ScrollReveal key={i}><StatNum count={s.count} suffix={s.suffix} /><div className="stat-label">{s.label}</div></ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -165,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES ACCORDION */}
-      <ServicesAccordion />
+      <ServicesAccordion eyebrow={wp.svc_acc_eyebrow} heading={wp.svc_acc_heading} services={wp.svc_acc_items} />
 
       {/* PROCESS */}
       <section className={styles.processSection}>
@@ -204,25 +205,25 @@ export default function Home() {
       </section>
 
       {/* COMPARE */}
-      <CompareToggle />
+      <CompareToggle eyebrow={wp.compare_eyebrow} heading={wp.compare_heading} data={wp.compare_data} />
 
       {/* FAQ */}
-      <FaqSection />
+      <FaqSection eyebrow={wp.faq_eyebrow} heading={wp.faq_heading} faqs={wp.faq_items} />
 
       {/* TESTIMONIAL */}
       <section className={styles.testimonialSection}>
         <div className="blob cyan med" style={{top:'10%',left:'-10%',opacity:0.25,position:'absolute'}} />
         <div className="container">
           <ScrollReveal className={styles.testimonial}>
-            <div className="eyebrow" style={{marginBottom:'32px',justifyContent:'center'}}><span className="dot"/>Kind words</div>
+            <div className="eyebrow" style={{marginBottom:'32px',justifyContent:'center'}}><span className="dot"/>{wp.testimonial_eyebrow || 'Kind words'}</div>
             <p className={styles.testimonialQuote}>
-              &ldquo;Digibit didn&apos;t just hand us a website — they rebuilt how we think about our brand. Bookings are up <em>212%</em> and we finally sound like ourselves online.&rdquo;
+              &ldquo;{wp.testimonial_quote || "Digibit didn't just hand us a website — they rebuilt how we think about our brand. Bookings are up 212% and we finally sound like ourselves online."}&rdquo;
             </p>
             <div className={styles.testimonialAuthor}>
               <div className={styles.testimonialAvatar}/>
               <div style={{textAlign:'left'}}>
-                <div className={styles.name}>Amira Qadri</div>
-                <div className={styles.role}>MARKETING DIR · UMMAH TRAVEL</div>
+                <div className={styles.name}>{wp.testimonial_author || 'Amira Qadri'}</div>
+                <div className={styles.role}>{wp.testimonial_role || 'MARKETING DIR · UMMAH TRAVEL'}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -233,11 +234,11 @@ export default function Home() {
       <section className="final-cta">
         <div className="blob cyan big" style={{top:'-30%',left:'50%',transform:'translateX(-50%)',opacity:0.4,position:'absolute'}} />
         <div className="container-tight" style={{position:'relative',zIndex:1}}>
-          <div className="eyebrow" style={{justifyContent:'center',marginBottom:'32px'}}><span className="dot"/>Let&apos;s talk</div>
-          <h2>Got a brand that deserves<br/>to be <em>unmissable?</em></h2>
+          <div className="eyebrow" style={{justifyContent:'center',marginBottom:'32px'}}><span className="dot"/>{wp.cta_eyebrow || "Let's talk"}</div>
+          <h2>{wp.cta_heading || <>Got a brand that deserves<br/>to be <em>unmissable?</em></>}</h2>
           <div style={{display:'flex',gap:'12px',justifyContent:'center'}}>
-            <Link href="/contact" className="btn btn-primary">Start a project <span className="circle">→</span></Link>
-            <Link href="/pricing" className="btn btn-ghost">See pricing</Link>
+            <Link href="/contact" className="btn btn-primary">{wp.cta_btn1 || 'Start a project'} <span className="circle">→</span></Link>
+            <Link href="/pricing" className="btn btn-ghost">{wp.cta_btn2 || 'See pricing'}</Link>
           </div>
         </div>
       </section>

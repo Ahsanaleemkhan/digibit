@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { auth } from '@/lib/auth';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -9,12 +10,6 @@ function readJSON(file: string) {
 }
 function writeJSON(file: string, data: unknown) {
   fs.writeFileSync(path.join(DATA_DIR, file), JSON.stringify(data, null, 2));
-}
-
-// Auth check
-function checkAuth(req: NextRequest) {
-  const auth = req.headers.get('x-admin-key');
-  return auth === (process.env.ADMIN_KEY || 'digibit-admin-2026');
 }
 
 // ─── Content ─────────────────────────────────────────────────────────────────
@@ -29,7 +24,10 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const { searchParams } = new URL(req.url);
   const file = searchParams.get('file') || 'content';
   const body = await req.json();

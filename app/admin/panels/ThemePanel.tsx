@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const KEY = 'digibit-admin-2026';
 type Theme = { colors: Record<string, string>; borderRadius: Record<string, string>; typography: Record<string, string> };
 
 const colorLabels: Record<string, string> = {
@@ -16,12 +15,12 @@ export default function ThemePanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/admin/data?file=theme', { headers: { 'x-admin-key': KEY } })
+    fetch('/api/admin/data?file=theme')
       .then(r => r.json()).then(setTheme).finally(() => setLoading(false));
   }, []);
 
   const save = async () => {
-    await fetch('/api/admin/data?file=theme', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-key': KEY }, body: JSON.stringify(theme) });
+    await fetch('/api/admin/data?file=theme', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(theme) });
     setSaved(true); setTimeout(() => setSaved(false), 2000);
     // Apply colors live to root CSS variables
     if (theme) {

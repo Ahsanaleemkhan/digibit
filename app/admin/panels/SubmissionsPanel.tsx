@@ -1,8 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const KEY = 'digibit-admin-2026';
-
 type Sub = { id: number; date: string; name: string; email: string; company: string; services: string[]; budget: string; timeline: string; message: string; read: boolean };
 
 export default function SubmissionsPanel() {
@@ -12,17 +10,17 @@ export default function SubmissionsPanel() {
 
   const load = () => {
     setLoading(true);
-    fetch('/api/submissions', { headers: { 'x-admin-key': KEY } })
+    fetch('/api/submissions')
       .then(r => r.json()).then(setSubs).catch(() => setSubs([])).finally(() => setLoading(false));
   };
   useEffect(load, []);
 
   const markRead = async (id: number, read: boolean) => {
-    await fetch('/api/submissions', { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'x-admin-key': KEY }, body: JSON.stringify({ id, read }) });
+    await fetch('/api/submissions', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, read }) });
     load();
   };
   const del = async (id: number) => {
-    await fetch('/api/submissions', { method: 'DELETE', headers: { 'Content-Type': 'application/json', 'x-admin-key': KEY }, body: JSON.stringify({ id }) });
+    await fetch('/api/submissions', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
     setSelected(null); load();
   };
 

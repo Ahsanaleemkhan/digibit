@@ -1,8 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const KEY = 'digibit-admin-2026';
-
 // ─── shared helpers ────────────────────────────────────────────────────────────
 const inputS: React.CSSProperties = { width: '100%', padding: '10px 14px', background: 'rgba(246,245,240,0.06)', border: '1px solid rgba(246,245,240,0.1)', borderRadius: '8px', color: '#f6f5f0', fontFamily: 'inherit', fontSize: '14px', boxSizing: 'border-box', lineHeight: 1.5 };
 const labelS: React.CSSProperties = { fontFamily: 'JetBrains Mono, monospace', fontSize: '10px', color: 'rgba(246,245,240,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '6px' };
@@ -33,12 +31,12 @@ export default function ContentPanel({ section }: { section: string }) {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    fetch('/api/admin/data?file=content', { headers: { 'x-admin-key': KEY } })
+    fetch('/api/admin/data?file=content')
       .then(r => r.json()).then(setContent);
   }, []);
 
   const save = async () => {
-    await fetch('/api/admin/data?file=content', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-key': KEY }, body: JSON.stringify(content) });
+    await fetch('/api/admin/data?file=content', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(content) });
     setSaved(true); setTimeout(() => setSaved(false), 2000);
   };
 

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "admin_1",
+    "email": "admin@digibit.co",
+    "name": "Admin User",
+    "password": "$2b$10$cw7GF3qsjcH3y5BCB.0coe.HqhjfEKIcggVrsRQCGWHQp.0dw7JFa",
+    "role": "admin",
+    "createdAt": "2026-07-15T07:10:08.441Z"
+  }
+]

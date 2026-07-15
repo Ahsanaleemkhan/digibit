@@ -9,7 +9,40 @@ const DIGIBIT_MARK = (
   </svg>
 );
 
-export default function Footer() {
+interface FooterProps {
+  tagline?: string;
+  email?: string;
+  phone?: string;
+  companyLinks?: { label: string; href: string }[];
+  serviceLinks?: { label: string; href: string }[];
+  bottomLeft?: string;
+  bottomRight?: string;
+}
+
+export default function Footer({
+  tagline,
+  email,
+  phone,
+  companyLinks,
+  serviceLinks,
+  bottomLeft,
+  bottomRight,
+}: FooterProps) {
+  const emailAddr = email || 'hello@digibit.co';
+  const phoneNum = phone || '+1 (415) 555-0142';
+  const cLinks = companyLinks || [
+    { label: 'About', href: '/about' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Our work', href: '/work' },
+    { label: 'Insights', href: '/insights' },
+  ];
+  const sLinks = serviceLinks || [
+    { label: 'Brand & Strategy', href: '/services' },
+    { label: 'Websites & Apps', href: '/services' },
+    { label: 'Paid Media', href: '/services' },
+    { label: 'Social & Content', href: '/services' },
+  ];
+
   return (
     <footer className="footer">
       <div className="container">
@@ -20,32 +53,26 @@ export default function Footer() {
               <span style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:600,letterSpacing:'-0.02em'}}>digibit</span>
             </div>
             <p style={{color:'rgba(246,245,240,0.65)',fontSize:'15px',maxWidth:'30ch',lineHeight:1.55,margin:0}}>
-              The full 360° agency. We build brands, websites, apps, and the marketing engines that feed them.
+              {tagline || 'The full 360° agency. We build brands, websites, apps, and the marketing engines that feed them.'}
             </p>
           </div>
           <div className="footer-col">
             <h5>Company</h5>
             <ul>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/work">Our work</Link></li>
-              <li><Link href="/insights">Insights</Link></li>
+              {cLinks.map((l, i) => <li key={i}><Link href={l.href}>{l.label}</Link></li>)}
             </ul>
           </div>
           <div className="footer-col">
             <h5>Services</h5>
             <ul>
-              <li><Link href="/services">Brand &amp; Strategy</Link></li>
-              <li><Link href="/services">Websites &amp; Apps</Link></li>
-              <li><Link href="/services">Paid Media</Link></li>
-              <li><Link href="/services">Social &amp; Content</Link></li>
+              {sLinks.map((l, i) => <li key={i}><Link href={l.href}>{l.label}</Link></li>)}
             </ul>
           </div>
           <div className="footer-col">
             <h5>Get in touch</h5>
             <ul>
-              <li><a href="mailto:hello@digibit.co">hello@digibit.co</a></li>
-              <li><a href="tel:+14155550142">+1 (415) 555-0142</a></li>
+              <li><a href={`mailto:${emailAddr}`}>{emailAddr}</a></li>
+              <li><a href={`tel:${phoneNum.replace(/[^+\d]/g,'')}`}>{phoneNum}</a></li>
               <li style={{marginTop:'18px'}}>
                 <Link href="/contact" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'10px 16px',background:'var(--cyan)',color:'var(--ink)',borderRadius:'var(--r-pill)',fontWeight:500}}>
                   Start a project →
@@ -56,8 +83,8 @@ export default function Footer() {
         </div>
         <div className="footer-wordmark">digibit</div>
         <div className="footer-bottom">
-          <span>© 2026 Digibit Studio. All rights reserved.</span>
-          <span>Made with care. Powered by curiosity.</span>
+          <span>{bottomLeft || '© 2026 Digibit Studio. All rights reserved.'}</span>
+          <span>{bottomRight || 'Made with care. Powered by curiosity.'}</span>
         </div>
       </div>
     </footer>

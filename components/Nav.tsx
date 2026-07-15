@@ -11,18 +11,24 @@ const DIGIBIT_MARK = (
   </svg>
 );
 
-const links = [
-  { href: '/', label: 'Home', key: 'home' },
-  { href: '/about', label: 'About', key: 'about' },
-  { href: '/services', label: 'Services', key: 'services' },
-  { href: '/work', label: 'Work', key: 'work' },
-  { href: '/insights', label: 'Insights', key: 'insights' },
-  { href: '/pricing', label: 'Pricing', key: 'pricing' },
-  { href: '/careers', label: 'Careers', key: 'careers' },
+const defaultLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/work', label: 'Work' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/careers', label: 'Careers' },
 ];
 
-export default function Nav() {
+interface NavProps {
+  links?: { href: string; label: string }[];
+  ctaLabel?: string;
+}
+
+export default function Nav({ links, ctaLabel }: NavProps) {
   const pathname = usePathname();
+  const navLinks = links ?? defaultLinks;
   return (
     <nav className="nav">
       <div className="nav-inner">
@@ -31,12 +37,12 @@ export default function Nav() {
           <span>digibit</span>
         </Link>
         <div className="nav-links">
-          {links.map(l => (
-            <Link key={l.key} href={l.href} className={`nav-link${pathname === l.href ? ' active' : ''}`}>{l.label}</Link>
+          {navLinks.map(l => (
+            <Link key={l.href} href={l.href} className={`nav-link${pathname === l.href ? ' active' : ''}`}>{l.label}</Link>
           ))}
         </div>
         <Link href="/contact" className="nav-cta">
-          Start a project
+          {ctaLabel || 'Start a project'}
           <span className="arrow">→</span>
         </Link>
       </div>
