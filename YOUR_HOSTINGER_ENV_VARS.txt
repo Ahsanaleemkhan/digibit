@@ -1,0 +1,53 @@
+=====================================
+HOSTINGER ENVIRONMENT VARIABLES
+Copy these EXACT values to Hostinger
+=====================================
+
+DB_HOST=localhost
+
+DB_USER=u653153417_Digibit
+
+DB_PASSWORD=Digibit123@
+
+DB_NAME=u653153417_digibit
+
+NEXTAUTH_URL=https://dgbit.co
+
+NEXTAUTH_SECRET=<GENERATE_THIS_BELOW>
+
+=====================================
+HOW TO GENERATE NEXTAUTH_SECRET:
+=====================================
+
+Option 1 (On your local machine):
+Run this command in terminal:
+openssl rand -base64 32
+
+Option 2 (Online):
+Visit: https://generate-secret.vercel.app/32
+Or use any random string generator for a 32+ character string
+
+Then replace <GENERATE_THIS_BELOW> with the generated value.
+
+=====================================
+STEPS TO ADD IN HOSTINGER:
+=====================================
+
+1. Go to Hostinger Control Panel
+2. Find your website (dgbit.co)
+3. Go to: Advanced → Environment Variables
+4. Click "Add New Variable" for each one
+5. Copy/paste the name and value EXACTLY as shown above
+6. Save all variables
+7. Wait 2-3 minutes for server restart
+
+=====================================
+AFTER ADDING VARIABLES:
+=====================================
+
+1. Wait 2-3 minutes
+2. Visit: https://dgbit.co/admin/setup/initialize
+3. Create your admin account
+4. Login at: https://dgbit.co/admin/login
+
+=====================================

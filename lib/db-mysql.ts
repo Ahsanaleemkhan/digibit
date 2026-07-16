@@ -258,6 +258,20 @@ export const admins = {
     }
   },
 
+  async updatePassword(email: string, hashedPassword: string) {
+    if (!pool) return null;
+    try {
+      const [result] = await pool.query(
+        'UPDATE admins SET password = ? WHERE email = ?',
+        [hashedPassword, email]
+      );
+      return result;
+    } catch (error) {
+      console.error('Error updating password:', error);
+      return null;
+    }
+  },
+
   async delete(id: number) {
     if (!pool) return null;
     try {
