@@ -69,37 +69,42 @@ try {
 
 // Create admin user
 console.log('👤 Creating admin user...');
-try {
-  // Check if admin already exists
-  const existingAdmins = admins.getAll();
-  
-  if (existingAdmins.length > 0) {
-    console.log('⚠️  Admin user already exists. Skipping admin creation.');
-    console.log(`   Found ${existingAdmins.length} admin(s):`);
-    existingAdmins.forEach((admin: any) => {
-      console.log(`   - ${admin.email} (${admin.name})`);
-    });
-  } else {
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+
+async function createAdmin() {
+  try {
+    // Check if admin already exists
+    const existingAdmins = admins.getAll();
     
-    // Create admin
-    admins.create(email, hashedPassword, name, 'admin');
-    
-    console.log('✅ Admin user created successfully!');
-    console.log(`   Email: ${email}`);
-    console.log(`   Password: ${password}`);
-    console.log(`   Name: ${name}`);
-    console.log('\n⚠️  IMPORTANT: Change this password immediately after first login!\n');
+    if (existingAdmins.length > 0) {
+      console.log('⚠️  Admin user already exists. Skipping admin creation.');
+      console.log(`   Found ${existingAdmins.length} admin(s):`);
+      existingAdmins.forEach((admin: any) => {
+        console.log(`   - ${admin.email} (${admin.name})`);
+      });
+    } else {
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      // Create admin
+      admins.create(email, hashedPassword, name, 'admin');
+      
+      console.log('✅ Admin user created successfully!');
+      console.log(`   Email: ${email}`);
+      console.log(`   Password: ${password}`);
+      console.log(`   Name: ${name}`);
+      console.log('\n⚠️  IMPORTANT: Change this password immediately after first login!\n');
+    }
+  } catch (err) {
+    console.error('❌ Failed to create admin user:', err);
+    process.exit(1);
   }
-} catch (err) {
-  console.error('❌ Failed to create admin user:', err);
-  process.exit(1);
 }
 
-console.log('🎉 Production setup complete!\n');
-console.log('Next steps:');
-console.log('1. Visit /admin/login');
-console.log(`2. Login with: ${email}`);
-console.log('3. Change your password in the admin panel');
-console.log('4. Delete or protect the /admin/setup routes\n');
+createAdmin().then(() => {
+  console.log('🎉 Production setup complete!\n');
+  console.log('Next steps:');
+  console.log('1. Visit /admin/login');
+  console.log(`2. Login with: ${email}`);
+  console.log('3. Change your password in the admin panel');
+  console.log('4. Delete or protect the /admin/setup routes\n');
+});
