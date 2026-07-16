@@ -24,12 +24,17 @@ export default function LoginPage() {
       });
 
       if (res?.error) {
-        setError('Invalid email or password');
+        // Check if it's a database error
+        if (res.error.includes('database') || res.error.includes('SQLITE')) {
+          setError('Database not initialized. Please run setup first.');
+        } else {
+          setError('Invalid email or password');
+        }
       } else if (res?.ok) {
         router.push('/admin');
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError('System error. Database may not be initialized.');
     } finally {
       setLoading(false);
     }
@@ -67,7 +72,37 @@ export default function LoginPage() {
               style={{ width: '100%', padding: '14px 18px', background: 'rgba(246,245,240,0.08)', border: error ? '1px solid #ff4444' : '1px solid rgba(246,245,240,0.15)', borderRadius: '12px', color: '#f6f5f0', fontFamily: 'inherit', fontSize: '16px', boxSizing: 'border-box', outline: 'none', transition: 'border-color 0.2s', opacity: loading ? 0.6 : 1 }}
             />
           </div>
-          {error && <div style={{ color: '#ff6b6b', fontSize: '13px', marginBottom: '14px', fontFamily: 'JetBrains Mono, monospace' }}>✕ {error}</div>}
+          {error && (
+            <div style={{ 
+              marginBottom: '14px', 
+              padding: '12px', 
+              background: 'rgba(255,107,107,0.1)', 
+              border: '1px solid rgba(255,107,107,0.3)', 
+              borderRadius: '10px'
+            }}>
+              <div style={{ color: '#ff6b6b', fontSize: '13px', fontFamily: 'JetBrains Mono, monospace', marginBottom: '8px' }}>
+                ✕ {error}
+              </div>
+              {error.includes('Database') && (
+                <a 
+                  href="/admin/setup/initialize" 
+                  style={{ 
+                    display: 'inline-block',
+                    padding: '8px 16px',
+                    background: '#2bb6ea',
+                    color: '#0d1240',
+                    textDecoration: 'none',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    marginTop: '8px'
+                  }}
+                >
+                  → Initialize Database
+                </a>
+              )}
+            </div>
+          )}
           <button type="submit" disabled={loading} style={{ width: '100%', padding: '14px', background: loading ? '#999' : '#2bb6ea', color: '#0d1240', border: 'none', borderRadius: '12px', fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: '16px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', transition: 'background 0.2s' }}>
             {loading ? 'Signing in…' : 'Sign in →'}
           </button>
