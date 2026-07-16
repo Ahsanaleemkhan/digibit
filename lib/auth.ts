@@ -2,14 +2,12 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { admins, initializeDatabase } from "./db";
+import { admins, initializeDatabase } from "./db-mysql";
 
 // Ensure database is initialized
-try {
-  initializeDatabase();
-} catch (error) {
-  console.error('Failed to initialize database:', error);
-}
+initializeDatabase().catch(err => {
+  console.error('Failed to initialize database:', err);
+});
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -25,7 +23,7 @@ export const authOptions: NextAuthOptions = {
             return null;
           }
 
-          const admin = admins.getByEmail(credentials.email) as any;
+          const admin = await admins.getByEmail(credentials.email) as any;
 
           if (!admin) {
             return null;
@@ -41,7 +39,7 @@ export const authOptions: NextAuthOptions = {
           }
 
           // Update last login
-          admins.updateLastLogin(credentials.email);
+          await admins.updateLastLogin(credentials.email);
 
           return {
             id: admin.id.toString(),

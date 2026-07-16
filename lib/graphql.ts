@@ -1,8 +1,8 @@
 /**
- * CMS data layer — fetches from SQLite database
+ * CMS data layer — fetches from MySQL database
  * Replaces the old WordPress GraphQL approach
  */
-import { cmsContent } from './db';
+import { cmsContent } from './db-mysql';
 import cmsDefaults from '@/data/cms-defaults.json';
 
 type PageKey = keyof typeof cmsDefaults;
@@ -13,7 +13,7 @@ type PageKey = keyof typeof cmsDefaults;
  */
 export async function getPageData<T = Record<string, unknown>>(page: PageKey): Promise<T> {
   try {
-    const data = cmsContent.getByKey(page);
+    const data = await cmsContent.getByKey(page);
     if (data && data.content) {
       return data.content as T;
     }
@@ -30,7 +30,7 @@ export async function getPageData<T = Record<string, unknown>>(page: PageKey): P
  */
 export async function getAllPages() {
   try {
-    return cmsContent.getAll();
+    return await cmsContent.getAll();
   } catch (e) {
     console.error('Failed to fetch all pages:', e);
     return [];
@@ -41,5 +41,5 @@ export async function getAllPages() {
  * Update page data
  */
 export async function updatePageData(page: PageKey, data: any, updatedBy?: string) {
-  return cmsContent.upsert(page, data, updatedBy);
+  return await cmsContent.upsert(page, data, updatedBy);
 }
