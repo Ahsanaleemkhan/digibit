@@ -1,8 +1,25 @@
+import { redirect } from 'next/navigation';
+import { admins } from '@/lib/db';
+
+export default function InitializePage() {
+  // Server-side check - redirect if already initialized
+  try {
+    const existingAdmins = admins.getAll();
+    if (existingAdmins.length > 0) {
+      redirect('/admin/login');
+    }
+  } catch (error) {
+    // Database might not exist yet, allow access
+  }
+
+  return <InitializePageClient />;
+}
+
 'use client';
 
 import { useState } from 'react';
 
-export default function InitializePage() {
+function InitializePageClient() {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [results, setResults] = useState<any[]>([]);
@@ -265,3 +282,4 @@ export default function InitializePage() {
     </div>
   );
 }
+

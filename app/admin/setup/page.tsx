@@ -1,8 +1,18 @@
 import { redirect } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
+import { admins } from '@/lib/db';
 
 export default function SetupPage() {
+  // Server-side check - redirect if already initialized
+  try {
+    const existingAdmins = admins.getAll();
+    if (existingAdmins.length > 0) {
+      redirect('/admin/login');
+    }
+  } catch (error) {
+    // Database might not exist yet, allow access
+  }
   const diagnostics = {
     nodeEnv: process.env.NODE_ENV,
     nextauthUrl: process.env.NEXTAUTH_URL ? '✅ Set' : '❌ Missing',
