@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { blogPosts } from '@/lib/db';
+import { blogPosts } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,16 +8,16 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
-    
+
     if (id) {
-      const post = blogPosts.getById(id);
+      const post = await blogPosts.getById(id);
       if (!post) {
         return NextResponse.json({ error: 'Post not found' }, { status: 404 });
       }
       return NextResponse.json(post);
     }
-    
-    const allPosts = blogPosts.getAll();
+
+    const allPosts = await blogPosts.getAll();
     return NextResponse.json(allPosts);
   } catch (error) {
     console.error('Error fetching blog posts:', error);
@@ -29,21 +29,21 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    
+
     if (!data.id) {
       return NextResponse.json({ error: 'Post ID is required' }, { status: 400 });
     }
-    
-    const existing = blogPosts.getById(data.id);
-    
+
+    const existing = await blogPosts.getById(data.id);
+
     if (existing) {
       // Update existing post
-      blogPosts.update(data.id, data);
+      await blogPosts.update(data.id, data);
     } else {
       // Create new post
-      blogPosts.create(data);
+      await blogPosts.create(data);
     }
-    
+
     return NextResponse.json({ ok: true, id: data.id });
   } catch (error) {
     console.error('Error saving blog post:', error);
@@ -56,12 +56,12 @@ export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
-    
+
     if (!id) {
       return NextResponse.json({ error: 'Post ID is required' }, { status: 400 });
     }
-    
-    blogPosts.delete(id);
+
+    await blogPosts.delete(id);
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error('Error deleting blog post:', error);

@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { media } from '@/lib/db';
+import { media } from '@/lib/db-mysql';
 import { writeFile, mkdir, unlink } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
+const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(process.cwd(), 'public', 'uploads');
 
 // Ensure upload directory exists
 async function ensureUploadDir() {
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const allMedia = media.getAll();
+    const allMedia = await media.getAll();
     return NextResponse.json(allMedia);
   } catch (error: any) {
     console.error('Media GET error:', error);
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     await writeFile(filepath, buffer);
 
     // Save metadata to database
-    const result = media.create({
+    const result: any = await media.create({
       filename: filename,
       original_name: file.name,
       mime_type: file.type,
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Get the created media item
-    const newMedia = media.getById(Number(result.lastInsertRowid));
+    const newMedia = await media.getById(Number(result?.insertId));
 
     return NextResponse.json({ 
       ok: true, 
@@ -121,7 +121,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     // Update in database
-    media.update(id, { alt_text, caption });
+    await media.update(id, { alt_text, caption });
 
     return NextResponse.json({ ok: true });
 
@@ -147,8 +147,8 @@ export async function DELETE(req: NextRequest) {
     }
 
     // Get media info before deleting
-    const mediaItem = media.getById(parseInt(id)) as any;
-    
+    const mediaItem = await media.getById(parseInt(id)) as any;
+
     if (mediaItem) {
       // Delete file from disk
       const filepath = path.join(process.cwd(), 'public', mediaItem.path);
@@ -159,7 +159,7 @@ export async function DELETE(req: NextRequest) {
       }
 
       // Delete from database
-      media.delete(parseInt(id));
+      await media.delete(parseInt(id));
     }
 
     return NextResponse.json({ ok: true });

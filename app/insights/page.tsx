@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
 import NewsletterForm from './NewsletterForm';
-import { blogPosts, cmsContent } from '@/lib/db';
+import { blogPosts, cmsContent } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: 'Insights — Digibit', description: 
 
 export default async function Insights() {
   // Get CMS content for insights page
-  const pageContent = cmsContent.getByKey('insights');
+  const pageContent = await cmsContent.getByKey('insights');
   const d = pageContent?.content || {
     hero_eyebrow: 'Insights & field notes',
     hero_heading: 'What we\'re reading, shipping and arguing about this week.',
@@ -21,14 +21,14 @@ export default async function Insights() {
   };
 
   // Get all published blog posts
-  const allPosts = blogPosts.getAll(true);
-  const featuredPost = blogPosts.getFeatured();
-  const regularPosts = allPosts.filter(p => !p.featured).slice(0, 6);
+  const allPosts = await blogPosts.getAll(true);
+  const featuredPost = await blogPosts.getFeatured();
+  const regularPosts = allPosts.filter((p: any) => !p.featured).slice(0, 6);
 
   // Extract unique categories for filters
-  const allCategories = allPosts.map(p => p.category).filter(Boolean);
-  const uniqueCategories = Array.from(new Set(allCategories));
-  const categories = ['All', ...uniqueCategories];
+  const allCategories = allPosts.map((p: any) => p.category).filter(Boolean);
+  const uniqueCategories = Array.from(new Set(allCategories)) as string[];
+  const categories: string[] = ['All', ...uniqueCategories];
 
   return (
     <>

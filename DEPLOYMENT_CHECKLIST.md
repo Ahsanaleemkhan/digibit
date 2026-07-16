@@ -1,158 +1,61 @@
-# 🚀 Deployment Checklist for Hostinger
+# Hostinger Deployment Checklist
 
-## ✅ Code Status
-- [x] MySQL conversion complete and pushed to GitHub (commit: fc3e241)
-- [x] All database operations converted to async/await
-- [x] Build successful with fallback to JSON defaults
-- [x] Security checks in place for setup pages
+## Pre-deploy state
 
----
+- [x] `lib/db.ts` (SQLite) deleted; `lib/db-mysql.ts` is the sole async MySQL layer with all tables (`cmsContent`, `submissions`, `admins`, `themeSettings`, `media`, `workItems`, `services`, `blogPosts`).
+- [x] All 19 app callers switched to `@/lib/db-mysql` with `await` / `async`.
+- [x] `better-sqlite3` removed from `package.json`.
+- [x] `next.config.ts` uses `output: 'standalone'` (produces `.next/standalone/server.js`).
+- [x] Dangerous `/api/admin/force-init` route deleted.
+- [x] Broken `/admin/setup/diagnostic` page deleted.
+- [x] Local `npm run build` passes.
 
-## 📋 Step-by-Step Deployment Guide
-
-### Step 1: Pull Latest Code on Hostinger ✅ DONE
-The latest code should auto-deploy from GitHub to your Hostinger hosting.
-
-### Step 2: Create MySQL Database in Hostinger
-1. Log into **Hostinger Control Panel**
-2. Go to **Databases** → **MySQL Databases**
-3. Click **"Create New Database"**
-4. Database name: `digibit_cms` (Hostinger will prefix it like `u123456789_digibit`)
-5. Create or use existing database user
-6. Set a **strong password**
-7. **Save these credentials** - you'll need them next!
-
-### Step 3: Add Environment Variables in Hostinger
-1. In Hostinger control panel, go to your website
-2. Navigate to **Advanced** → **Environment Variables**
-3. Add these variables (replace with YOUR actual values):
+## Env vars to set in Hostinger (Advanced → Environment Variables)
 
 ```env
 DB_HOST=localhost
-DB_USER=u123456789_user
-DB_PASSWORD=your_strong_password_here
-DB_NAME=u123456789_digibit
+DB_USER=u653153417_Digibit
+DB_PASSWORD=<your MySQL password>
+DB_NAME=u653153417_digibit
 NEXTAUTH_URL=https://dgbit.co
-NEXTAUTH_SECRET=your_generated_secret_here
+NEXTAUTH_SECRET=<paste one from `openssl rand -base64 32`>
+# optional, only if you want uploads outside public/uploads:
+# UPLOAD_DIR=/home/<hostinger-user>/uploads
 ```
 
-**Generate NEXTAUTH_SECRET:**
-On your local machine, run:
-```bash
-openssl rand -base64 32
-```
-Copy the output and use it as `NEXTAUTH_SECRET`
+**CRITICAL:** `NEXTAUTH_URL` must have **no trailing slash**. `https://dgbit.co/` (with slash) breaks NextAuth callbacks.
 
-### Step 4: Initialize Database (One-Time Setup)
-1. After adding environment variables, wait 2-3 minutes for Hostinger to restart
-2. Visit: **https://dgbit.co/admin/setup/initialize**
-3. Fill in the form:
-   - Email: Your admin email (e.g., admin@digibit.co)
-   - Password: Choose a strong password
-   - Name: Your name
-4. Click **"Initialize Database"**
-5. Wait for success message
+## Deploy steps
 
-### Step 5: Login to Admin Panel
-1. Go to: **https://dgbit.co/admin/login**
-2. Enter the credentials you just created
-3. You should see the admin dashboard!
+1. Push your local changes to the branch Hostinger tracks. Hostinger will pull and run `npm install` + `npm run build` automatically. If it does not, trigger a redeploy manually.
+2. Wait ~2 min for the Node process to restart.
+3. Verify MySQL DB `u653153417_digibit` exists (Hostinger → Databases → MySQL).
+4. Hit **https://dgbit.co/admin/setup/initialize** exactly once. Fill in your admin email/password. This creates all tables, seeds default CMS content, and creates your admin account. The page auto-disables after the first successful run.
+5. Log in at **https://dgbit.co/admin/login**.
 
-### Step 6: Verify Everything Works
-- [ ] Admin login successful
-- [ ] All admin panels load without errors
-- [ ] Homepage displays correctly
-- [ ] All pages show content (may be demo content initially)
-- [ ] Can edit and save content from admin panels
+## Security cleanup before making the site public
 
----
+- ⚠️ **`/api/admin/reset-password`** has no authentication. Anyone who knows an admin email can POST to it and reset the password. Choose one:
+  - Delete `app/api/admin/reset-password/` and `app/admin/setup/reset-password/` entirely.
+  - Gate the route with a one-time env-var token (e.g. `RESET_TOKEN`, require it in the request body).
+  - Require an active admin session (call `auth()` at the top of the handler).
+- Rotate `NEXTAUTH_SECRET` after first successful login (secrets shared in a chat screenshot are considered exposed).
+- Rotate `DB_PASSWORD` to something stronger than `Digibit123@`. Hostinger MySQL is `localhost`-only so it's not internet-exposed, but weak local passwords are still a footgun.
 
-## 🔒 Security Features
-- ✅ `/admin/setup/initialize` automatically redirects to login if database already has admins
-- ✅ All admin routes require authentication
-- ✅ Passwords are hashed with bcrypt
-- ✅ Session expires after 24 hours
-- ✅ No SQL injection vulnerabilities (using parameterized queries)
+## Media / uploads persistence
 
----
+`app/api/admin/media/route.ts` writes to `UPLOAD_DIR` (defaults to `public/uploads/`) and stores the path `/uploads/<filename>` in the DB. Because the deploy overwrites `public/` on each git pull, **uploaded images will be lost on redeploy** unless you do one of:
 
-## 🐛 Troubleshooting
+1. **Symlink** (simplest): SSH into Hostinger, create `/home/<user>/persistent-uploads/`, then symlink `public/uploads` → that path. Leave `UPLOAD_DIR` unset. Files land inside the symlink → survive redeploys.
+2. **Env var + reverse-proxy**: set `UPLOAD_DIR=/home/<user>/persistent-uploads/` and configure Hostinger to serve `/uploads/*` from that dir. More work.
+3. **Object store** (S3, R2, Cloudinary): swap the write path in `media/route.ts` for an SDK upload. Best long-term, most work.
 
-### Problem: 403 Forbidden Error
-**Solution:** Make sure you've pulled the latest code from GitHub (commit fc3e241)
+None of these block first launch — the site works with default behavior, you just lose uploads on next deploy.
 
-### Problem: 503/504 Gateway Timeout
-**Cause:** Environment variables not set or database not created
-**Solution:** 
-1. Verify environment variables in Hostinger
-2. Verify MySQL database exists
-3. Wait 2-3 minutes after adding env vars for server restart
+## Troubleshooting
 
-### Problem: Can't Login / Invalid Credentials
-**Solutions:**
-1. Make sure you completed Step 4 (Initialize Database)
-2. Try visiting `/admin/setup/initialize` again
-3. Check Hostinger error logs: **Advanced** → **Error Logs**
-
-### Problem: Pages Show No Content
-**This is NORMAL on first deployment!**
-- The site falls back to default JSON data
-- After initializing the database, seed data will be automatically added
-- You can then edit all content from admin panels
-
-### Problem: Initialize Page Shows "Already Initialized"
-**This is GOOD!** It means:
-- Database was already set up
-- An admin user already exists
-- Go directly to `/admin/login` and use your credentials
-
----
-
-## 📊 What Gets Created in Database
-
-The initialization creates:
-1. **4 Database Tables:**
-   - `cms_content` - All page content
-   - `admins` - Admin users
-   - `submissions` - Contact form submissions
-   - `blog_posts` - Blog/insights posts
-
-2. **Seed Data:**
-   - Homepage content
-   - About page content
-   - Services pages
-   - Work page
-   - 6 demo blog posts
-   - Contact page content
-   - Careers page content
-   - Footer/header content
-   - Default theme settings
-
-3. **Your Admin Account**
-
----
-
-## 🎯 Next Steps After Successful Deployment
-
-1. **Login and explore** all admin panels
-2. **Customize content** to match your branding
-3. **Upload your logo** in Header/Footer panel
-4. **Edit About page** with your company story
-5. **Add real blog posts** in Blog panel
-6. **Test contact form** submissions
-7. **Review theme colors** in Theme panel
-8. **Change your password** if needed
-
----
-
-## 📞 Need Help?
-
-If you encounter any issues:
-1. Check **Hostinger Error Logs** (Advanced → Error Logs)
-2. Verify all environment variables are set correctly
-3. Ensure MySQL database was created successfully
-4. Wait 2-3 minutes after any changes for server restart
-
----
-
-**Last Updated:** After MySQL conversion (commit fc3e241)
+- **503 / 504 after deploy** — env vars missing or MySQL user lacks privileges. Check Hostinger error logs.
+- **Login fails / infinite redirect** — check `NEXTAUTH_URL` has no trailing slash.
+- **`/admin/setup/initialize` says "already initialized"** — good, admin exists. Go straight to `/admin/login`.
+- **Empty pages / no content** — you haven't run the initialize step yet, or DB seed didn't run. Re-hit `/admin/setup/initialize`.
+- **502 with `ECONNREFUSED`** — `DB_HOST` wrong or MySQL not started.

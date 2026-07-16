@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { services } from '@/lib/db';
+import { services } from '@/lib/db-mysql';
 import type { Metadata } from 'next';
 import ServicePage from '@/components/ServicePage';
 
@@ -11,7 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = services.getBySlug(slug);
+  const service = await services.getBySlug(slug);
   
   if (!service) {
     return {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = services.getBySlug(slug);
+  const service = await services.getBySlug(slug);
 
   if (!service || !service.published) {
     notFound();

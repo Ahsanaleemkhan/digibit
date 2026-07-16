@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { services } from '@/lib/db';
+import { services } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
 // GET - List all services
 export async function GET() {
   try {
-    const allServices = services.getAll();
+    const allServices = await services.getAll();
     return NextResponse.json(allServices);
   } catch (error) {
     console.error('Failed to fetch services:', error);
@@ -18,20 +18,20 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    
+
     if (!data.title || !data.slug) {
       return NextResponse.json({ error: 'Title and slug are required' }, { status: 400 });
     }
 
     // Check if service exists
-    const existing = services.getById(data.id);
-    
+    const existing = await services.getById(data.id);
+
     if (existing) {
       // Update existing service
-      services.update(data.id, data);
+      await services.update(data.id, data);
     } else {
       // Create new service
-      services.create(data);
+      await services.create(data);
     }
 
     return NextResponse.json({ success: true });
@@ -51,7 +51,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Service ID is required' }, { status: 400 });
     }
 
-    services.delete(id);
+    await services.delete(id);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Failed to delete service:', error);

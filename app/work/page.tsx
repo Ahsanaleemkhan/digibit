@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { workItems, cmsContent } from '@/lib/db';
+import { workItems, cmsContent } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: 'Work — Digibit', description: 'Eig
 
 export default async function Work() {
   // Get CMS content for work page
-  const pageContent = cmsContent.getByKey('work');
+  const pageContent = await cmsContent.getByKey('work');
   const d = pageContent?.content || {
     hero_eyebrow: 'Our work',
     hero_heading: 'Eight years. One hundred and eighty shipped projects.',
@@ -19,10 +19,10 @@ export default async function Work() {
   };
 
   // Get all published work items from database
-  const allWork = workItems.getAll(true);
-  
+  const allWork = await workItems.getAll(true);
+
   // Transform database work items to match the expected format
-  const works = allWork.map((work, index) => ({
+  const works = allWork.map((work: any, index: number) => ({
     href: `/work/${work.slug}`,
     img: work.featured_image ? `url(${work.featured_image})` : 'linear-gradient(135deg, #1a1f5c 0%, #2bb6ea 100%)',
     year: work.year || '2024',
@@ -33,9 +33,9 @@ export default async function Work() {
   }));
 
   // Extract unique categories for filters
-  const allCategories = allWork.map(w => w.category).filter(Boolean);
-  const uniqueCategories = Array.from(new Set(allCategories));
-  const filters = ['All', ...uniqueCategories];
+  const allCategories = allWork.map((w: any) => w.category).filter(Boolean);
+  const uniqueCategories = Array.from(new Set(allCategories)) as string[];
+  const filters: string[] = ['All', ...uniqueCategories];
 
   return (
     <>

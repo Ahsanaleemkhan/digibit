@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ContactForm from './ContactForm';
-import { cmsContent } from '@/lib/db';
+import { cmsContent } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const pageContent = cmsContent.getByKey('contact');
+  const pageContent = await cmsContent.getByKey('contact');
   const d = pageContent?.content || {
     hero_eyebrow: 'Let\'s start something',
     hero_heading: 'Tell us about your brand.',

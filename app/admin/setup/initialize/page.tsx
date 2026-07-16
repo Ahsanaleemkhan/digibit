@@ -1,11 +1,11 @@
 import { redirect } from 'next/navigation';
-import { admins } from '@/lib/db';
+import { admins } from '@/lib/db-mysql';
 import InitializeClient from './InitializeClient';
 
-export default function InitializePage() {
+export default async function InitializePage() {
   // Server-side check - redirect if already initialized
   try {
-    const existingAdmins = admins.getAll();
+    const existingAdmins: any = await admins.getAll();
     if (existingAdmins.length > 0) {
       redirect('/admin/login');
     }

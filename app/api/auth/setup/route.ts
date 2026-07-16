@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { admins, initializeDatabase } from '@/lib/db';
+import { admins, initializeDatabase } from '@/lib/db-mysql';
 import bcrypt from 'bcryptjs';
 
 /**
@@ -9,11 +9,11 @@ import bcrypt from 'bcryptjs';
 export async function POST(request: NextRequest) {
   try {
     // Initialize database (creates tables if they don't exist)
-    initializeDatabase();
+    await initializeDatabase();
 
     // Check if any admins already exist
-    const existingAdmins = admins.getAll();
-    
+    const existingAdmins: any = await admins.getAll();
+
     if (existingAdmins.length > 0) {
       return NextResponse.json({
         success: false,
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create admin account
-    admins.create(email, hashedPassword, name, 'admin');
+    await admins.create(email, hashedPassword, name, 'admin');
 
     return NextResponse.json({
       success: true,
@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
  */
 export async function GET() {
   try {
-    const existingAdmins = admins.getAll();
-    
+    const existingAdmins: any = await admins.getAll();
+
     return NextResponse.json({
       setup: existingAdmins.length > 0,
       adminCount: existingAdmins.length,

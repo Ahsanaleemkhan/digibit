@@ -1,6 +1,6 @@
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { cmsContent } from '@/lib/db';
+import { cmsContent } from '@/lib/db-mysql';
 
 export const metadata: Metadata = { title: 'Careers — Digibit', description: 'Come make good work with good people.' };
 
@@ -23,7 +23,7 @@ const defaultData = {
 };
 
 export default async function Careers() {
-  const content = cmsContent.getByKey('careers');
+  const content = await cmsContent.getByKey('careers');
   const d = content?.content || defaultData;
   
   const roles = d.roles || [];

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { services, cmsContent } from '@/lib/db';
+import { services, cmsContent } from '@/lib/db-mysql';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: 'Services — Digibit', description: 
 
 export default async function Services() {
   // Get CMS content for services page
-  const pageContent = cmsContent.getByKey('services_index');
+  const pageContent = await cmsContent.getByKey('services_index');
   const d = pageContent?.content || {
     hero_eyebrow: 'What we do',
     hero_heading: 'Eight disciplines, one team, one plan.',
@@ -23,10 +23,10 @@ export default async function Services() {
   };
 
   // Get all published services from database
-  const allServices = services.getAll(true);
-  
+  const allServices = await services.getAll(true);
+
   // Transform services into bento grid format
-  const bentoItems = allServices.map((service, index) => ({
+  const bentoItems = allServices.map((service: any, index: number) => ({
     href: `/services/${service.slug}`,
     icon: service.icon || '→',
     title: service.title,

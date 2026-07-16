@@ -16,9 +16,9 @@ export default async function Home() {
   const wp = await getHomepageData() as Record<string, any>;
   
   // Fetch published work items from database
-  const { workItems, services: servicesDb } = await import('@/lib/db');
-  const publishedWork = workItems.getAll(true).slice(0, 4); // Get first 4 published items
-  const publishedServices = servicesDb.getAll(true).slice(0, 6); // Get up to 6 published services
+  const { workItems, services: servicesDb } = await import('@/lib/db-mysql');
+  const publishedWork = (await workItems.getAll(true)).slice(0, 4); // Get first 4 published items
+  const publishedServices = (await servicesDb.getAll(true)).slice(0, 6); // Get up to 6 published services
   return (
     <>
       {/* SVG gooey filter */}

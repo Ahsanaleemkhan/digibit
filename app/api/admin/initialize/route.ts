@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cmsContent, admins, initializeDatabase } from '@/lib/db';
+import { cmsContent, admins, initializeDatabase } from '@/lib/db-mysql';
 import bcrypt from 'bcryptjs';
 import defaultsData from '@/data/cms-defaults.json';
 
@@ -9,14 +9,14 @@ import defaultsData from '@/data/cms-defaults.json';
  */
 export async function POST(request: NextRequest) {
   const results: string[] = [];
-  
+
   try {
     // Step 1: Initialize database tables
     results.push('✅ Database tables initialized');
-    initializeDatabase();
+    await initializeDatabase();
 
     // Step 2: Check if already initialized
-    const existingAdmins = admins.getAll();
+    const existingAdmins: any = await admins.getAll();
     if (existingAdmins.length > 0) {
       return NextResponse.json({
         success: false,
@@ -33,34 +33,34 @@ export async function POST(request: NextRequest) {
 
     // Step 3: Seed all CMS content
     try {
-      cmsContent.upsert('homepage', defaultsData.homepage, 'initialize');
+      await cmsContent.upsert('homepage', defaultsData.homepage, 'initialize');
       results.push('✅ Homepage content seeded');
 
-      cmsContent.upsert('about', defaultsData.about, 'initialize');
+      await cmsContent.upsert('about', defaultsData.about, 'initialize');
       results.push('✅ About page seeded');
 
-      cmsContent.upsert('services_index', defaultsData.services_index, 'initialize');
+      await cmsContent.upsert('services_index', defaultsData.services_index, 'initialize');
       results.push('✅ Services index seeded');
 
-      cmsContent.upsert('work', defaultsData.work, 'initialize');
+      await cmsContent.upsert('work', defaultsData.work, 'initialize');
       results.push('✅ Work page seeded');
 
-      cmsContent.upsert('insights', defaultsData.insights, 'initialize');
+      await cmsContent.upsert('insights', defaultsData.insights, 'initialize');
       results.push('✅ Insights page seeded');
 
-      cmsContent.upsert('contact', defaultsData.contact, 'initialize');
+      await cmsContent.upsert('contact', defaultsData.contact, 'initialize');
       results.push('✅ Contact page seeded');
 
-      cmsContent.upsert('careers', defaultsData.careers, 'initialize');
+      await cmsContent.upsert('careers', defaultsData.careers, 'initialize');
       results.push('✅ Careers page seeded');
 
-      cmsContent.upsert('pricing', defaultsData.pricing, 'initialize');
+      await cmsContent.upsert('pricing', defaultsData.pricing, 'initialize');
       results.push('✅ Pricing page seeded');
 
-      cmsContent.upsert('header_footer', defaultsData.header_footer, 'initialize');
+      await cmsContent.upsert('header_footer', defaultsData.header_footer, 'initialize');
       results.push('✅ Header & Footer seeded');
 
-      cmsContent.upsert('navigation', defaultsData.navigation, 'initialize');
+      await cmsContent.upsert('navigation', defaultsData.navigation, 'initialize');
       results.push('✅ Navigation seeded');
     } catch (err: any) {
       return NextResponse.json({
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     // Step 4: Create admin account
     try {
       const hashedPassword = await bcrypt.hash(adminPassword, 10);
-      admins.create(adminEmail, hashedPassword, adminName, 'admin');
+      await admins.create(adminEmail, hashedPassword, adminName, 'admin');
       results.push('✅ Admin account created');
     } catch (err: any) {
       return NextResponse.json({
@@ -111,9 +111,9 @@ export async function POST(request: NextRequest) {
  */
 export async function GET() {
   try {
-    const existingAdmins = admins.getAll();
-    const hasContent = cmsContent.getByKey('homepage') !== null;
-    
+    const existingAdmins: any = await admins.getAll();
+    const hasContent = (await cmsContent.getByKey('homepage')) !== null;
+
     return NextResponse.json({
       initialized: existingAdmins.length > 0 && hasContent,
       adminCount: existingAdmins.length,

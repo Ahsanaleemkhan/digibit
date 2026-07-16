@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { workItems } from '@/lib/db';
+import { workItems } from '@/lib/db-mysql';
 
 // GET: Fetch all work items
 export async function GET(req: NextRequest) {
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const items = workItems.getAll();
+    const items = await workItems.getAll();
     return NextResponse.json(items);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -26,18 +26,18 @@ export async function POST(req: NextRequest) {
 
   try {
     const itemData = await req.json();
-    
+
     // Check if item exists
-    const existing = workItems.getById(itemData.id);
-    
+    const existing = await workItems.getById(itemData.id);
+
     if (existing) {
       // Update existing
-      workItems.update(itemData.id, itemData);
+      await workItems.update(itemData.id, itemData);
     } else {
       // Create new
-      workItems.create(itemData);
+      await workItems.create(itemData);
     }
-    
+
     return NextResponse.json({ ok: true, item: itemData });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -59,7 +59,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Missing id' }, { status: 400 });
     }
 
-    workItems.delete(id);
+    await workItems.delete(id);
     return NextResponse.json({ ok: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

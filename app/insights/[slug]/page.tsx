@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { blogPosts } from '@/lib/db';
+import { blogPosts } from '@/lib/db-mysql';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -12,8 +12,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.getBySlug(slug);
-  
+  const post = await blogPosts.getBySlug(slug);
+
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -28,19 +28,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
-  const post = blogPosts.getBySlug(slug);
+  const post = await blogPosts.getBySlug(slug);
 
   if (!post || !post.published) {
     notFound();
   }
 
   // Increment views
-  blogPosts.incrementViews(slug);
+  await blogPosts.incrementViews(slug);
 
   // Get related posts
-  const allPosts = blogPosts.getAll(true);
+  const allPosts = await blogPosts.getAll(true);
   const relatedPosts = allPosts
-    .filter(p => p.slug !== slug && p.category === post.category)
+    .filter((p: any) => p.slug !== slug && p.category === post.category)
     .slice(0, 3);
 
   return (

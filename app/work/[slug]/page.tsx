@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { workItems } from '@/lib/db';
+import { workItems } from '@/lib/db-mysql';
 import type { Metadata } from 'next';
 import CasePage from '@/components/CasePage';
 
@@ -11,7 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const work = workItems.getBySlug(slug);
+  const work = await workItems.getBySlug(slug);
   
   if (!work) {
     return {
@@ -27,15 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function WorkDetailPage({ params }: Props) {
   const { slug } = await params;
-  const work = workItems.getBySlug(slug);
+  const work = await workItems.getBySlug(slug);
 
   if (!work || !work.published) {
     notFound();
   }
 
   // Get next and previous work items for navigation
-  const allWork = workItems.getAll(true);
-  const currentIndex = allWork.findIndex(w => w.slug === slug);
+  const allWork = await workItems.getAll(true);
+  const currentIndex = allWork.findIndex((w: any) => w.slug === slug);
   const prevWork = currentIndex > 0 ? allWork[currentIndex - 1] : null;
   const nextWork = currentIndex < allWork.length - 1 ? allWork[currentIndex + 1] : null;
 
