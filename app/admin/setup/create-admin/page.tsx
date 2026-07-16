@@ -1,13 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function CreateAdminPage() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [checking, setChecking] = useState(true);
+  const [adminExists, setAdminExists] = useState(false);
   const [result, setResult] = useState<any>(null);
+
+  // Check if admin already exists on page load
+  useEffect(() => {
+    const checkAdminExists = async () => {
+      try {
+        const response = await fetch('/api/auth/setup');
+        const data = await response.json();
+        
+        if (data.setup && data.adminCount > 0) {
+          setAdminExists(true);
+          // Redirect to login after 3 seconds
+          setTimeout(() => {
+            router.push('/admin/login');
+          }, 3000);
+        }
+      } catch (error) {
+        console.error('Failed to check admin status:', error);
+      } finally {
+        setChecking(false);
+      }
+    };
+
+    checkAdminExists();
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,6 +158,16 @@ export default function CreateAdminPage() {
       marginTop: '20px',
       lineHeight: 1.6
     } as React.CSSProperties,
+    warning: {
+      padding: '20px',
+      background: 'rgba(244,185,66,0.1)',
+      border: '1px solid rgba(244,185,66,0.3)',
+      borderRadius: '10px',
+      color: '#f4b942',
+      fontSize: '15px',
+      lineHeight: 1.6,
+      textAlign: 'center' as const
+    } as React.CSSProperties,
     note: {
       marginTop: '24px',
       padding: '16px',
@@ -140,6 +178,57 @@ export default function CreateAdminPage() {
       lineHeight: 1.6
     } as React.CSSProperties
   };
+
+  // Show loading state while checking
+  if (checking) {
+    return (
+      <div style={S.container}>
+        <div style={S.card}>
+          <div style={{ textAlign: 'center', color: 'rgba(246,245,240,0.6)' }}>
+            <div style={{ fontSize: '40px', marginBottom: '16px' }}>⏳</div>
+            <div>Checking setup status...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show blocked message if admin already exists
+  if (adminExists) {
+    return (
+      <div style={S.container}>
+        <div style={S.card}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '60px', marginBottom: '16px' }}>🔒</div>
+            <h1 style={S.title}>Setup Already Complete</h1>
+            <div style={S.warning}>
+              <strong>Admin account already exists.</strong>
+              <div style={{ marginTop: '12px' }}>
+                This page is only accessible during initial setup.
+                Redirecting to login page...
+              </div>
+            </div>
+            <div style={{ marginTop: '24px' }}>
+              <a 
+                href="/admin/login"
+                style={{
+                  display: 'inline-block',
+                  padding: '12px 24px',
+                  background: '#2bb6ea',
+                  color: '#0d1240',
+                  textDecoration: 'none',
+                  borderRadius: '10px',
+                  fontWeight: 600
+                }}
+              >
+                Go to Login →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={S.container}>
@@ -234,8 +323,8 @@ export default function CreateAdminPage() {
         )}
 
         <div style={S.note}>
-          💡 <strong>Important:</strong> Save your credentials securely. This setup page 
-          should be deleted or protected after creating your admin account.
+          🔒 <strong>Security:</strong> This page is only accessible when no admin accounts exist. 
+          Once you create the first admin, this page will automatically block access and redirect to login.
         </div>
       </div>
     </div>
