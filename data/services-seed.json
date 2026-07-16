@@ -4,29 +4,29 @@
     "slug": "analytics",
     "title": "Analytics & CRO",
     "excerpt": "GA4, Mixpanel, server-side tagging, experimentation. The feedback loop that turns a site into a compounding asset.",
-    "eyebrow": "Measurement + experimentation",
-    "h1_text": "Analytics & CRO.",
-    "lede": "GA4, Mixpanel, server-side tagging, experimentation. The feedback loop that turns a site into a compounding asset. Most analytics setups we inherit are broken in at least three places.",
+    "eyebrow": "MEASUREMENT + EXPERIMENTATION",
+    "h1_text": "Analytics & CRO",
+    "lede": "Deploying GA4, Mixpanel, and server-side infrastructure to fix broken data tracking and build data-driven conversion loops that systematically turn your traffic into compounding revenue.",
     "cta_label": "Audit my analytics",
-    "visual_word": "Data that earns its keep.",
+    "visual_word": "Data that converts.",
     "deliverables_title": "The full measurement stack.",
     "deliverables": [
-      { "num": "01", "title": "Analytics audit", "desc": "GA4, GTM, pixel health. We find what's firing wrong, what's missing, what's lying to you." },
-      { "num": "02", "title": "Server-side tracking", "desc": "First-party data, cookieless measurement. Your numbers stay accurate post-iOS updates." },
-      { "num": "03", "title": "Dashboard build", "desc": "Looker Studio or Mixpanel. Revenue-focused, not vanity-metric-focused." },
-      { "num": "04", "title": "CRO research", "desc": "Heatmaps, session recordings, user interviews, funnel analysis. We find the friction before we guess at fixes." },
-      { "num": "05", "title": "A/B testing", "desc": "Hypothesis-driven tests with statistical significance requirements. No more HiPPO decisions." },
-      { "num": "06", "title": "Experimentation roadmap", "desc": "A rolling 90-day pipeline of tests, ranked by expected lift × confidence × effort." }
+      { "num": "01", "title": "Analytics Audit", "desc": "Complete teardown of GA4, GTM, and conversion pixel health. We isolate broken triggers, identify missing data points, and validate the integrity of your tracking setup." },
+      { "num": "02", "title": "Server-Side Tracking", "desc": "Implementing first-party data collection and privacy-compliant, cookieless measurement frameworks to secure maximum attribution accuracy against modern browser limitations." },
+      { "num": "03", "title": "BI Dashboard Engineering", "desc": "Custom business intelligence interfaces via Looker Studio or Mixpanel. Fully built around core revenue metrics rather than superficial vanity indicators." },
+      { "num": "04", "title": "CRO User Research", "desc": "Utilizing heatmaps, user session recordings, qualitative interviews, and drop-off funnel analytics to identify user friction points through clear behavioral data." },
+      { "num": "05", "title": "Controlled A/B Testing", "desc": "Formulating hypothesis-driven conversion experiments built on strict statistical significance parameters, shifting your roadmap from speculation to verified data." },
+      { "num": "06", "title": "Optimization Roadmap", "desc": "Managing a rolling 90-day testing pipeline, systematically prioritizing optimization sprints using structured impact, confidence, and ease (ICE) frameworks." }
     ],
     "process_title": "From broken tracking to compounding wins.",
     "process_steps": [
-      { "num": "01", "title": "Audit", "desc": "GA4 configuration, GTM container, pixel health, data layer. We find every gap.", "dur": "WEEK 1" },
-      { "num": "02", "title": "Fix & rebuild", "desc": "Server-side setup, consent mode, clean data layer. Tracking you can trust.", "dur": "WEEK 2–3" },
-      { "num": "03", "title": "Dashboard", "desc": "Revenue-first reporting. The right numbers in the right hands.", "dur": "WEEK 4" },
-      { "num": "04", "title": "CRO research", "desc": "Qualitative + quantitative: heatmaps, sessions, interviews, funnel teardown.", "dur": "MONTH 2" },
-      { "num": "05", "title": "Test & iterate", "desc": "First test live. Two-week test cycles. Results compound over quarters.", "dur": "ONGOING" }
+      { "num": "01", "title": "Technical Audit", "desc": "Comprehensive evaluation of your GA4 configuration, Google Tag Manager container, pixel tracking health, and structured data layers to isolate critical tracking gaps.", "dur": "WEEK 1" },
+      { "num": "02", "title": "Infrastructure Engineering", "desc": "Deploying server-side architectures, setting up advanced consent modes, and restructuring data layers to secure bulletproof tracking integrity.", "dur": "WEEK 2-3" },
+      { "num": "03", "title": "Dashboard Architecture", "desc": "Building specialized, revenue-centric business intelligence reporting suites to supply your executive leadership team with absolute data clarity.", "dur": "WEEK 4" },
+      { "num": "04", "title": "Behavioral Research", "desc": "Conducting qualitative and quantitative user analyses, deploying advanced heatmaps, session recordings, user interviews, and granular conversion funnel teardowns.", "dur": "MONTH 2" },
+      { "num": "05", "title": "Continuous Optimization", "desc": "Launching the baseline split-tests and locking in rapid, bi-weekly experimentation cycles to secure compounding conversion efficiency over successive quarters.", "dur": "ONGOING" }
     ],
-    "case_title": "Clara & Co — 2.4× checkout conversion in 90 days.",
+    "case_title": "Clara & Co — 2.4x checkout conversion in 90 days.",
     "case_desc": "A DTC beauty brand tracking revenue with broken attribution. We rebuilt tracking server-side, identified a 3-step checkout drop-off, ran two tests, and doubled conversion before the next peak season.",
     "case_stats": [
       { "count": 2.4, "suffix": "x", "label": "Checkout conversion" },
@@ -35,10 +35,10 @@
       { "count": 12, "suffix": "", "label": "Tests in first quarter" }
     ],
     "faqs": [
-      { "q": "Our GA4 is a mess. Can you fix it?", "a": "That's the most common thing we're asked. Yes — we do a full rebuild, not a patch job." },
-      { "q": "Do you handle consent and GDPR?", "a": "Yes. Consent mode v2, server-side first-party tracking, and geo-based consent logic baked in." },
-      { "q": "What testing tool do you use?", "a": "Depends on stack. VWO, Optimizely, or native Next.js feature flags for engineering-heavy clients." },
-      { "q": "How long before we see results?", "a": "Tracking fixes are immediate. CRO lifts compound over 3–6 months of testing. We show lift from test 1." }
+      { "q": "Do you focus on vanity metrics or actual revenue?", "a": "We only track what impacts your bottom line—leads, conversions, and ROI. No fluff, just measurable growth." },
+      { "q": "How involved do we need to be in the day-to-day?", "a": "We handle the heavy lifting and strategy. You get weekly updates and a monthly deep-dive, leaving you free to run your business." },
+      { "q": "What happens if a campaign doesn't perform as expected?", "a": "We pivot fast. We constantly A/B test creatives and data, optimizing underperforming ads within 48 hours to secure your budget." },
+      { "q": "Do you work with companies in our specific industry?", "a": "We've scaled brands across diverse sectors. While tactics shift, our core framework for capturing market demand remains universal." }
     ],
     "cta_bottom": "Make your data tell the truth.",
     "cta_bottom_btn": "Request an analytics audit",
@@ -51,30 +51,30 @@
     "slug": "brand-strategy",
     "title": "Brand & Strategy",
     "excerpt": "Positioning, naming, visual identity and messaging.",
-    "eyebrow": "Flagship service",
+    "eyebrow": "FLAGSHIP SERVICE",
     "h1_text": "Brand & Strategy",
-    "lede": "Positioning, naming, visual identity and messaging. The foundation every other marketing dollar you spend will lean on.",
+    "lede": "Strategic market positioning, naming, identity design, and messaging frameworks. This is the bedrock of your company ensuring all subsequent marketing campaigns convert.",
     "cta_label": "Start a brand sprint",
     "visual_word": "Say the real thing.",
-    "deliverables_title": "Nine deliverables, one system.",
+    "deliverables_title": "Nine deliverables, one cohesive system.",
     "deliverables": [
-      { "num": "01", "title": "Brand audit", "desc": "Where you stand today. What's working, what's noise, and what competitors are getting away with." },
-      { "num": "02", "title": "Positioning", "desc": "A one-sentence claim that your whole team can repeat and defend." },
-      { "num": "03", "title": "Naming", "desc": "Product names, campaign names, sub-brand architecture. Done properly." },
-      { "num": "04", "title": "Visual identity", "desc": "Logo, type, color, motion — a complete visual system, not a single mark." },
-      { "num": "05", "title": "Voice & messaging", "desc": "How you sound, on a billboard and in a chat reply." },
-      { "num": "06", "title": "Brand guidelines", "desc": "A practical playbook your team and vendors can actually follow." }
+      { "num": "01", "title": "Brand Audit", "desc": "A comprehensive evaluation of your current market standing. We isolate what is driving growth, remove market noise, and pinpoint where your competitors are vulnerable." },
+      { "num": "02", "title": "Positioning", "desc": "A definitive, core value proposition that your entire organization can confidently rally behind and defend." },
+      { "num": "03", "title": "Naming", "desc": "Product nomenclature, campaign titles, and sub-brand architecture. Strategic, memorable, and legally viable." },
+      { "num": "04", "title": "Visual Identity", "desc": "Typography, color systems, and motion guidelines a complete digital design ecosystem, far beyond just a logo." },
+      { "num": "05", "title": "Voice & Messaging", "desc": "Establishing your distinct brand persona, engineered to sound consistent from large-scale billboards to daily digital interactions." },
+      { "num": "06", "title": "Brand Guidelines", "desc": "A highly practical, comprehensive playbook designed for effortless implementation by your internal team and external partners." }
     ],
-    "process_title": "A brand sprint, start to finish.",
+    "process_title": "From baseline to brand launch: The 8-week framework.",
     "process_steps": [
-      { "num": "01", "title": "Interviews & audit", "desc": "Stakeholder interviews, customer calls, competitive mapping. We hand you the honest picture.", "dur": "WEEK 1" },
-      { "num": "02", "title": "Positioning workshop", "desc": "A two-day off-site (or Zoom room). We leave with a positioning statement you'd bet the company on.", "dur": "WEEK 2" },
-      { "num": "03", "title": "Identity design", "desc": "Two visual directions, one round of refinement. No design-by-committee.", "dur": "WEEK 3–5" },
-      { "num": "04", "title": "System build", "desc": "Guidelines, components, templates. Everything your team needs to run without us.", "dur": "WEEK 6–7" },
-      { "num": "05", "title": "Launch support", "desc": "Rollout plan, internal launch kit, and an optional first campaign to put the brand to work.", "dur": "WEEK 8" }
+      { "num": "01", "title": "Deep-Dive Audit", "desc": "Comprehensive stakeholder interviews and data-driven competitor profiling. We deliver unvarnished, actionable market truths.", "dur": "WEEK 1" },
+      { "num": "02", "title": "Positioning Workshop", "desc": "A high-focus, strategic session to establish a singular, bulletproof brand claim that anchors your entire future marketing engine.", "dur": "WEEK 2" },
+      { "num": "03", "title": "Visual Identity System", "desc": "Two targeted visual directions, engineered for digital scalability. We focus on strategic clarity over design-by-committee delay.", "dur": "WEEKS 3-5" },
+      { "num": "04", "title": "Ecosystem Infrastructure", "desc": "Developing the complete brand playbook, UI components, and collateral templates that empower your team to scale independently.", "dur": "WEEKS 6-7" },
+      { "num": "05", "title": "Market Activation", "desc": "A structured rollout plan and internal activation assets, paired with a launch campaign designed to put your brand equity to work.", "dur": "WEEK 8" }
     ],
-    "case_title": "Ummah Travel — pilgrimage, reimagined.",
-    "case_desc": "We rebuilt Ummah Travel's positioning, identity and booking site end-to-end. Eight weeks to ship, and the results outlived the launch quarter.",
+    "case_title": "Ummah Travel digital transformation at scale.",
+    "case_desc": "From strategic positioning to a fully integrated, end-to-end booking platform. Our comprehensive 8-week delivery model yielded sustained, measurable commercial outcomes that redefined their digital performance indicators.",
     "case_stats": [
       { "count": 212, "suffix": "%", "label": "Booking lift" },
       { "count": 4.2, "suffix": "x", "label": "Organic traffic" },
@@ -82,10 +82,10 @@
       { "count": 8, "suffix": "wks", "label": "To launch" }
     ],
     "faqs": [
-      { "q": "How much does a brand sprint cost?", "a": "Most full brand sprints land between $35–85k, depending on scope (naming, sub-brands, motion, etc). We'll scope precisely after a discovery call." },
-      { "q": "Do you work with early-stage startups?", "a": "Yes — we have a \"Lite\" version of the brand sprint tailored for pre-Series A companies that still need a serious foundation." },
-      { "q": "Can you build the website after?", "a": "That's the whole point. The identity we design is the identity we ship to production, on the same engagement." },
-      { "q": "What if we already have a logo?", "a": "Totally fine. Plenty of our engagements start with positioning and messaging while keeping the existing mark." }
+      { "q": "How much does a brand project cost?", "a": "Brand projects are scoped individually. Most fall between PKR 25,000 and PKR 120,000 depending on deliverables. We'll give you a fixed number after a 30-minute discovery call." },
+      { "q": "We already have a logo. Can you work with it?", "a": "Yes. Many projects start with positioning and messaging while keeping the existing mark. We'll tell you honestly if the logo is holding you back." },
+      { "q": "Do you work with new businesses?", "a": "Absolutely getting the brand right from the start saves you from expensive corrections later. Some of our best work has been for brands launching for the first time." },
+      { "q": "Can you build the website after?", "a": "That's the natural next step. The identity we design is what we'd build to produce the same team, same vision." }
     ],
     "cta_bottom": "Ready to sound like yourselves?",
     "cta_bottom_btn": "Book a brand call",
@@ -98,33 +98,33 @@
     "slug": "mobile",
     "title": "Mobile Apps",
     "excerpt": "iOS, Android, and cross-platform apps. We design, build, ship — and then run the marketing.",
-    "eyebrow": "Native & cross-platform",
-    "h1_text": "Mobile Apps.",
-    "lede": "iOS, Android, and cross-platform apps. We design, build, ship — and then run the marketing that actually drives installs and retention.",
-    "cta_label": "Scope a mobile project",
-    "visual_word": "Apps that stick around.",
+    "eyebrow": "NATIVE & CROSS-PLATFORM",
+    "h1_text": "Mobile Apps",
+    "lede": "Enterprise-grade deployment across native iOS, Android, and cross-platform environments. We integrate seamless design with robust software architecture, backing your launch with comprehensive digital marketing to guarantee engagement.",
+    "cta_label": "Initiate a mobile sprint",
+    "visual_word": "Scale with absolute engagement.",
     "deliverables_title": "What we build, end to end.",
     "deliverables": [
-      { "num": "01", "title": "Product strategy", "desc": "JTBD, feature prioritization, monetization model. What belongs in v1 and what waits." },
-      { "num": "02", "title": "UX prototype", "desc": "Clickable Figma prototype tested with 5+ real users before a line of code is written." },
-      { "num": "03", "title": "Visual design", "desc": "Native patterns, not web-in-a-webview. iOS and Android feel native on their own terms." },
-      { "num": "04", "title": "App build", "desc": "React Native or Swift/Kotlin depending on complexity. Fully typed, fully tested." },
-      { "num": "05", "title": "Backend & APIs", "desc": "Supabase, Firebase, or bespoke Node. Auth, push, payments, analytics wired in." },
-      { "num": "06", "title": "Launch & ASO", "desc": "App Store Optimization, store listings, screenshots, launch campaign. The install funnel matters too." }
+      { "num": "01", "title": "Product Strategy", "desc": "JTBD frameworks, rigorous feature prioritization, and monetization architecture. We define a strategic Minimum Viable Product (MVP) roadmap to optimize your speed-to-market." },
+      { "num": "02", "title": "UX Prototype", "desc": "Clickable, high-fidelity Figma prototypes subjected to targeted user testing to validate design flows before introducing engineering resources." },
+      { "num": "03", "title": "Visual Design", "desc": "Meticulous native design patterns instead of compromised hybrid layouts, ensuring your application feels deeply intuitive on both iOS and Android." },
+      { "num": "04", "title": "App Engineering", "desc": "Scalable deployment across React Native, Swift, or Kotlin based on technical complexity. Codebases are strictly typed and exhaustively tested." },
+      { "num": "05", "title": "Backend & APIs", "desc": "Secure infrastructure utilizing Supabase, Firebase, or bespoke Node.js architectures, complete with integrated authentication, push notifications, payment gateways, and telemetry." },
+      { "num": "06", "title": "Launch & ASO", "desc": "Comprehensive App Store Optimization, marketplace asset curation, and strategic launch management designed to maximize initial conversion funnels." }
     ],
-    "process_title": "Twelve weeks to TestFlight.",
+    "process_title": "Our application development lifecycle.",
     "process_steps": [
-      { "num": "01", "title": "Product definition", "desc": "User research, feature spec, success metrics. We ship v1, not v4.", "dur": "WEEK 1–2" },
-      { "num": "02", "title": "Prototype & test", "desc": "Figma prototype in testers' hands. We find the rough edges before code.", "dur": "WEEK 3–4" },
-      { "num": "03", "title": "Design & architecture", "desc": "Native UI system, backend schema, API contracts. Engineering and design in lockstep.", "dur": "WEEK 5–6" },
-      { "num": "04", "title": "Sprint build", "desc": "Two-week sprints with demoable builds in TestFlight / Play internal.", "dur": "WEEK 7–10" },
-      { "num": "05", "title": "Beta & launch", "desc": "Closed beta, iteration, store submission. App Review is our problem, not yours.", "dur": "WEEK 11–12" }
+      { "num": "01", "title": "Requirements Engineering", "desc": "Gathering user insights, drafting technical specification sheets, and finalizing key project metrics to shape a practical software baseline.", "dur": "WEEKS 1-2" },
+      { "num": "02", "title": "UX Validation & Testing", "desc": "Creating interactive design components to simulate user paths, allowing for interface debugging ahead of core platform development.", "dur": "WEEKS 3-4" },
+      { "num": "03", "title": "Architecture Alignment", "desc": "Formulating native design tokens alongside scalable backend schemas and standard API contracts for unified team execution.", "dur": "WEEKS 5-6" },
+      { "num": "04", "title": "Iterative Engineering", "desc": "Developing core application code in structured two-week blocks with regular builds delivered directly via TestFlight for internal performance evaluation.", "dur": "WEEKS 7-10" },
+      { "num": "05", "title": "Quality Assurance & Hand-Off", "desc": "Running closed beta trials, finalizing platform code, and handling official App Store compliance and submission workflows entirely.", "dur": "WEEKS 11-12" }
     ],
     "case_title": "Skynet — delivery app that saved itself $42/install.",
     "case_desc": "Rebuilt a performance-dragging hybrid app as a native React Native experience. Install-to-first-order conversion tripled, and acquisition cost dropped 42%.",
     "case_stats": [
       { "count": 3.1, "suffix": "x", "label": "Install conversion" },
-      { "count": 42, "suffix": "%", "label": "Cost per install ↓" },
+      { "count": 42, "suffix": "%", "label": "Cost per install" },
       { "count": 4.8, "suffix": "★", "label": "App Store rating" },
       { "count": 12, "suffix": "wks", "label": "To v1" }
     ],
@@ -145,41 +145,41 @@
     "slug": "paid-media",
     "title": "Paid Media",
     "excerpt": "Meta, Google, TikTok, programmatic. We build paid media engines where creative, audience and landing pages work as one.",
-    "eyebrow": "Performance marketing",
-    "h1_text": "Paid Media.",
-    "lede": "Meta, Google, TikTok, programmatic, connected TV. We build paid media engines where the creative rotation, audience strategy and landing pages all work as one system — not five separate vendors blaming each other.",
-    "cta_label": "Audit my ad account",
+    "eyebrow": "PERFORMANCE MARKETING",
+    "h1_text": "Paid Media",
+    "lede": "Cross-channel acceleration across Meta, Google, TikTok and Youtube. Our team builds high-velocity paid media funnels, consolidating your creative assets, audience tracking, and web conversion paths into a unified strategy built for maximum capital efficiency.",
+    "cta_label": "Claim a free ad audit",
     "visual_word": "Every dollar earns its keep.",
     "deliverables_title": "The full paid-media stack.",
     "deliverables": [
-      { "num": "01", "title": "Account audit", "desc": "Historical account teardown. What's working, what's wasted, what to kill this week." },
-      { "num": "02", "title": "Channel strategy", "desc": "Which platforms deserve spend, why, and in what ratio. Based on your margins, not vendor kickbacks." },
-      { "num": "03", "title": "Creative system", "desc": "Ad variants in a modular system so we can rotate 50+ creatives without bottlenecking." },
-      { "num": "04", "title": "Landing pages", "desc": "Conversion pages built specifically for cold traffic. Shared design language with your brand." },
-      { "num": "05", "title": "Measurement", "desc": "Server-side tracking, UTM hygiene, ROAS dashboards your CFO will actually read." },
-      { "num": "06", "title": "Weekly optimization", "desc": "Bid adjustments, creative rotation, negative keywords. Compound wins." }
+      { "num": "01", "title": "Account Audit", "desc": "Deep historical infrastructure teardowns. We isolate proven performance drivers, uncover capital inefficiencies, and immediately restructure underperforming campaigns." },
+      { "num": "02", "title": "Channel Strategy", "desc": "Data-backed allocation models tailored to your customer acquisition costs (CAC). We determine budget ratios strictly based on profit margins and unit economics." },
+      { "num": "03", "title": "Creative System", "desc": "High-volume ad variation managed inside a modular template framework, enabling rapid testing of over 50+ fresh creatives without workflow bottlenecks." },
+      { "num": "04", "title": "Landing Pages", "desc": "High-converting destination pages engineered specifically for cold traffic, maintaining complete visual and narrative alignment with your core brand system." },
+      { "num": "05", "title": "Attribution & Measurement", "desc": "Server-side conversion tracking, rigorous UTM hygiene, and granular ROAS dashboards built to provide transparent, board-ready financial reporting." },
+      { "num": "06", "title": "Continuous Optimization", "desc": "Micro-bid adjustments, dynamic creative rotation, and ongoing search term filtering designed to yield compounding performance gains." }
     ],
     "process_title": "From audit to scale.",
     "process_steps": [
-      { "num": "01", "title": "Audit & intake", "desc": "Full account teardown. Budget allocation hypothesis.", "dur": "WEEK 1" },
-      { "num": "02", "title": "Strategy & build", "desc": "Campaign structures, audience segments, creative brief. Tracking and pixels audited.", "dur": "WEEK 2" },
-      { "num": "03", "title": "Creative sprint", "desc": "15–30 ad variants shot/produced. Modular, testable, brand-safe.", "dur": "WEEK 3" },
-      { "num": "04", "title": "Launch & learn", "desc": "Controlled spend, rapid iteration. The first four weeks are about finding winners.", "dur": "MONTH 2" },
-      { "num": "05", "title": "Scale", "desc": "Winners scale. Losers die. New tests every two weeks.", "dur": "ONGOING" }
+      { "num": "01", "title": "Audit & Intake", "desc": "A comprehensive legacy account teardown paired with a data-driven capital allocation hypothesis to identify immediate performance bottlenecks.", "dur": "WEEK 1" },
+      { "num": "02", "title": "Strategy & Architecture", "desc": "Designing optimized campaign structures, advanced audience segmentation matrices, and comprehensive tracking and pixel verification.", "dur": "WEEK 2" },
+      { "num": "03", "title": "Creative Sprint", "desc": "Production of 15-30 high-impact ad variants inside a modular, highly testable, and brand-aligned asset architecture.", "dur": "WEEK 3" },
+      { "num": "04", "title": "Launch & Alpha Testing", "desc": "Controlled budget deployment and high-velocity iteration. The initial four weeks focus on identifying top-performing assets and high-conversion hooks.", "dur": "MONTH 2" },
+      { "num": "05", "title": "Systematic Scaling", "desc": "Capital is aggressively funneled into high-performing campaigns while underperforming assets are phased out, backed by fresh creative testing cycles every two weeks.", "dur": "ONGOING" }
     ],
     "case_title": "Skynet — 42% lower CPA across $2.4M in spend.",
     "case_desc": "Took a Meta + Google account with 11 ad sets firing in circles. Consolidated, rebuilt the creative, rebuilt the funnel. CPA halved within 8 weeks.",
     "case_stats": [
-      { "count": 42, "suffix": "%", "label": "Cost per acquisition ↓" },
+      { "count": 42, "suffix": "%", "label": "Cost per acquisition" },
       { "count": 3.4, "suffix": "x", "label": "ROAS" },
       { "count": 2.4, "suffix": "M", "label": "Managed spend" },
       { "count": 8, "suffix": "wks", "label": "To positive ROAS" }
     ],
     "faqs": [
-      { "q": "What's your minimum media spend?", "a": "We take on accounts with $20k+/month in media spend. Below that, the management fee eats the delta." },
-      { "q": "Do you charge a % of spend?", "a": "Flat monthly fee, tied to scope. We don't want our revenue going up just because your spend went up." },
-      { "q": "Which platforms do you run?", "a": "Meta, Google (Search + YouTube + Demand Gen), TikTok, LinkedIn, programmatic via DV360, and CTV via Vibe. We recommend based on your audience, not our comfort zone." },
-      { "q": "Can you fix a broken account?", "a": "That's most of what we do. Most accounts we inherit are 20–40% wasted spend." }
+      { "q": "What's your minimum ad spend?", "a": "We work with budgets from PKR 50,000/month upward. Below that, management costs outweigh the results." },
+      { "q": "Do you charge a percentage of spend?", "a": "We charge a flat monthly management fee. We don't make more money just because your ad spend goes up." },
+      { "q": "Which platforms do you run?", "a": "Meta (Facebook & Instagram), Google (Search, Display, YouTube), and TikTok. We recommend what's right for your audience." },
+      { "q": "Can you take over a badly-run account?", "a": "Yes, that's most of what we do. We'll audit it first and tell you honestly what we find." }
     ],
     "cta_bottom": "Stop bleeding on ads.",
     "cta_bottom_btn": "Request an audit",
@@ -192,27 +192,27 @@
     "slug": "production",
     "title": "Production & Content",
     "excerpt": "Photo, video, motion, copy. The fuel line for everything you publish.",
-    "eyebrow": "Creative production",
-    "h1_text": "Production & Content.",
-    "lede": "Photo, video, motion, copy. The fuel line for everything you publish — ads, social, site, campaigns. In-house production means no briefing a third party, no lost-in-translation, no missed brand voice.",
-    "cta_label": "Book a production day",
-    "visual_word": "Made with craft not AI.",
+    "eyebrow": "CREATIVE PRODUCTION",
+    "h1_text": "Production & Content",
+    "lede": "Turn key asset creation engineered to capture consumer attention. By managing our full multimedia studio in-house, we remove communication friction and eliminate generic creative output. Every video frame, design layer, and copy line is custom-built to reinforce your unique market position and drive engagement.",
+    "cta_label": "Schedule a studio session",
+    "visual_word": "Driven by human vision",
     "deliverables_title": "From brief to finished asset.",
     "deliverables": [
-      { "num": "01", "title": "Photography", "desc": "Studio and on-location. Product, lifestyle, team, editorial. We direct and deliver." },
-      { "num": "02", "title": "Video production", "desc": "30s to 10min. Brand films, testimonials, product demos, social reels." },
-      { "num": "03", "title": "Motion & animation", "desc": "Logo animations, UI explainers, ad cuts, social loops. Rigged for re-use." },
-      { "num": "04", "title": "Copywriting", "desc": "Landing page copy, email sequences, brand storytelling. One voice, everywhere." },
-      { "num": "05", "title": "UGC & testimonials", "desc": "Managed testimonial capture with real customers. Scripted enough to convert, raw enough to trust." },
-      { "num": "06", "title": "Asset management", "desc": "Organized, tagged, stored. Every asset findable by your team in seconds." }
+      { "num": "01", "title": "Commercial Photography", "desc": "Studio and on-location sessions covering e-commerce product imagery, high-end lifestyle shoots, and corporate editorial portraits. Fully directed and delivered." },
+      { "num": "02", "title": "Cinema & Video Production", "desc": "Multi-format video execution spanning cinematic brand films, social-first reels, customer case studies, and comprehensive product demonstrations." },
+      { "num": "03", "title": "Motion & Animation", "desc": "Dynamic logo animations, interactive UI/UX explainer videos, high-impact paid ad cuts, and continuous social loops designed for modular, long-term reuse." },
+      { "num": "04", "title": "Strategic Copywriting", "desc": "High-conversion landing page copy, automated email nurturing sequences, and immersive brand storytelling that secures absolute verbal alignment." },
+      { "num": "05", "title": "Creator-Led UGC", "desc": "End-to-end managed creator and customer testimonial procurement. Carefully scripted to maximize conversions while maintaining authentic credibility." },
+      { "num": "06", "title": "Asset Architecture", "desc": "Centralized digital asset management. Every creative deliverable is systematically categorized, tagged, and archived for immediate cross-team access." }
     ],
     "process_title": "From brief to deliverables.",
     "process_steps": [
-      { "num": "01", "title": "Creative brief", "desc": "Goals, audiences, platforms, tone, mood references. The brief is the work.", "dur": "WEEK 1" },
-      { "num": "02", "title": "Pre-production", "desc": "Shot list, talent, locations, props, styling. We over-prepare so shoot day runs.", "dur": "WEEK 2" },
-      { "num": "03", "title": "Shoot day(s)", "desc": "Efficient, directed, on-brief. Typically 60–100 usable assets per day.", "dur": "WEEK 3" },
-      { "num": "04", "title": "Post-production", "desc": "Edit, color, sound, motion. Two rounds of revision.", "dur": "WEEK 4" },
-      { "num": "05", "title": "Delivery", "desc": "Formatted for every platform. Organized in your asset library.", "dur": "WEEK 5" }
+      { "num": "01", "title": "Creative Briefing", "desc": "Defining strategic goals, audience demographics, channel parameters, and visual mood references. We lay a bulletproof foundation for the entire project.", "dur": "WEEK 1" },
+      { "num": "02", "title": "Pre-Production", "desc": "Finalizing shot lists, talent scouting, location scouting, prop curation, and wardrobe styling. Meticulous planning ensures a seamless execution.", "dur": "WEEK 2" },
+      { "num": "03", "title": "Studio & Location Shoots", "desc": "Highly efficient, professionally directed, and strictly on-brief. A single production day typically yields 60-100 premium, platform-ready assets.", "dur": "WEEK 3" },
+      { "num": "04", "title": "Post-Production", "desc": "Comprehensive editing, cinematic color grading, sound design, and motion graphics. Includes two structured rounds of collaborative revision.", "dur": "WEEK 4" },
+      { "num": "05", "title": "Final Delivery", "desc": "Platform-optimized asset formatting, ready for immediate deployment. Seamlessly cataloged and archived within your central digital media storage.", "dur": "WEEK 5" }
     ],
     "case_title": "Northwind Provisions — 156% DTC lift from one shoot.",
     "case_desc": "Northwind was running paid ads with product-on-white stock photos. We shot one lifestyle day — 80 assets across 4 product lines — and rebuilt their ad creative. Revenue doubled in 90 days.",
@@ -223,10 +223,10 @@
       { "count": 90, "suffix": "days", "label": "To results" }
     ],
     "faqs": [
-      { "q": "How much does a production day cost?", "a": "Studio days from $6k, on-location from $8k. Includes full crew, post-production, and final delivery." },
-      { "q": "Do you provide talent and locations?", "a": "Yes — we have a casting and location network. Or we can work with yours." },
-      { "q": "Can you produce for international markets?", "a": "We shoot in Pakistan, UAE and Canada, and travel globally for large productions." },
-      { "q": "Do we own the assets?", "a": "100%. All raw files and finals transfer to you on completion." }
+      { "q": "What is the investment required for a full media production day?", "a": "We offer scalable, fixed-rate production packages engineered around your required monthly asset volume. Each package bundles strategy, capture, and high-fidelity editing into a single predictable monthly investment with zero hidden fees." },
+      { "q": "Is talent procurement and location management included in your scope?", "a": "Yes, pre-production logistics are completely built into our core framework. From casting creators and background actors to securing premium sets and studio spaces, we handle it all." },
+      { "q": "Do you support multi-region campaigns and localized distribution formats?", "a": "Yes. We build creative frameworks that allow a single production day to yield localized variants tailored for diverse geographical markets, compliance laws, and cultural contexts." },
+      { "q": "Do we gain full commercial ownership of all delivered assets?", "a": "100%. All deliverables are transferred directly into your private brand database with full, unencumbered commercial ownership rights from day one." }
     ],
     "cta_bottom": "Got a brief? Let's make it.",
     "cta_bottom_btn": "Book a production call",
@@ -237,32 +237,32 @@
   {
     "id": "seo",
     "slug": "seo",
-    "title": "SEO",
+    "title": "SEO that scales. Growth that lasts",
     "excerpt": "Technical SEO, editorial SEO, and link strategy as one engine.",
-    "eyebrow": "Technical + editorial",
-    "h1_text": "Search that compounds.",
-    "lede": "Technical SEO, editorial SEO, and link strategy as one engine. We treat search like an asset class — you invest, it compounds. We don't do shortcuts that break at the next algorithm update.",
-    "cta_label": "Get a site audit",
-    "visual_word": "Rank forever. Not today.",
-    "deliverables_title": "Six workstreams, one ranking.",
+    "eyebrow": "STRATEGY + EXECUTION",
+    "h1_text": "SEO that scales. Growth that lasts",
+    "lede": "We combine data-driven technical SEO with high-impact content to build your ultimate growth engine. No vanity metrics, no shady hacks just sustainable organic traffic that keeps multiplying over time.",
+    "cta_label": "Claim your free audit",
+    "visual_word": "Own your traffic. Don't rent it.",
+    "deliverables_title": "Our 6-Step Blueprint to Search Dominance.",
     "deliverables": [
-      { "num": "01", "title": "Technical audit", "desc": "Core Web Vitals, crawlability, index bloat, schema. 60+ checks, prioritized by impact." },
-      { "num": "02", "title": "Keyword strategy", "desc": "Clusters mapped to intent, mapped to funnel stage. The map before the content." },
-      { "num": "03", "title": "Editorial calendar", "desc": "Monthly themes, article briefs, internal linking plan. Writers have everything they need." },
-      { "num": "04", "title": "On-page optimization", "desc": "Titles, headers, schema, meta, image alts. Existing pages reoptimized for 2026 SERPs." },
-      { "num": "05", "title": "Link strategy", "desc": "Digital PR and earned links, not PBNs. Slower, but it survives." },
-      { "num": "06", "title": "Reporting", "desc": "Rankings, organic sessions, revenue attribution. Weekly Looker Studio dashboard." }
+      { "num": "01", "title": "Technical Auditing", "desc": "Core Web Vitals, indexing, and schema. 80+ impact-driven technical checks." },
+      { "num": "02", "title": "Keyword Intelligence", "desc": "Intent-mapped clusters and funnel alignment. The ultimate content roadmap." },
+      { "num": "03", "title": "Editorial Strategy", "desc": "Monthly content themes, comprehensive briefs, and internal link planning." },
+      { "num": "04", "title": "On-Page Tuning", "desc": "Enhancing headers, meta tags, and images. Re-optimized for current SERP standards." },
+      { "num": "05", "title": "Digital PR & Links", "desc": "High-authority earned backlinks. Sustainable growth, completely free of PBNs." },
+      { "num": "06", "title": "ROI Reporting", "desc": "Live tracking of traffic, keywords, and revenue via custom Looker Studio dashboards." }
     ],
-    "process_title": "The first 90 days.",
+    "process_title": "SEO roadmap to scale.",
     "process_steps": [
-      { "num": "01", "title": "Audit & benchmark", "desc": "Technical, content, backlink, competitor. You get a 40-page report and a prioritized Linear board.", "dur": "MONTH 1" },
-      { "num": "02", "title": "Quick wins", "desc": "Fix index bloat, Core Web Vitals, obvious on-page gaps. Rankings typically move in weeks.", "dur": "MONTH 1" },
-      { "num": "03", "title": "Content sprint", "desc": "First wave of new articles, optimized existing pages. Topic authority takes shape.", "dur": "MONTH 2" },
-      { "num": "04", "title": "Link acquisition", "desc": "Digital PR campaigns, resource pages, contextual placements. Quality over quantity.", "dur": "MONTH 3" },
-      { "num": "05", "title": "Compound", "desc": "Monthly content, technical hygiene, authority building. The asset grows quietly.", "dur": "ONGOING" }
+      { "num": "01", "title": "Technical Discovery", "desc": "Deep dive into site architecture, content quality, link profiles, and competitor footprints. We hand over a deep-dive roadmap mapped directly to clear operational tasks.", "dur": "MONTH 1" },
+      { "num": "02", "title": "Velocity Wins", "desc": "Cleaning up crawl bloat, boosting loading speeds, and capitalizing on low-hanging on-page visibility to trigger immediate ranking upward trends.", "dur": "MONTH 1" },
+      { "num": "03", "title": "Topical Sprints", "desc": "Launching high-intent new assets and re-optimizing high-potential revenue pages to establish dominant search market share.", "dur": "MONTH 2" },
+      { "num": "04", "title": "Link Acquisition", "desc": "High-tier editorial PR, strategic resource networking, and premium contextual link building focused entirely on highly authoritative domains.", "dur": "MONTH 3" },
+      { "num": "05", "title": "Exponential Scale", "desc": "Scaled monthly asset creation, daily health checks, and ongoing trust signals that build an unassailable digital organic channel.", "dur": "ONGOING" }
     ],
-    "case_title": "Ummah Travel — 4.2× organic traffic in 6 months.",
-    "case_desc": "A pilgrimage-booking site competing against giants. We rebuilt site architecture around pilgrimage intent clusters, shipped 80 editorial pieces, and watched rankings climb against 10× bigger competitors.",
+    "case_title": "Ummah Travel — 4.2x organic traffic in 6 months.",
+    "case_desc": "A pilgrimage-booking site competing against giants. We rebuilt site architecture around pilgrimage intent clusters, shipped 80 editorial pieces, and watched rankings climb against 10x bigger competitors.",
     "case_stats": [
       { "count": 4.2, "suffix": "x", "label": "Organic traffic" },
       { "count": 147, "suffix": "", "label": "Top-3 rankings" },
@@ -270,10 +270,10 @@
       { "count": 6, "suffix": "mo", "label": "To compound" }
     ],
     "faqs": [
-      { "q": "How quickly will I rank?", "a": "Technical fixes can move rankings in days. Content competes in 3–6 months. Trust-building is a 12-month game. Anyone promising faster is selling a short squeeze." },
-      { "q": "Do you do link building?", "a": "Yes, but through digital PR and genuine relationships — not PBNs or sponsored posts. Slower, safer, durable." },
-      { "q": "Can you write the content?", "a": "We have in-house writers for most verticals, plus a vetted network for specialists (medical, legal, fintech)." },
-      { "q": "How do you report?", "a": "Looker Studio dashboard updated daily. Monthly strategy call. We focus on revenue from organic, not just rankings." }
+      { "q": "How long until I see results?", "a": "Technical fixes can impact rankings within weeks. Content-driven results build over 3-6 months. The long-term compounding starts around month 6-12." },
+      { "q": "Do you write the content?", "a": "Yes, our copywriting team writes the articles and pages. You review and approve before anything is published." },
+      { "q": "Do you do link building?", "a": "Yes, through digital PR and legitimate outreach. We don't use spammy link farms." },
+      { "q": "What about Local SEO for Pakistan?", "a": "We specialise in local SEO for Pakistani markets Google Business Profile, local citations, Urdu and English keyword strategy." }
     ],
     "cta_bottom": "Make Google work for you.",
     "cta_bottom_btn": "Request an audit",
@@ -286,26 +286,26 @@
     "slug": "social-content",
     "title": "Social & Content",
     "excerpt": "Calendars that actually get filled. Photo, video, motion and copy produced in-house.",
-    "eyebrow": "Social + content production",
-    "h1_text": "Social & Content.",
-    "lede": "Calendars that actually get filled. Photo, video, motion and copy — produced in-house so it doesn't bottleneck. We own the content engine so you can run it without chasing freelancers.",
+    "eyebrow": "SOCIAL + CONTENT PRODUCTION",
+    "h1_text": "Social & Content",
+    "lede": "Frictionless organic distribution backed by studio-grade assets. From photography and video production to motion design and premium copy, our entire creative workflow is executed completely in-house. We deploy a fully managed content architecture that ensures consistent multi-channel output without operational bottlenecks.",
     "cta_label": "Build my content engine",
-    "visual_word": "Content that moves.",
+    "visual_word": "Content that converts.",
     "deliverables_title": "Every piece of the content engine.",
     "deliverables": [
-      { "num": "01", "title": "Content strategy", "desc": "Audience personas, platform mix, content pillars. The why before the what." },
-      { "num": "02", "title": "Editorial calendar", "desc": "60-day rolling calendar, scheduled and briefed. No more scrambling on Monday morning." },
-      { "num": "03", "title": "Photo & video", "desc": "Studio or on-location shoots. Social cuts, reels, stills — all from one production day." },
-      { "num": "04", "title": "Copywriting", "desc": "Captions, long-form, email. One voice, everywhere, consistently." },
-      { "num": "05", "title": "Community management", "desc": "Replies, DMs, comments — with a tone guide so it sounds like you, not a VA." },
-      { "num": "06", "title": "Performance reporting", "desc": "Monthly analytics: reach, saves, link clicks, follower quality. We cut what doesn't earn." }
+      { "num": "01", "title": "Content Strategy", "desc": "Deep audience segmentation, cross-platform channel mapping, and core thematic content pillars. We align strategic intent with market research before entering production." },
+      { "num": "02", "title": "Editorial Governance", "desc": "A 60-day rolling distribution calendar, fully scheduled and briefed in advance to guarantee consistency and eliminate reactive, last-minute publishing." },
+      { "num": "03", "title": "Photo & Video", "desc": "Studio or on-location production days engineered to yield an extensive asset bank: optimized vertical video cuts, cinematic reels, and premium static imagery." },
+      { "num": "04", "title": "Editorial Copywriting", "desc": "Social captions, long-form articles, and email campaigns. We craft a unified, omni-channel brand voice across every digital touchpoint." },
+      { "num": "05", "title": "Community Management", "desc": "Proactive engagement across comments and direct messages (DMs), managed via structured brand tone guides to reflect an authentic corporate identity." },
+      { "num": "06", "title": "Performance Insights", "desc": "Comprehensive monthly analytics monitoring reach velocity, saves, engagement quality, and conversion paths to continuously optimize ROI." }
     ],
-    "process_title": "60 days to a full content operation.",
+    "process_title": "Rapid content deployment.",
     "process_steps": [
-      { "num": "01", "title": "Audit & strategy", "desc": "Existing content teardown, competitor benchmarking, pillar definition. We find what's already working.", "dur": "WEEK 1–2" },
-      { "num": "02", "title": "First shoot", "desc": "Brand content library built. 30–60 assets usable across all platforms.", "dur": "WEEK 3" },
-      { "num": "03", "title": "Calendar live", "desc": "First 30 days of posts scheduled. Captions reviewed and approved.", "dur": "WEEK 4" },
-      { "num": "04", "title": "Cadence", "desc": "Weekly publishing rhythm locked. Monthly shoots. Quarterly strategy reviews.", "dur": "ONGOING" }
+      { "num": "01", "title": "Insight & Analysis", "desc": "Deep dive into existing content data, industry benchmarking, and structural pillar design to reveal immediate growth opportunities.", "dur": "WEEK 1-2" },
+      { "num": "02", "title": "Media Capture", "desc": "Rolling out your first major studio session to populate a versatile creative library with 30-60 multi-format digital assets.", "dur": "WEEK 3" },
+      { "num": "03", "title": "Channel Activation", "desc": "Activating your editorial engine. Setting up the first month of optimized, scheduled posts with brand-perfect copy locked and loaded.", "dur": "WEEK 4" },
+      { "num": "04", "title": "Continuous Scale", "desc": "Maintaining an uninterrupted weekly release rhythm, monthly asset refreshes, and quarterly strategic pivots to maximize reach.", "dur": "ONGOING" }
     ],
     "case_title": "Parable Foods — from 0 to 48k in 6 months.",
     "case_desc": "A premium food brand launching into retail needed social proof before they had shelf space. We built the content engine from scratch — strategy, shoots, and community — and grew their audience faster than their distribution.",
@@ -316,10 +316,10 @@
       { "count": 3, "suffix": "x", "label": "Retail sell-through" }
     ],
     "faqs": [
-      { "q": "How many posts per month?", "a": "Depends on the plan — typically 12–20 on Instagram, 4–8 on LinkedIn. We prioritize quality over volume." },
-      { "q": "Do you manage the accounts or just create content?", "a": "Both options available. Most clients have us manage end-to-end including community management." },
-      { "q": "Do you film locally or can you travel?", "a": "We're based in Lahore, Dubai, and Toronto. We travel for shoots globally — travel costs added at cost." },
-      { "q": "What if we don't like a post?", "a": "Two rounds of feedback included on every piece. We build a tone guide so edits get rarer over time." }
+      { "q": "How many posts per month?", "a": "Typically 18-20 for Instagram, plus stories. We adjust based on your budget and platform." },
+      { "q": "Do you manage the accounts or just create the content?", "a": "Both options are available. Most clients have us manage everything end-to-end." },
+      { "q": "What if we don't like a post?", "a": "Two rounds of feedback included on every content batch. We build a brand voice guide so revisions get fewer over time." },
+      { "q": "Do you do videography/reels?", "a": "Yes we handle scripting, filming, and editing for short-form video. See our Content Production service for larger productions." }
     ],
     "cta_bottom": "Ready for a content engine that actually runs?",
     "cta_bottom_btn": "Let's talk content",
@@ -332,27 +332,27 @@
     "slug": "websites",
     "title": "Websites & Platforms",
     "excerpt": "Marketing sites, e-commerce, and custom portals. Designed and built by the same team.",
-    "eyebrow": "Design + engineering",
-    "h1_text": "Websites & Platforms.",
-    "lede": "Marketing sites, e-commerce storefronts, and custom portals. Designed and built by the same team — which is why Digibit sites consistently score 95+ on Lighthouse and ship in weeks, not quarters.",
+    "eyebrow": "DESIGN + ENGINEERING",
+    "h1_text": "Websites & Platforms",
+    "lede": "Corporate marketing sites, high-volume e-commerce storefronts, and tailored web portals. Designed and engineered symmetrically by a unified team enabling our deployments to consistently achieve a 95+ Lighthouse optimization score and ship in rapid weekly cycles.",
     "cta_label": "Start a website project",
     "visual_word": "Ship faster sites.",
-    "deliverables_title": "What ships with every build.",
+    "deliverables_title": "Everything in one build.",
     "deliverables": [
-      { "num": "01", "title": "Discovery & IA", "desc": "Sitemap, user flows, and content model. We don't start wireframing until this is signed off." },
-      { "num": "02", "title": "UX wireframes", "desc": "Grayscale, mobile-first. Interactive Figma prototype for usability testing." },
-      { "num": "03", "title": "Visual design", "desc": "Every page, every state. Dark mode, empty states, error states — properly designed." },
-      { "num": "04", "title": "Frontend build", "desc": "Next.js, React, or Webflow depending on fit. Typed, accessible, fast." },
-      { "num": "05", "title": "CMS & integrations", "desc": "Sanity, Contentful, Shopify. Your marketing team can publish without a ticket." },
-      { "num": "06", "title": "Launch & QA", "desc": "Cross-browser, cross-device, cross-accessibility. We don't hand off broken things." }
+      { "num": "01", "title": "Discovery & Sitemap", "desc": "We map out your pages, user flows, and content structure before a single mockup is made." },
+      { "num": "02", "title": "UX Wireframes", "desc": "Mobile-first layouts reviewed and approved before we apply any visual design." },
+      { "num": "03", "title": "Visual Design", "desc": "Every page, every state designed properly. Not just the homepage." },
+      { "num": "04", "title": "Development", "desc": "Clean, fast-loading code built for SEO, accessibility, and performance." },
+      { "num": "05", "title": "CMS Integration", "desc": "Your team can edit pages, add blog posts, and update pricing without a developer." },
+      { "num": "06", "title": "Launch & QA", "desc": "Cross-browser, cross-device testing. We don't hand over broken things." }
     ],
-    "process_title": "Six weeks from kickoff to launch.",
+    "process_title": "Six weeks from kickoff to deployment.",
     "process_steps": [
-      { "num": "01", "title": "Discovery", "desc": "Stakeholder interviews, analytics dive, competitor teardown. We find what's actually wrong before we propose a fix.", "dur": "WEEK 1" },
-      { "num": "02", "title": "Information architecture", "desc": "Sitemap and content model locked. No surprise sections appear during build.", "dur": "WEEK 2" },
-      { "num": "03", "title": "Design system", "desc": "Type scale, grid, components, page templates. The whole visual language in one place.", "dur": "WEEK 3" },
-      { "num": "04", "title": "Build", "desc": "Component-driven development in a staging environment. You review daily.", "dur": "WEEK 4–5" },
-      { "num": "05", "title": "Launch", "desc": "QA, performance tuning, SEO technicals, DNS cutover. 48-hour hypercare window after go-live.", "dur": "WEEK 6" }
+      { "num": "01", "title": "Technical Discovery", "desc": "In-depth stakeholder interviews, granular analytics audits, and competitor infrastructure breakdowns. We identify systemic challenges to engineer precise, data-driven solutions.", "dur": "WEEK 1" },
+      { "num": "02", "title": "Information Architecture", "desc": "Finalizing sitemaps and content models early. We lock down a strict structural blueprint to guarantee seamless execution and scope predictability during development.", "dur": "WEEK 2" },
+      { "num": "03", "title": "Design System Engineering", "desc": "Developing typographic hierarchies, layouts, scalable components, and page templates. We centralize your entire visual language into a single source of truth.", "dur": "WEEK 3" },
+      { "num": "04", "title": "Full-Stack Development", "desc": "Component-driven frontend and backend development deployed inside a secure staging environment, backed by continuous progress visibility.", "dur": "WEEKS 4-5" },
+      { "num": "05", "title": "Production Launch", "desc": "Rigorous QA, performance tuning, technical SEO implementation, and secure DNS cutover, followed by a dedicated 48-hour hypercare support window.", "dur": "WEEK 6" }
     ],
     "case_title": "Ummah Travel — the booking site that actually converts.",
     "case_desc": "Rebuilt from a legacy stack to a headless Next.js + Sanity setup. Page weight dropped 72%, organic conversion rate more than doubled.",
@@ -363,10 +363,10 @@
       { "count": 6, "suffix": "wks", "label": "To launch" }
     ],
     "faqs": [
-      { "q": "How much does a site cost?", "a": "Marketing sites typically $40–120k. E-commerce and custom platforms $80–250k+. We scope precisely after a discovery call." },
-      { "q": "Webflow, Next.js, or something else?", "a": "We pick the stack that fits your team. If your marketers will edit weekly, Webflow or Sanity. If it's app-like, Next.js with a headless CMS." },
-      { "q": "Do you host it too?", "a": "We can, or we hand off to Vercel / Netlify / your cloud. Most clients choose Vercel because it's frictionless." },
-      { "q": "Will it be accessible?", "a": "WCAG 2.2 AA is our baseline, not an add-on. We test with screen readers and keyboard nav before shipping." }
+      { "q": "How much does a website cost?", "a": "Informational/marketing sites start from PKR 60,000. E-commerce from PKR 120,000. We scope precisely after a call." },
+      { "q": "What platform will you build on?", "a": "We recommend it based on your needs. Webflow for marketing sites with frequent updates. WordPress for content-heavy sites. Custom development for complex platforms." },
+      { "q": "Do you do ongoing maintenance?", "a": "Yes monthly maintenance packages are available for updates, security, and content changes." },
+      { "q": "Will it be optimized for search?", "a": "Basic on-page SEO is included in every build. For a full SEO programme, see our SEO service." }
     ],
     "cta_bottom": "Ready for a site that ships?",
     "cta_bottom_btn": "Book a build call",

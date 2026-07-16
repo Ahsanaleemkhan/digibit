@@ -2,88 +2,101 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cmsContent, admins, initializeDatabase } from '@/lib/db-mysql';
 import bcrypt from 'bcryptjs';
 import defaultsData from '@/data/cms-defaults.json';
+import { auth } from '@/lib/auth';
 
 /**
- * Complete initialization endpoint for Hostinger deployment
- * Seeds all data and creates admin account via web interface
+ * Initialization endpoint.
+ * - Default POST: full first-time init (create tables, seed CMS, create admin). Blocked once an admin exists.
+ * - POST ?refresh=cms: re-seed ALL cms_content pages from data/cms-defaults.json,
+ *   overwriting existing rows via upsert. Requires an active admin session.
+ * - GET: report initialization status (public).
  */
+
+async function seedAllCms(updatedBy: string): Promise<{ seeded: string[]; failed: string[] }> {
+  const seeded: string[] = [];
+  const failed: string[] = [];
+  for (const [key, value] of Object.entries(defaultsData)) {
+    try {
+      await cmsContent.upsert(key, value, updatedBy);
+      seeded.push(key);
+    } catch (err: any) {
+      failed.push(`${key}: ${err?.message || String(err)}`);
+    }
+  }
+  return { seeded, failed };
+}
+
 export async function POST(request: NextRequest) {
+  const url = new URL(request.url);
+  const refresh = url.searchParams.get('refresh');
+
+  // Refresh-only path: overwrite CMS content, do not touch admin.
+  if (refresh === 'cms') {
+    const session = await auth();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    try {
+      await initializeDatabase();
+      const { seeded, failed } = await seedAllCms(session.user?.email || 'refresh');
+      return NextResponse.json({
+        success: failed.length === 0,
+        mode: 'refresh-cms',
+        seeded,
+        failed: failed.length > 0 ? failed : undefined,
+      });
+    } catch (error: any) {
+      return NextResponse.json(
+        { success: false, message: error?.message || 'Refresh failed' },
+        { status: 500 }
+      );
+    }
+  }
+
+  // Default: first-time setup.
   const results: string[] = [];
-
   try {
-    // Step 1: Initialize database tables
-    results.push('✅ Database tables initialized');
     await initializeDatabase();
+    results.push('✅ Database tables initialized');
 
-    // Step 2: Check if already initialized
     const existingAdmins: any = await admins.getAll();
     if (existingAdmins.length > 0) {
-      return NextResponse.json({
-        success: false,
-        message: 'System already initialized. Admin account exists.',
-        results
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'System already initialized. Admin account exists.',
+          results,
+          hint: 'To re-seed content pages while keeping your admin account, log in and POST to /api/admin/initialize?refresh=cms',
+        },
+        { status: 400 }
+      );
     }
 
-    // Get admin credentials from request
     const body = await request.json();
     const adminEmail = body.adminEmail || 'admin@digibit.co';
     const adminPassword = body.adminPassword || 'Admin@123!';
     const adminName = body.adminName || 'Admin User';
 
-    // Step 3: Seed all CMS content
-    try {
-      await cmsContent.upsert('homepage', defaultsData.homepage, 'initialize');
-      results.push('✅ Homepage content seeded');
-
-      await cmsContent.upsert('about', defaultsData.about, 'initialize');
-      results.push('✅ About page seeded');
-
-      await cmsContent.upsert('services_index', defaultsData.services_index, 'initialize');
-      results.push('✅ Services index seeded');
-
-      await cmsContent.upsert('work', defaultsData.work, 'initialize');
-      results.push('✅ Work page seeded');
-
-      await cmsContent.upsert('insights', defaultsData.insights, 'initialize');
-      results.push('✅ Insights page seeded');
-
-      await cmsContent.upsert('contact', defaultsData.contact, 'initialize');
-      results.push('✅ Contact page seeded');
-
-      await cmsContent.upsert('careers', defaultsData.careers, 'initialize');
-      results.push('✅ Careers page seeded');
-
-      await cmsContent.upsert('pricing', defaultsData.pricing, 'initialize');
-      results.push('✅ Pricing page seeded');
-
-      await cmsContent.upsert('header_footer', defaultsData.header_footer, 'initialize');
-      results.push('✅ Header & Footer seeded');
-
-      await cmsContent.upsert('navigation', defaultsData.navigation, 'initialize');
-      results.push('✅ Navigation seeded');
-    } catch (err: any) {
-      return NextResponse.json({
-        success: false,
-        message: 'Failed to seed content: ' + err.message,
-        results
-      }, { status: 500 });
+    const { seeded, failed } = await seedAllCms('initialize');
+    for (const key of seeded) results.push(`✅ ${key} seeded`);
+    if (failed.length > 0) {
+      return NextResponse.json(
+        { success: false, message: 'Failed to seed content: ' + failed.join('; '), results },
+        { status: 500 }
+      );
     }
 
-    // Step 4: Create admin account
     try {
       const hashedPassword = await bcrypt.hash(adminPassword, 10);
       await admins.create(adminEmail, hashedPassword, adminName, 'admin');
       results.push('✅ Admin account created');
     } catch (err: any) {
-      return NextResponse.json({
-        success: false,
-        message: 'Failed to create admin: ' + err.message,
-        results
-      }, { status: 500 });
+      return NextResponse.json(
+        { success: false, message: 'Failed to create admin: ' + err.message, results },
+        { status: 500 }
+      );
     }
 
-    // Success!
     return NextResponse.json({
       success: true,
       message: 'Initialization complete',
@@ -91,24 +104,23 @@ export async function POST(request: NextRequest) {
       credentials: {
         email: adminEmail,
         password: adminPassword,
-        note: 'Change this password immediately after login'
-      }
+        note: 'Change this password immediately after login',
+      },
     });
-
   } catch (error: any) {
     console.error('Initialization error:', error);
-    return NextResponse.json({
-      success: false,
-      message: error.message || 'Initialization failed',
-      results,
-      error: error.toString()
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: error.message || 'Initialization failed',
+        results,
+        error: error.toString(),
+      },
+      { status: 500 }
+    );
   }
 }
 
-/**
- * Check initialization status
- */
 export async function GET() {
   try {
     const existingAdmins: any = await admins.getAll();
@@ -117,12 +129,9 @@ export async function GET() {
     return NextResponse.json({
       initialized: existingAdmins.length > 0 && hasContent,
       adminCount: existingAdmins.length,
-      hasContent
+      hasContent,
     });
   } catch (error: any) {
-    return NextResponse.json({
-      initialized: false,
-      error: error.message
-    }, { status: 500 });
+    return NextResponse.json({ initialized: false, error: error.message }, { status: 500 });
   }
 }

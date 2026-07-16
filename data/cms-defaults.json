@@ -1,8 +1,8 @@
 {
   "homepage": {
-    "hero_eyebrow": "360° Creative & Marketing Studio · Est. 2018",
-    "hero_tagline": "We're a full-spectrum agency that designs, builds and grows brands across every surface your customer touches.",
-    "hero_cta1": "Let's build something",
+    "hero_eyebrow": "360° DIGITAL SOLUTIONS STUDIO · EST. 2018",
+    "hero_tagline": "We design, build and grow digital experiences that move businesses forward. Digibit partners with ambitious brands to create impactful digital solutions that connect, engage, and convert.",
+    "hero_cta1": "Scale your brand now",
     "hero_cta2": "See our work",
     "hero_subleft": "↳ Brand · Web · App · Growth",
     "clients_label": "Trusted by teams building real things",
@@ -22,40 +22,40 @@
       {"href":"/work/imc","img":"img-imc","cat":"Healthcare · Web · App","title":"IMC Hospital — care, on demand"},
       {"href":"/work/skynet","img":"img-skynet","cat":"Telecom · Paid Media","title":"Skynet — going national"}
     ],
-    "wheel_eyebrow": "Everything your brand needs, under one roof",
-    "wheel_heading": "A 360° engine — not a collection of freelancers.",
-    "wheel_desc": "Strategy, design, engineering and media under one studio. We don't hand you off between agencies, and nothing gets lost in the gaps between them.",
-    "wheel_cta": "Explore all services",
+    "wheel_eyebrow": "FULL-STACK GROWTH, ZERO FRICTION",
+    "wheel_heading": "A synchronized powerhouse, not scattered pieces.",
+    "wheel_desc": "We bring strategy, creativity, and development under one unified system. No dropped balls, no agency blame-games — just a seamless team driving your brand forward.",
+    "wheel_cta": "Scale your brand now",
     "svc_acc_eyebrow": "What we do, in detail",
     "svc_acc_heading": "Click any service to open it.",
     "svc_acc_items": [
-      {"idx":"01","title":"Brand & Strategy","desc":"Positioning, naming, visual identity, messaging — the foundation every other marketing dollar leans on."},
-      {"idx":"02","title":"Websites & Platforms","desc":"Marketing sites, e-commerce, portals. Designed and coded by the same team — which is why they're fast."},
-      {"idx":"03","title":"Mobile Apps","desc":"iOS, Android, cross-platform. We build the app, the backend, and the marketing it lives inside."},
-      {"idx":"04","title":"Paid Media & Performance","desc":"Meta, Google, TikTok, programmatic. Creative rotation tied to personas and packages."},
-      {"idx":"05","title":"Social & Content","desc":"Calendars that actually get filled. Photo, video, motion and copy — produced in-house."},
-      {"idx":"06","title":"Analytics & CRO","desc":"GA4, Mixpanel, server-side tagging, experimentation. The feedback loop that turns a site into a compounding asset."}
+      {"idx":"01","title":"Brand & Strategy","desc":"Engineering your market authority through sharp positioning, cultural relevance, and an undeniable visual identity that competitors can't replicate."},
+      {"idx":"02","title":"Websites & Platforms","desc":"Merging high-tier engineering with human-centric UI/UX to transform your digital storefront into a sleek, 24/7 conversion engine."},
+      {"idx":"03","title":"Mobile Apps","desc":"Crafting intuitive, lightning-fast iOS and Android applications designed to capture user habits and dominate app store rankings."},
+      {"idx":"04","title":"Paid Media & Performance","desc":"Aggressive, data-backed acquisition strategies across Meta and Google built strictly to scale your revenue and crush customer acquisition costs."},
+      {"idx":"05","title":"Social & Content","desc":"Producing thumb-stopping short-form videos, high-fidelity creative assets, and cultural narratives that turn casual scrollers into brand advocates."},
+      {"idx":"06","title":"Search Engine Optimization (SEO)","desc":"Advanced technical optimization and intent-driven keyword architecture designed to capture high-value organic traffic at the absolute top of Google."}
     ],
-    "process_eyebrow": "The way we work",
-    "process_heading": "From napkin sketch to measurable growth.",
+    "process_eyebrow": "OUR STRATEGIC FRAMEWORK",
+    "process_heading": "From initial blueprint to absolute market dominance.",
     "process_steps": [
-      {"num":"01 · DISCOVER","title":"Listen and learn","desc":"We start with your audience, your metrics, and the truth about what's working — and what isn't."},
-      {"num":"02 · DESIGN","title":"Shape the story","desc":"Brand, positioning, experiences. We design the system that your whole marketing engine will run on."},
-      {"num":"03 · BUILD","title":"Ship the work","desc":"Websites, apps, campaigns, content. Built fast, built right, built to be handed over cleanly."},
-      {"num":"04 · GROW","title":"Turn it up","desc":"Paid media, SEO, content cadence and analytics — the engine that compounds over quarters, not weeks."}
+      {"num":"01 · AUDIT","title":"Deconstruct and analyze","desc":"We deep-dive into your existing data, audience behavior, and market gaps to uncover the raw truths of where your growth is hiding."},
+      {"num":"02 · ARCHITECT","title":"Blueprint the strategy","desc":"No guesswork. We map out a tailored operational framework, defining your precise brand positioning and the exact channels we will weaponize."},
+      {"num":"03 · EXECUTE","title":"Deploy high-tier assets","desc":"We launch precision-engineered websites, hard-hitting campaigns, and premium content — built flawlessly, optimized for speed, and ready to convert."},
+      {"num":"04 · MULTIPLY","title":"Scale the momentum","desc":"Through ruthless optimization, performance scaling, and continuous tracking, we turn early wins into compounding long-term revenue."}
     ],
     "ticker_label": "◆ Results we've helped ship · 2024—2026",
     "ticker_items": ["+212%·bookings · Ummah","−42%·CPA · Skynet","4.2×·organic · Ummah","+68%·leads · Daewoo","2.1×·appointments · IMC","+156%·DTC revenue · Northwind","+318%·signups · Kinetic","$1.2M·Y1 · Clara & Co"],
-    "compare_eyebrow": "Why 360°",
-    "compare_heading": "One studio that does it all vs. five that don't talk.",
+    "compare_eyebrow": "THE DIGIBIT ADVANTAGE",
+    "compare_heading": "A unified growth engine vs. a broken chain of agencies.",
     "compare_data": {
       "startup": {
-        "them": ["Brand story that doesn't match the ads","Endless handoffs, endless invoices","No one owns the outcome","You become the integration layer","Campaigns launch a quarter late"],
-        "us": ["One voice, one system, one team","One retainer, every surface","Shared KPI with the founder","We own the integration","Ship in weeks, not quarters"]
+        "them": ["Disjointed branding that confuses your audience","Endlessly chasing multiple account managers for updates","Scattered accountability — everyone blames the other vendor","You waste hours playing the middleman and coordinator","Delayed execution while waiting for tech to talk to marketing"],
+        "us": ["One unified strategy across design, tech, and marketing","A single point of contact and one transparent invoice","100% ownership of your goals and final business outcomes","We handle the heavy lifting so you can focus on scaling","Agile deployment that launches campaigns and builds in real-time"]
       },
       "enterprise": {
-        "them": ["20 vendors, 20 invoices","Brand guidelines no one follows","Quarterly reviews, zero accountability","Creative bottlenecks by Q2","Paid media disconnected from brand"],
-        "us": ["One embedded pod, named sponsor","Living system your team actually uses","Daily standups, shared Linear","Unlimited creative within pod capacity","Brand + media running as one engine"]
+        "them": ["Disjointed branding that confuses your audience","Endlessly chasing multiple account managers for updates","Scattered accountability — everyone blames the other vendor","You waste hours playing the middleman and coordinator","Delayed execution while waiting for tech to talk to marketing"],
+        "us": ["One unified strategy across design, tech, and marketing","A single point of contact and one transparent invoice","100% ownership of your goals and final business outcomes","We handle the heavy lifting so you can focus on scaling","Agile deployment that launches campaigns and builds in real-time"]
       }
     },
     "faq_eyebrow": "Questions",
@@ -67,10 +67,10 @@
       {"q":"Do you do one-off projects or only retainers?","a":"Both. Project sprints start at $18k. Retainers start at $24k/mo."},
       {"q":"What industries do you specialize in?","a":"Travel, healthcare, e-commerce, SaaS and industrial B2B."}
     ],
-    "testimonial_eyebrow": "Kind words",
-    "testimonial_quote": "Digibit didn't just hand us a website — they rebuilt how we think about our brand. Bookings are up 212% and we finally sound like ourselves online.",
-    "testimonial_author": "Amira Qadri",
-    "testimonial_role": "MARKETING DIR · UMMAH TRAVEL",
+    "testimonial_eyebrow": "CASE IN POINT",
+    "testimonial_quote": "Switching to a single unified agency changed everything. Digibit synchronized our ads, tech, and creative seamlessly — driving our conversions up 340% while cutting our management stress to zero.",
+    "testimonial_author": "Verified Client",
+    "testimonial_role": "CEO · GLOBAL RETAIL BRAND",
     "cta_eyebrow": "Let's talk",
     "cta_heading": "Got a brand that deserves to be unmissable?",
     "cta_btn1": "Start a project",
@@ -78,28 +78,28 @@
   },
   "about": {
     "hero_eyebrow": "About Digibit",
-    "hero_heading": "We're a studio of strategists, designers and engineers building the full 360° for modern brands.",
-    "reason_eyebrow": "Our reason",
+    "hero_heading": "We are a powerhouse of designers, creators, and developers engineering integrated growth for ambitious brands.",
+    "reason_eyebrow": "OUR PHILOSOPHY",
     "reason_paragraphs": [
-      "Most agencies hand you off. Brand studio does brand, a separate team builds the site, another runs your ads, and nobody talks to each other. You end up being the integration layer.",
-      "Digibit was built to be the integration layer for you. One team, one system, one plan — across strategy, design, engineering and media.",
-      "We're 24 people across Lahore, Dubai and Toronto. We take on fewer projects than we're asked to, and we stick around long after launch."
+      "Traditional agencies operate in silos. The brand strategists don't talk to the developers, and the developers have no clue what the marketing team is running. This fragmentation forces you to act as the middleman, wasting hours fixing misaligned communication and disjointed assets.",
+      "Digibit eliminates that friction entirely. We function as a single, synchronized ecosystem where strategy, design, engineering, and performance marketing live under one roof. When our developers build a feature in Q1, it seamlessly fuels the automated marketing campaigns we scale in Q4.",
+      "Operating as an elite team across Lahore, Dubai, and Toronto, we intentionally limit our client roster. We don't take on every project that comes our way — we only partner with brands where we can deliver undeniable, compounding growth and stick around to scale it long after launch."
     ],
-    "beliefs_eyebrow": "How we show up",
-    "beliefs_heading": "Four beliefs we bring to every project.",
+    "beliefs_eyebrow": "HOW WE SHOW UP",
+    "beliefs_heading": "Our core convictions behind every single product.",
     "beliefs_cards": [
-      {"tag":"01 · CRAFT","title":"Taste is a feature.","desc":"Every pixel, sentence and ad unit is a chance to be better or worse than average. We choose better."},
-      {"tag":"02 · CLARITY","title":"Say the real thing.","desc":"Jargon is a tax. We write and design for the human on the other end."},
-      {"tag":"03 · SHIP","title":"Momentum beats polish.","desc":"A live v1 outperforms a beautiful v3 that never launches."}
+      {"tag":"01 · CALIBER","title":"Premium is a standard, not an option.","desc":"Every layout line, line of code, and ad copy is an opportunity to outclass the noise. We build with relentless attention to detail because average doesn't cut it in today's market."},
+      {"tag":"02 · HONESTY","title":"Cut the noise, speak the truth.","desc":"Buzzwords and marketing jargon are just distractions. We communicate with absolute clarity and focus on the human on the other side of the screen — building real trust, not just hype."},
+      {"tag":"03 · VELOCITY","title":"Execution over overthinking.","desc":"A live product driving real traffic beats a perfect mockup sitting on a design board forever. We prioritize rapid, elite execution and then optimize in real-time based on actual data."}
     ],
-    "timeline_eyebrow": "A short history",
-    "timeline_heading": "Eight years of building, in public.",
+    "timeline_eyebrow": "MILESTONES",
+    "timeline_heading": "Our Journey: Eight years of transparent growth.",
     "timeline_entries": [
-      {"year":"2018","title":"Three desks, one idea","desc":"Digibit starts in a co-working space in Lahore."},
-      {"year":"2020","title":"We meet the pandemic","desc":"We go remote-first, double the team."},
-      {"year":"2022","title":"Dubai office opens","desc":"Expansion to MENA."},
-      {"year":"2024","title":"The Toronto pod","desc":"North American clients come onboard."},
-      {"year":"2026","title":"Today","desc":"24 people, 3 cities, 180+ projects shipped."}
+      {"year":"2018","title":"The Foundation","desc":"Founded in Lahore by three visionaries, Digibit was built to disrupt the agency landscape by seamlessly integrating design, development, and scalable marketing strategies."},
+      {"year":"2020","title":"Resilience & Scale","desc":"Adapting swiftly to a global shift, we went remote-first, expanded our workforce, and launched our first million-dollar e-commerce platform while refining our customer retention frameworks."},
+      {"year":"2022","title":"Global Reach: Dubai","desc":"We established our Dubai headquarters to serve the MENA market, elevating major brands and scaling sophisticated, data-driven paid media campaigns at an enterprise level."},
+      {"year":"2024","title":"Cross-Continental Expansion","desc":"Launching our Toronto hub allowed us to capture the North American market, fully formalizing our comprehensive 360° ecosystem under a single, streamlined retainer."},
+      {"year":"2026","title":"The Trusted Growth Partner","desc":"Today, our team of 24 experts operates across 3 strategic cities, having shipped over 180 projects. We remain dedicated to being the most reliable execution partner for ambitious founders."}
     ],
     "cta_heading": "Want to see if we're the right team for your next thing?",
     "cta_button": "Say hello"
@@ -117,13 +117,13 @@
     "form_services": ["Brand","Website","Mobile App","Paid Media","Social","SEO","Content","Not sure yet"]
   },
   "pricing": {
-    "hero_eyebrow": "Pricing & engagements",
-    "hero_heading": "Three ways to work with us. No surprises.",
+    "hero_eyebrow": "THREE WAYS TO WORK",
+    "hero_heading": "Engagement models tailored to your scale.",
     "hero_desc": "Most agencies hide their pricing. We don't. Here's roughly what each engagement costs.",
     "plans": [
-      {"tag":"◇ 01 · SPRINT","title":"Project Sprint","sub":"A defined piece of work, fixed scope, fixed price.","price":"From $18k","note":"ONE-TIME · 2–8 WEEKS","items":["Single discipline","Dedicated producer + 2-person pod","Two rounds of feedback","Full handover + training","30 days post-launch support"],"cta":"Scope a sprint →","featured":false},
-      {"tag":"◆ 02 · FLAGSHIP","title":"360° Retainer","sub":"The full engine — brand, build, media, content.","price":"From $24k","priceNote":"/mo","note":"3-MONTH MIN · MOST POPULAR","items":["Everything in Sprint, plus:","Dedicated cross-functional pod (5–7 people)","Weekly strategy + creative sessions","Paid media management (up to $200k/mo spend)","Content production — 8 pieces/month","Quarterly business reviews with founders"],"cta":"Start a retainer →","featured":true},
-      {"tag":"◇ 03 · EMBEDDED","title":"Embedded Pod","sub":"Our team, working inside yours.","price":"From $48k","priceNote":"/mo","note":"6-MONTH MIN · FOR SCALE-UPS","items":["Everything in 360°, plus:","Daily standups inside your workspace","Shared Slack, Notion, Linear access","Unlimited scope within pod capacity","Shared KPI accountability","Named executive sponsor"],"cta":"Book embed call →","featured":false}
+      {"tag":"◇ 01 · SPRINT","title":"Project Sprint","sub":"A highly focused, milestone-driven engagement with a defined scope, fixed timeline, and transparent pricing — ideal for targeted initiatives like a brand overhaul, platform deployment, or campaign launch.","price":"From $18k","note":"ONE-TIME · 2–8 WEEKS","items":["Single discipline","Dedicated producer + 2-person pod","Two rounds of feedback","Full handover + training","30 days post-launch support"],"cta":"Scope a sprint →","featured":false},
+      {"tag":"◆ 02 · FLAGSHIP","title":"360° Retainer","sub":"A comprehensive, ongoing partnership where we orchestrate your entire growth ecosystem — seamlessly integrating strategy, creative design, paid media management, content production, and data analytics.","price":"From $24k","priceNote":"/mo","note":"3-MONTH MIN · MOST POPULAR","items":["Everything in Sprint, plus:","Dedicated cross-functional pod (5–7 people)","Weekly strategy + creative sessions","Paid media management (up to $200k/mo spend)","Content production — 8 pieces/month","Quarterly business reviews with founders"],"cta":"Start a retainer →","featured":true},
+      {"tag":"◇ 03 · EMBEDDED","title":"Embedded Pod","sub":"A dedicated team of specialized talent integrated directly within your organization. Operating with shared workflows, collaborative tools, and absolute alignment on your key performance indicators (KPIs).","price":"From $48k","priceNote":"/mo","note":"6-MONTH MIN · FOR SCALE-UPS","items":["Everything in 360°, plus:","Daily standups inside your workspace","Shared Slack, Notion, Linear access","Unlimited scope within pod capacity","Shared KPI accountability","Named executive sponsor"],"cta":"Book embed call →","featured":false}
     ],
     "addons_eyebrow": "Add-ons & specialities",
     "addons_heading": "Plug-in services we bolt onto any engagement.",
@@ -140,15 +140,15 @@
   },
   "careers": {
     "hero_eyebrow": "Careers · We're hiring",
-    "hero_heading": "Come make good work with good people.",
-    "hero_desc": "We're a small studio with big ambitions. If you like shipping, care about craft, and want to work on things that make it into the real world — read on.",
-    "why_eyebrow": "Why Digibit",
-    "why_heading": "A studio that treats itself like a product.",
+    "hero_heading": "Come build bold brands with great teams.",
+    "hero_desc": "We're a lean, high-velocity agency with a massive appetite for impact. If you thrive on true ownership, respect the craft, and want your execution to actually move the needle — let's talk.",
+    "why_eyebrow": "WHY DIGIBIT",
+    "why_heading": "An agency built for absolute velocity.",
     "perks": [
-      {"n":"01 · AUTONOMY","title":"Own the work, end to end.","desc":"No account layers between you and the client."},
-      {"n":"02 · CRAFT","title":"Real time for real depth.","desc":"We don't triple-book people. Two projects max."},
-      {"n":"03 · FLEX","title":"Remote-first, 3 hubs.","desc":"Lahore, Dubai, Toronto. Work from any."},
-      {"n":"04 · LEARN","title":"$2k/yr learning budget.","desc":"Conferences, courses, books. No approval, just receipts."}
+      {"n":"01 · OWNERSHIP","title":"Direct access, zero fluff.","desc":"We eliminate account layers. You work side-by-side with senior strategists who make decisions in real time."},
+      {"n":"02 · FOCUS","title":"Quality over volume.","desc":"We cap our active client list. Fewer accounts mean your brand gets our team's deep, undivided creative energy."},
+      {"n":"03 · AGILITY","title":"Distributed to scale.","desc":"Operating across key regional hubs. We collaborate seamlessly across borders to keep your campaigns moving 24/7."},
+      {"n":"04 · EVOLUTION","title":"Continuous edge.","desc":"Dedicated iteration budgets. We constantly test new tools and premium frameworks so your brand stays ahead of the curve."}
     ],
     "roles_eyebrow": "Open roles · 6",
     "roles_heading": "Roles we're actively hiring for.",
@@ -177,31 +177,31 @@
     "cta_button": "Send us a note"
   },
   "insights": {
-    "hero_eyebrow": "Insights & field notes",
-    "hero_heading": "What we're reading, shipping and arguing about this week.",
-    "hero_desc": "No growth hacks, no thought-leader sermons. Just the stuff we send each other in Slack.",
+    "hero_eyebrow": "FROM THE DESKS OF DIGIBIT",
+    "hero_heading": "What we're building, breaking, and talking about this week.",
+    "hero_desc": "No fluff, no gatekeeping, and absolutely no generic AI advice. Just the links, strategies, and industry shifts we're actually paying attention to right now.",
     "categories": ["All","Brand","Growth","Design","Engineering","Field notes"],
-    "featured_tag": "◆ FEATURED · GROWTH",
-    "featured_title": "Why your CAC stopped going down (and what to do about it).",
-    "featured_desc": "The honest answer is rarely \"the algorithm changed.\" After 47 million in managed media, here's our working theory.",
+    "featured_tag": "◆ FEATURED · FROM THE DESKS",
+    "featured_title": "What's keeping us up, making us think, and getting shipped.",
+    "featured_desc": "We filter out the noise so you don't have to. Get the exact marketing insights, design inspirations, and campaign breakdowns our team exchanges daily.",
     "featured_author": "ZARA IQBAL · 12 MIN READ · APR 18, 2026",
     "featured_grad": "linear-gradient(135deg,#1a1f5c 0%,#2bb6ea 100%)",
     "posts": [
-      {"grad":"linear-gradient(135deg,#ff8a5b,#1a1f5c)","tag":"◇ BRAND","title":"The \"say the real thing\" test.","desc":"A 2-minute exercise to pressure-test any piece of marketing copy.","by":"SARA NADEEM · 6 MIN"},
-      {"grad":"linear-gradient(135deg,#2bb6ea,#5a4fff)","tag":"◇ ENGINEERING","title":"Headless is a strategy, not a stack.","desc":"When going headless pays off, and the expensive mistake we keep seeing.","by":"BILAL AHMED · 9 MIN"},
-      {"grad":"linear-gradient(135deg,#a8c5a0,#1a1f5c)","tag":"◇ DESIGN","title":"Every pixel is a sentence.","desc":"On treating interface density as a writing problem.","by":"OMAR FAROOQ · 5 MIN"},
-      {"grad":"linear-gradient(135deg,#1a1f5c,#2bb6ea)","tag":"◇ GROWTH","title":"The 90-day retainer that outperforms year-long contracts.","desc":"Why quarterly compounding beats annual lock-in.","by":"ZARA IQBAL · 7 MIN"},
-      {"grad":"linear-gradient(135deg,#f4b942,#c41e3a)","tag":"◇ FIELD NOTES","title":"Three weeks in Mecca with a camera.","desc":"Field notes from the Ummah Travel content shoot.","by":"MARIAM SHAH · 8 MIN"},
-      {"grad":"linear-gradient(135deg,#5ccdf2,#2a3080)","tag":"◇ BRAND","title":"How to name a thing without hating it later.","desc":"The four-filter naming framework we use.","by":"HASSAN MALIK · 10 MIN"}
+      {"grad":"linear-gradient(135deg,#ff8a5b,#1a1f5c)","tag":"◇ IDENTITY","title":"The danger of a safe brand name.","desc":"Why selecting a brand identity that satisfies everyone internally guarantees you will be ignored by the market.","by":"SARA NADEEM · 6 MIN"},
+      {"grad":"linear-gradient(135deg,#2bb6ea,#5a4fff)","tag":"◇ PRODUCTION","title":"Storytelling on a razor-thin timeline.","desc":"Tactical lessons from managing multi-location commercial shoots without sacrificing premium visual quality.","by":"BILAL AHMED · 9 MIN"},
+      {"grad":"linear-gradient(135deg,#a8c5a0,#1a1f5c)","tag":"◇ INTERACTION","title":"Micro-copy holds the macro conversion.","desc":"How minor adjustments to form fields and error states can quietly patch holes in your checkout funnel.","by":"OMAR FAROOQ · 5 MIN"},
+      {"grad":"linear-gradient(135deg,#1a1f5c,#2bb6ea)","tag":"◇ PERFORMANCE","title":"Stop buying impressions. Start engineering conversions.","desc":"A transparent look at why optimizing strictly for vanity traffic keeps your client acquisition cost unnecessarily high.","by":"ZARA IQBAL · 7 MIN"},
+      {"grad":"linear-gradient(135deg,#f4b942,#c41e3a)","tag":"◇ CASE STUDY","title":"Mapping consumer journeys in industries that never stop moving.","desc":"What we learned about buyer intent after analyzing thousands of user sessions for a luxury service brand.","by":"MARIAM SHAH · 8 MIN"},
+      {"grad":"linear-gradient(135deg,#5ccdf2,#2a3080)","tag":"◇ BRANDING","title":"If your headline is clever, it's probably losing money.","desc":"Why clear, unfiltered value propositions outperform mysterious, poetic brand statements in head-to-head testing.","by":"HASSAN MALIK · 10 MIN"}
     ],
-    "newsletter_eyebrow": "The monthly dispatch",
-    "newsletter_heading": "The shorter, smarter agency newsletter.",
-    "newsletter_desc": "One email a month. Three ideas we're thinking about, one thing worth reading, one thing worth watching."
+    "newsletter_eyebrow": "THE MONTHLY DROP",
+    "newsletter_heading": "Fewer emails. Better marketing insights.",
+    "newsletter_desc": "We do the testing, we track the results, and we filter the noise. Just one high-impact email a month to help you scale your brand."
   },
   "work": {
     "hero_eyebrow": "Selected work · 2018—2026",
-    "hero_heading": "Eight years. One hundred and eighty shipped projects.",
-    "hero_desc": "Below is a curated slice. If you want the full tour — ask and we'll walk you through it.",
+    "hero_heading": "Sustained growth. Ninety-plus deployed funnels.",
+    "hero_desc": "This is a snapshot of our favorite engagements. If you are looking for specific industry breakdowns — including the complex overhauls and pre-launch brand strategies — ask us for a private walkthrough.",
     "filters": ["All","Brand","Web","App","Paid Media","Healthcare","E-commerce","Travel"],
     "works": [
       {"href":"/work/ummah","img":"linear-gradient(135deg,#0a4d3a 0%,#1a8a65 50%,#f4d03f 100%)","cat":"TRAVEL · BRAND + WEB + GROWTH","title":"Ummah Travel — pilgrimage, reimagined.","stat":"+212% bookings · 4.2× organic · 38% lower CAC","year":"2025","big":true},
