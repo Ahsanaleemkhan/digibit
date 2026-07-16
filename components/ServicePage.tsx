@@ -15,6 +15,7 @@ export interface ServicePageProps {
   lede: string;
   ctaLabel: string;
   visualWord: React.ReactNode;
+  heroImage?: string;  // Optional hero image
   delTitle: string;
   deliverables: Deliverable[];
   procTitle: string;
@@ -46,9 +47,32 @@ export default function ServicePage(p: ServicePageProps) {
               <a href="#process" className="btn btn-ghost">See the process</a>
             </div>
           </div>
-          <div style={{ background: 'var(--ink)', borderRadius: 'var(--r-xl)', aspectRatio: '4/5', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ position: 'absolute', top: '-30%', left: '-20%', width: '500px', height: '500px', background: 'radial-gradient(circle, var(--cyan), transparent 60%)', opacity: 0.5, filter: 'blur(10px)' }} />
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(60px,10vw,140px)', color: 'var(--paper)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 0.9, textAlign: 'center', position: 'relative', zIndex: 1 }}>{p.visualWord}</div>
+          <div style={{ 
+            background: p.heroImage ? `url(${p.heroImage})` : 'var(--ink)', 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            borderRadius: 'var(--r-xl)', 
+            aspectRatio: '4/5', 
+            position: 'relative', 
+            overflow: 'hidden', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center' 
+          }}>
+            {!p.heroImage && <div style={{ position: 'absolute', top: '-30%', left: '-20%', width: '500px', height: '500px', background: 'radial-gradient(circle, var(--cyan), transparent 60%)', opacity: 0.5, filter: 'blur(10px)' }} />}
+            {p.heroImage && <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />}
+            <div style={{ 
+              fontFamily: 'var(--font-display)', 
+              fontSize: 'clamp(60px,10vw,140px)', 
+              color: 'var(--paper)', 
+              fontWeight: 500, 
+              letterSpacing: '-0.04em', 
+              lineHeight: 0.9, 
+              textAlign: 'center', 
+              position: 'relative', 
+              zIndex: 1,
+              textShadow: p.heroImage ? '0 4px 12px rgba(0,0,0,0.6)' : 'none'
+            }}>{p.visualWord}</div>
           </div>
         </div>
       </section>

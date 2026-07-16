@@ -1,14 +1,42 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { getPageData } from '@/lib/graphql';
+import { services, cmsContent } from '@/lib/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = { title: 'Services — Digibit', description: 'Eight disciplines, one team, one plan.' };
 
 export default async function Services() {
-  const d = await getPageData('services_index') as Record<string, any>;
-  const bentoItems = d.bento_items || [];
-  const ways = d.ways_items || [];
+  // Get CMS content for services page
+  const pageContent = cmsContent.getByKey('services_index');
+  const d = pageContent?.content || {
+    hero_eyebrow: 'What we do',
+    hero_heading: 'Eight disciplines, one team, one plan.',
+    hero_desc: 'Strategy, design, engineering and media under one roof. We don\'t hand you off between agencies.',
+    ways_eyebrow: 'How we work',
+    ways_heading: 'Built to work together.',
+    ways_items: [],
+    cta_eyebrow: 'Ready to start?',
+    cta_heading: 'Let\'s build something unmissable.',
+    cta_button: 'Get in touch'
+  };
+
+  // Get all published services from database
+  const allServices = services.getAll(true);
+  
+  // Transform services into bento grid format
+  const bentoItems = allServices.map((service, index) => ({
+    href: `/services/${service.slug}`,
+    icon: service.icon || '→',
+    title: service.title,
+    desc: service.excerpt,
+    feature: service.featured || index === 0,
+    tall: service.featured || index === 0,
+    span3: false,
+    cyan: index % 3 === 1,
+    tags: []
+  }));
 
   return (
     <>
@@ -16,7 +44,7 @@ export default async function Services() {
         <div className="blob cyan med" style={{ top: '-20%', right: '-10%', opacity: 0.35, position: 'absolute' }} />
         <div className="eyebrow"><span className="dot" />{d.hero_eyebrow}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '80px', paddingBottom: '80px' }}>
-          <h1>Eight disciplines, <em style={{ fontStyle: 'italic', color: 'var(--cyan-deep)', fontWeight: 400 }}>one team</em>, one plan.</h1>
+          <h1>{d.hero_heading}</h1>
           <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'rgba(13,18,64,0.72)', maxWidth: '52ch', alignSelf: 'end' }}>{d.hero_desc}</p>
         </div>
       </section>
@@ -49,7 +77,7 @@ export default async function Services() {
               <h2>{d.ways_heading}</h2>
             </ScrollReveal>
             <div>
-              {ways.map((r: any, i: number) => (
+              {(d.ways_items || []).map((r: any, i: number) => (
                 <ScrollReveal key={i} style={{ display: 'grid', gridTemplateColumns: '60px 1fr 1fr', gap: '40px', padding: '28px 0', borderTop: '1px solid var(--line)', alignItems: 'baseline' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: 'var(--cyan-deep)' }}>{r.idx}</div>
                   <h4 style={{ fontSize: '22px', fontWeight: 500 }}>{r.title}</h4>

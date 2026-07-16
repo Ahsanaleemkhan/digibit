@@ -272,5 +272,39 @@
     ],
     "bottom_left": "© 2026 Digibit Studio. All rights reserved.",
     "bottom_right": "Made with care. Powered by curiosity."
+  },
+  "header_footer": {
+    "nav_logo": "",
+    "nav_links": [
+      {"href":"/","label":"Home"},
+      {"href":"/about","label":"About"},
+      {"href":"/services","label":"Services"},
+      {"href":"/work","label":"Work"},
+      {"href":"/insights","label":"Insights"},
+      {"href":"/pricing","label":"Pricing"},
+      {"href":"/careers","label":"Careers"}
+    ],
+    "nav_cta_label": "Start a project",
+    "footer_logo": "",
+    "footer_tagline": "The full 360° agency. We build brands, websites, apps, and the marketing engines that feed them.",
+    "footer_email": "hello@digibit.co",
+    "footer_phone": "+1 (415) 555-0142",
+    "footer_company_heading": "Company",
+    "footer_company_links": [
+      {"label":"About","href":"/about"},
+      {"label":"Careers","href":"/careers"},
+      {"label":"Our work","href":"/work"},
+      {"label":"Insights","href":"/insights"}
+    ],
+    "footer_services_heading": "Services",
+    "footer_service_links": [
+      {"label":"Brand & Strategy","href":"/services/brand-strategy"},
+      {"label":"Websites & Apps","href":"/services/websites"},
+      {"label":"Paid Media","href":"/services/paid-media"},
+      {"label":"Social & Content","href":"/services/social-content"}
+    ],
+    "footer_contact_heading": "Get in touch",
+    "footer_bottom_left": "© 2026 Digibit Studio. All rights reserved.",
+    "footer_bottom_right": "Made with care. Powered by curiosity."
   }
 }

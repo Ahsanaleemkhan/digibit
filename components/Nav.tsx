@@ -22,19 +22,26 @@ const defaultLinks = [
 ];
 
 interface NavProps {
+  logo?: string;
   links?: { href: string; label: string }[];
   ctaLabel?: string;
 }
 
-export default function Nav({ links, ctaLabel }: NavProps) {
+export default function Nav({ logo, links, ctaLabel }: NavProps) {
   const pathname = usePathname();
   const navLinks = links ?? defaultLinks;
   return (
     <nav className="nav">
       <div className="nav-inner">
         <Link href="/" className="nav-brand">
-          <span className="nav-brand-mark">{DIGIBIT_MARK}</span>
-          <span>digibit</span>
+          {logo ? (
+            <img src={logo} alt="Logo" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
+          ) : (
+            <>
+              <span className="nav-brand-mark">{DIGIBIT_MARK}</span>
+              <span>digibit</span>
+            </>
+          )}
         </Link>
         <div className="nav-links">
           {navLinks.map(l => (

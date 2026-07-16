@@ -10,21 +10,29 @@ const DIGIBIT_MARK = (
 );
 
 interface FooterProps {
+  logo?: string;
   tagline?: string;
   email?: string;
   phone?: string;
+  companyHeading?: string;
   companyLinks?: { label: string; href: string }[];
+  servicesHeading?: string;
   serviceLinks?: { label: string; href: string }[];
+  contactHeading?: string;
   bottomLeft?: string;
   bottomRight?: string;
 }
 
 export default function Footer({
+  logo,
   tagline,
   email,
   phone,
+  companyHeading,
   companyLinks,
+  servicesHeading,
   serviceLinks,
+  contactHeading,
   bottomLeft,
   bottomRight,
 }: FooterProps) {
@@ -48,28 +56,34 @@ export default function Footer({
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'18px'}}>
-              {DIGIBIT_MARK}
-              <span style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:600,letterSpacing:'-0.02em'}}>digibit</span>
-            </div>
+            {logo ? (
+              <div style={{marginBottom:'18px'}}>
+                <img src={logo} alt="Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+              </div>
+            ) : (
+              <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'18px'}}>
+                {DIGIBIT_MARK}
+                <span style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:600,letterSpacing:'-0.02em'}}>digibit</span>
+              </div>
+            )}
             <p style={{color:'rgba(246,245,240,0.65)',fontSize:'15px',maxWidth:'30ch',lineHeight:1.55,margin:0}}>
               {tagline || 'The full 360° agency. We build brands, websites, apps, and the marketing engines that feed them.'}
             </p>
           </div>
           <div className="footer-col">
-            <h5>Company</h5>
+            <h5>{companyHeading || 'Company'}</h5>
             <ul>
               {cLinks.map((l, i) => <li key={i}><Link href={l.href}>{l.label}</Link></li>)}
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Services</h5>
+            <h5>{servicesHeading || 'Services'}</h5>
             <ul>
               {sLinks.map((l, i) => <li key={i}><Link href={l.href}>{l.label}</Link></li>)}
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Get in touch</h5>
+            <h5>{contactHeading || 'Get in touch'}</h5>
             <ul>
               <li><a href={`mailto:${emailAddr}`}>{emailAddr}</a></li>
               <li><a href={`tel:${phoneNum.replace(/[^+\d]/g,'')}`}>{phoneNum}</a></li>

@@ -3,6 +3,18 @@ import { useState, useEffect } from 'react';
 import SubmissionsPanel from './panels/SubmissionsPanel';
 import ThemePanel from './panels/ThemePanel';
 import ContentPanel from './panels/ContentPanel';
+import HomePagePanel from './panels/HomePagePanel';
+import MediaPanel from './panels/MediaPanel';
+import WorkPanel from './panels/WorkPanel';
+import ServicesPanel from './panels/ServicesPanel';
+import HeaderFooterPanel from './panels/HeaderFooterPanel';
+import AboutPanel from './panels/AboutPanel';
+import ServicesIndexPanel from './panels/ServicesIndexPanel';
+import WorkIndexPanel from './panels/WorkIndexPanel';
+import BlogPanel from './panels/BlogPanel';
+import InsightsIndexPanel from './panels/InsightsIndexPanel';
+import ContactPagePanel from './panels/ContactPagePanel';
+import CareersPanel from './panels/CareersPanel';
 
 const S = {
   shell: { display: 'flex', minHeight: '100vh', fontFamily: 'Inter, sans-serif', background: '#0f1117' } as React.CSSProperties,
@@ -17,9 +29,36 @@ const S = {
 const navItems = [
   { id: 'overview', icon: '⊞', label: 'Overview' },
   { id: 'submissions', icon: '✉', label: 'Submissions' },
-  { id: 'homepage', icon: '⌂', label: 'Homepage' },
-  { id: 'contact', icon: '☎', label: 'Contact Info' },
+  { 
+    id: 'homepage', 
+    icon: '⌂', 
+    label: 'Home Page',
+    subItems: [
+      { id: 'homepage-hero', label: 'Hero Section' },
+      { id: 'homepage-clients', label: 'Client Logos' },
+      { id: 'homepage-wheel', label: '360° Services' },
+      { id: 'homepage-stats', label: 'Stats Section' },
+      { id: 'homepage-work', label: 'Work Section' },
+      { id: 'homepage-services-accordion', label: 'Services Accordion' },
+      { id: 'homepage-process', label: 'Process Section' },
+      { id: 'homepage-ticker', label: 'Results Ticker' },
+      { id: 'homepage-compare', label: 'Compare Section' },
+      { id: 'homepage-faq', label: 'FAQ Section' },
+      { id: 'homepage-testimonial', label: 'Testimonial' },
+      { id: 'homepage-final-cta', label: 'Final CTA' }
+    ]
+  },
+  { id: 'work', icon: '💼', label: 'Portfolio/Work' },
+  { id: 'work-page', icon: '📁', label: 'Work Page' },
+  { id: 'services', icon: '⚙', label: 'Services' },
+  { id: 'services-index', icon: '◎', label: 'Services Page' },
+  { id: 'header-footer', icon: '⊟', label: 'Header & Footer' },
+  { id: 'media', icon: '🖼', label: 'Media Library' },
+  { id: 'contact-page', icon: '✉', label: 'Contact Page' },
   { id: 'about', icon: '◎', label: 'About' },
+  { id: 'blog', icon: '📝', label: 'Blog Posts' },
+  { id: 'insights-page', icon: '💡', label: 'Insights Page' },
+  { id: 'careers', icon: '💼', label: 'Careers' },
   { id: 'nav', icon: '≡', label: 'Navigation' },
   { id: 'theme', icon: '◈', label: 'Theme & Colors' },
 ];
@@ -27,11 +66,28 @@ const navItems = [
 export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [active, setActive] = useState('overview');
   const [subCount, setSubCount] = useState(0);
+  const [expandedMenus, setExpandedMenus] = useState<string[]>(['homepage']); // Start with homepage expanded
 
   useEffect(() => {
     fetch('/api/submissions')
       .then(r => r.json()).then(d => Array.isArray(d) && setSubCount(d.filter((s: { read: boolean }) => !s.read).length)).catch(() => {});
   }, [active]);
+
+  const toggleMenu = (itemId: string) => {
+    setExpandedMenus(prev => 
+      prev.includes(itemId) 
+        ? prev.filter(id => id !== itemId)
+        : [...prev, itemId]
+    );
+  };
+
+  const handleNavClick = (itemId: string, hasSubItems: boolean) => {
+    if (hasSubItems) {
+      toggleMenu(itemId);
+    } else {
+      setActive(itemId);
+    }
+  };
 
   return (
     <div style={S.shell}>
@@ -42,13 +98,66 @@ export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         </div>
         <nav style={S.nav}>
           {navItems.map(item => (
-            <button key={item.id} onClick={() => setActive(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '10px', border: 'none', cursor: 'pointer', marginBottom: '2px', background: active === item.id ? 'rgba(43,182,234,0.15)' : 'transparent', color: active === item.id ? '#2bb6ea' : 'rgba(246,245,240,0.6)', fontSize: '14px', textAlign: 'left', transition: 'all 0.15s' }}>
-              <span style={{ fontSize: '16px', opacity: 0.8 }}>{item.icon}</span>
-              {item.label}
-              {item.id === 'submissions' && subCount > 0 && (
-                <span style={{ marginLeft: 'auto', background: '#2bb6ea', color: '#0d1240', borderRadius: '100px', padding: '1px 7px', fontSize: '11px', fontWeight: 700 }}>{subCount}</span>
+            <div key={item.id}>
+              <button 
+                onClick={() => handleNavClick(item.id, !!item.subItems)} 
+                style={{ 
+                  width: '100%', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '10px', 
+                  padding: '10px 12px', 
+                  borderRadius: '10px', 
+                  border: 'none', 
+                  cursor: 'pointer', 
+                  marginBottom: '2px', 
+                  background: active === item.id ? 'rgba(43,182,234,0.15)' : 'transparent', 
+                  color: active === item.id || active.startsWith(item.id + '-') ? '#2bb6ea' : 'rgba(246,245,240,0.6)', 
+                  fontSize: '14px', 
+                  textAlign: 'left', 
+                  transition: 'all 0.15s' 
+                }}
+              >
+                <span style={{ fontSize: '16px', opacity: 0.8 }}>{item.icon}</span>
+                {item.label}
+                {item.id === 'submissions' && subCount > 0 && (
+                  <span style={{ marginLeft: 'auto', background: '#2bb6ea', color: '#0d1240', borderRadius: '100px', padding: '1px 7px', fontSize: '11px', fontWeight: 700 }}>{subCount}</span>
+                )}
+                {item.subItems && (
+                  <span style={{ marginLeft: 'auto', fontSize: '12px', transition: 'transform 0.2s', transform: expandedMenus.includes(item.id) ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+                )}
+              </button>
+              
+              {/* Sub-menu items */}
+              {item.subItems && expandedMenus.includes(item.id) && (
+                <div style={{ paddingLeft: '20px', marginTop: '4px', marginBottom: '8px' }}>
+                  {item.subItems.map(subItem => (
+                    <button
+                      key={subItem.id}
+                      onClick={() => setActive(subItem.id)}
+                      style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '8px 12px',
+                        borderRadius: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        marginBottom: '2px',
+                        background: active === subItem.id ? 'rgba(43,182,234,0.1)' : 'transparent',
+                        color: active === subItem.id ? '#2bb6ea' : 'rgba(246,245,240,0.5)',
+                        fontSize: '13px',
+                        textAlign: 'left',
+                        transition: 'all 0.15s'
+                      }}
+                    >
+                      <span style={{ marginRight: '8px', fontSize: '10px' }}>→</span>
+                      {subItem.label}
+                    </button>
+                  ))}
+                </div>
               )}
-            </button>
+            </div>
           ))}
         </nav>
         <div style={{ padding: '16px 12px', borderTop: '1px solid rgba(246,245,240,0.07)' }}>
@@ -69,7 +178,21 @@ export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
           {active === 'overview' && <Overview onNav={setActive} subCount={subCount} />}
           {active === 'submissions' && <SubmissionsPanel />}
           {active === 'theme' && <ThemePanel />}
-          {(active === 'homepage' || active === 'contact' || active === 'about' || active === 'nav') && <ContentPanel section={active} />}
+          {(active.startsWith('homepage-')) && (
+            <HomePagePanel initialSection={active.replace('homepage-', '')} />
+          )}
+          {active === 'work' && <WorkPanel />}
+          {active === 'work-page' && <WorkIndexPanel />}
+          {active === 'services' && <ServicesPanel />}
+          {active === 'services-index' && <ServicesIndexPanel />}
+          {active === 'header-footer' && <HeaderFooterPanel />}
+          {active === 'media' && <MediaPanel />}
+          {active === 'about' && <AboutPanel />}
+          {active === 'blog' && <BlogPanel />}
+          {active === 'insights-page' && <InsightsIndexPanel />}
+          {active === 'contact-page' && <ContactPagePanel />}
+          {active === 'careers' && <CareersPanel />}
+          {(active === 'contact' || active === 'nav') && <ContentPanel section={active} />}
         </div>
       </div>
     </div>
@@ -79,8 +202,8 @@ export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
 function Overview({ onNav, subCount }: { onNav: (s: string) => void; subCount: number }) {
   const cards = [
     { label: 'Unread submissions', value: subCount, action: 'submissions', color: subCount > 0 ? '#2bb6ea' : '#666' },
-    { label: 'Pages under management', value: 9, action: 'homepage', color: '#2bb6ea' },
-    { label: 'Services configured', value: 8, action: 'homepage', color: '#2bb6ea' },
+    { label: 'Pages under management', value: 9, action: 'homepage-hero', color: '#2bb6ea' },
+    { label: 'Services configured', value: 8, action: 'homepage-wheel', color: '#2bb6ea' },
     { label: 'Theme variables', value: 7, action: 'theme', color: '#2bb6ea' },
   ];
   return (
@@ -96,7 +219,14 @@ function Overview({ onNav, subCount }: { onNav: (s: string) => void; subCount: n
       <div style={{ background: '#161b2e', border: '1px solid rgba(246,245,240,0.07)', borderRadius: '16px', padding: '28px' }}>
         <div style={{ color: '#f6f5f0', fontSize: '16px', fontWeight: 500, marginBottom: '20px' }}>Quick Actions</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px' }}>
-          {[{ label: 'Edit Homepage', icon: '⌂', nav: 'homepage' }, { label: 'View Submissions', icon: '✉', nav: 'submissions' }, { label: 'Change Colors', icon: '◈', nav: 'theme' }, { label: 'Edit Contact Info', icon: '☎', nav: 'contact' }, { label: 'Edit About Page', icon: '◎', nav: 'about' }, { label: 'Edit Navigation', icon: '≡', nav: 'nav' }].map((a, i) => (
+          {[
+            { label: 'Edit Hero Section', icon: '⌂', nav: 'homepage-hero' }, 
+            { label: 'Client Logos', icon: '🖼', nav: 'homepage-clients' }, 
+            { label: '360° Services', icon: '◈', nav: 'homepage-wheel' },
+            { label: 'View Submissions', icon: '✉', nav: 'submissions' }, 
+            { label: 'Media Library', icon: '🖼', nav: 'media' }, 
+            { label: 'Change Colors', icon: '◈', nav: 'theme' }
+          ].map((a, i) => (
             <button key={i} onClick={() => onNav(a.nav)} style={{ padding: '16px', background: 'rgba(43,182,234,0.08)', border: '1px solid rgba(43,182,234,0.2)', borderRadius: '12px', color: '#2bb6ea', fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span>{a.icon}</span>{a.label}
             </button>

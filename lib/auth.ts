@@ -1,19 +1,8 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import fs from "fs";
-import path from "path";
 import bcrypt from "bcryptjs";
-
-const adminsFile = path.join(process.cwd(), "data", "admins.json");
-
-function readAdmins() {
-  try {
-    return JSON.parse(fs.readFileSync(adminsFile, "utf-8"));
-  } catch {
-    return [];
-  }
-}
+import { admins as adminDb } from "./db";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -28,10 +17,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const admins = readAdmins();
-        const admin = admins.find(
-          (a: { email: string }) => a.email === credentials.email
-        );
+        const admin = adminDb.getByEmail(credentials.email) as any;
 
         if (!admin) {
           return null;
@@ -46,8 +32,11 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        // Update last login
+        adminDb.updateLastLogin(credentials.email);
+
         return {
-          id: admin.id,
+          id: admin.id.toString(),
           email: admin.email,
           name: admin.name,
           role: admin.role || "admin",

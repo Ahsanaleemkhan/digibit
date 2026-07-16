@@ -1,23 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { auth } from '@/lib/auth';
-
-const FILE = path.join(process.cwd(), 'data', 'submissions.json');
-
-function readSubs() {
-  try { return JSON.parse(fs.readFileSync(FILE, 'utf-8')); } catch { return []; }
-}
-function writeSubs(data: unknown[]) {
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
-}
+import { submissions } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const subs = readSubs();
-  const entry = { ...body, id: Date.now(), date: new Date().toISOString(), read: false };
-  writeSubs([entry, ...subs]);
-  return NextResponse.json({ ok: true });
+  try {
+    const body = await req.json();
+    
+    // Create submission in database
+    const result = submissions.create({
+      type: body.type || 'contact',
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      company: body.company,
+      message: body.message,
+      services: body.services,
+      budget: body.budget,
+      timeline: body.timeline,
+      data: body.data,
+      status: 'new'
+    });
+
+    return NextResponse.json({ 
+      ok: true, 
+      id: result.lastInsertRowid
+    });
+    
+  } catch (error: any) {
+    console.error('Submission error:', error);
+    return NextResponse.json(
+      { error: 'Failed to process submission' },
+      { status: 500 }
+    );
+  }
 }
 
 export async function GET(req: NextRequest) {
@@ -25,7 +40,16 @@ export async function GET(req: NextRequest) {
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  return NextResponse.json(readSubs());
+  
+  try {
+    const { searchParams } = new URL(req.url);
+    const type = searchParams.get('type');
+    const status = searchParams.get('status');
+    
+    return NextResponse.json(submissions.getAll(type || undefined, status || undefined));
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
 
 export async function PATCH(req: NextRequest) {
@@ -33,10 +57,14 @@ export async function PATCH(req: NextRequest) {
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const { id, read } = await req.json();
-  const subs = readSubs().map((s: { id: number; read: boolean }) => s.id === id ? { ...s, read } : s);
-  writeSubs(subs);
-  return NextResponse.json({ ok: true });
+  
+  try {
+    const { id, status } = await req.json();
+    submissions.updateStatus(id, status);
+    return NextResponse.json({ ok: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
 
 export async function DELETE(req: NextRequest) {
@@ -44,7 +72,12 @@ export async function DELETE(req: NextRequest) {
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const { id } = await req.json();
-  writeSubs(readSubs().filter((s: { id: number }) => s.id !== id));
-  return NextResponse.json({ ok: true });
+  
+  try {
+    const { id } = await req.json();
+    submissions.delete(id);
+    return NextResponse.json({ ok: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }

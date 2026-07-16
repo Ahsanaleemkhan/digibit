@@ -16,9 +16,18 @@ interface ContactFormProps {
   phone?: string;
   offices?: { label: string; address: string }[];
   services?: string[];
+  successHeading?: string;
+  successMessage?: string;
 }
 
-export default function ContactForm({ email: emailAddr = '', phone: phoneNum = '', offices: officeList = [], services: svcList = [] }: ContactFormProps) {
+export default function ContactForm({ 
+  email: emailAddr = '', 
+  phone: phoneNum = '', 
+  offices: officeList = [], 
+  services: svcList = [],
+  successHeading = 'Got it. Thanks.',
+  successMessage = 'We\'ll read it this afternoon and reply within 24 hours.'
+}: ContactFormProps) {
   const [selected, setSelected] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -51,8 +60,8 @@ export default function ContactForm({ email: emailAddr = '', phone: phoneNum = '
       <div style={{ minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '40px' }}>
         <div>
           <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--cyan)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', fontSize: '36px', marginBottom: '24px' }}>✓</div>
-          <h2 style={{ fontSize: '36px', marginBottom: '12px' }}>Got it. Thanks.</h2>
-          <p style={{ color: 'rgba(13,18,64,0.7)', maxWidth: '40ch', margin: '0 auto' }}>We&apos;ll read it this afternoon and reply within 24 hours.</p>
+          <h2 style={{ fontSize: '36px', marginBottom: '12px' }}>{successHeading}</h2>
+          <p style={{ color: 'rgba(13,18,64,0.7)', maxWidth: '40ch', margin: '0 auto' }}>{successMessage}</p>
         </div>
       </div>
     );

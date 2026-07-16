@@ -1,55 +1,45 @@
 /**
- * CMS data layer — fetches from WordPress GraphQL when configured,
- * otherwise reads from data/cms-defaults.json (the single source of truth).
+ * CMS data layer — fetches from SQLite database
+ * Replaces the old WordPress GraphQL approach
  */
+import { cmsContent } from './db';
 import cmsDefaults from '@/data/cms-defaults.json';
-
-const WP_GRAPHQL_URL = process.env.WORDPRESS_GRAPHQL_URL || '';
 
 type PageKey = keyof typeof cmsDefaults;
 
-const PAGE_MAP: Record<PageKey, string> = {
-  homepage: 'digibitHomepage',
-  about: 'digibitAbout',
-  contact: 'digibitContact',
-  pricing: 'digibitPricing',
-  careers: 'digibitCareers',
-  insights: 'digibitInsights',
-  work: 'digibitWork',
-  services_index: 'digibitServicesIndex',
-  navigation: 'digibitNavigation',
-  footer: 'digibitFooter',
-};
-
-async function gqlFetch(fieldName: string): Promise<string> {
-  const res = await fetch(WP_GRAPHQL_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: `{ ${fieldName} }` }),
-    next: { revalidate: 60 },
-  });
-  if (!res.ok) throw new Error(`GraphQL ${res.status}`);
-  const json = await res.json();
-  return json.data?.[fieldName] || '{}';
-}
-
 /**
- * Fetch page data. Returns typed data for the given page key.
- * When WP is configured, fetches from GraphQL.
- * When WP is not configured, returns defaults from cms-defaults.json.
+ * Fetch page data from database. Returns typed data for the given page key.
+ * Falls back to cms-defaults.json if not found in database.
  */
 export async function getPageData<T = Record<string, unknown>>(page: PageKey): Promise<T> {
-  if (WP_GRAPHQL_URL) {
-    try {
-      const raw = await gqlFetch(PAGE_MAP[page]);
-      return JSON.parse(raw) as T;
-    } catch (e) {
-      console.error(`WP fetch failed for ${page}, using defaults`, e);
+  try {
+    const data = cmsContent.getByKey(page);
+    if (data && data.content) {
+      return data.content as T;
     }
+  } catch (e) {
+    console.error(`Database fetch failed for ${page}, using defaults`, e);
   }
+  
+  // Fallback to JSON defaults
   return cmsDefaults[page] as unknown as T;
 }
 
-export function isWpConfigured(): boolean {
-  return !!WP_GRAPHQL_URL;
+/**
+ * Get all CMS pages
+ */
+export async function getAllPages() {
+  try {
+    return cmsContent.getAll();
+  } catch (e) {
+    console.error('Failed to fetch all pages:', e);
+    return [];
+  }
+}
+
+/**
+ * Update page data
+ */
+export async function updatePageData(page: PageKey, data: any, updatedBy?: string) {
+  return cmsContent.upsert(page, data, updatedBy);
 }

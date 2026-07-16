@@ -1,16 +1,35 @@
-import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { getPageData } from '@/lib/graphql';
+import { cmsContent } from '@/lib/db';
 
 export const metadata: Metadata = { title: 'Careers — Digibit', description: 'Come make good work with good people.' };
 
+// Default fallback data
+const defaultData = {
+  hero_eyebrow: "Careers · We're hiring",
+  hero_desc: "We're a small studio with big ambitions. If you like shipping, care about craft, and want to work on things that make it into the real world — read on.",
+  why_eyebrow: 'Why Digibit',
+  why_heading: 'A studio that treats itself like a product.',
+  perks: [],
+  roles_eyebrow: 'Open roles · 6',
+  roles_heading: "Roles we're actively hiring for.",
+  roles: [],
+  roles_fallback: 'team@digibit.co',
+  life_eyebrow: 'Life at Digibit',
+  life_heading: 'How the work actually feels.',
+  life_cards: [],
+  cta_heading: 'See yourself here?',
+  cta_button: 'Send us a note'
+};
+
 export default async function Careers() {
-  const d = await getPageData('careers') as Record<string, any>;
+  const content = cmsContent.getByKey('careers');
+  const d = content?.content || defaultData;
+  
   const roles = d.roles || [];
   const perks = d.perks || [];
   const lifeCards = d.life_cards || [];
-  const email = d.roles_fallback || '';
+  const email = d.roles_fallback || 'team@digibit.co';
 
   return (
     <>

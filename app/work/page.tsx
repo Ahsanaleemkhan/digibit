@@ -1,21 +1,48 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
-import { getPageData } from '@/lib/graphql';
+import { workItems, cmsContent } from '@/lib/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = { title: 'Work — Digibit', description: 'Eight years. One hundred and eighty shipped projects.' };
 
 export default async function Work() {
-  const d = await getPageData('work') as Record<string, any>;
-  const works = d.works || [];
-  const filters = d.filters || [];
+  // Get CMS content for work page
+  const pageContent = cmsContent.getByKey('work');
+  const d = pageContent?.content || {
+    hero_eyebrow: 'Our work',
+    hero_heading: 'Eight years. One hundred and eighty shipped projects.',
+    hero_desc: 'From startups to scale-ups, we\'ve helped brands find their voice and build digital products people love.',
+    cta_heading: 'Ready to start your project?',
+    cta_button: 'Get in touch'
+  };
+
+  // Get all published work items from database
+  const allWork = workItems.getAll(true);
+  
+  // Transform database work items to match the expected format
+  const works = allWork.map((work, index) => ({
+    href: `/work/${work.slug}`,
+    img: work.featured_image ? `url(${work.featured_image})` : 'linear-gradient(135deg, #1a1f5c 0%, #2bb6ea 100%)',
+    year: work.year || '2024',
+    cat: work.category || 'Project',
+    title: work.title,
+    stat: work.results[0] || work.excerpt || '',
+    big: index === 0 // First item is featured (big)
+  }));
+
+  // Extract unique categories for filters
+  const allCategories = allWork.map(w => w.category).filter(Boolean);
+  const uniqueCategories = Array.from(new Set(allCategories));
+  const filters = ['All', ...uniqueCategories];
 
   return (
     <>
       <section className="page-hero container">
         <div className="blob cyan med" style={{ top: '-20%', right: '-10%', opacity: 0.35, position: 'absolute' }} />
         <div className="eyebrow"><span className="dot" />{d.hero_eyebrow}</div>
-        <h1>Eight years. One hundred and eighty <em style={{ fontStyle: 'italic', color: 'var(--cyan-deep)', fontWeight: 400 }}>shipped</em> projects.</h1>
+        <h1>{d.hero_heading}</h1>
         <p>{d.hero_desc}</p>
       </section>
 

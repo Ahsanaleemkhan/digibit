@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import StatNum from '@/components/StatNum';
 
-type Frame = { label: string; word: string; bg: string };
+type Frame = { label: string; word: string; bg: string; image?: string };
 type Section = { eyebrow: string; heading: string; paras?: string[]; quote?: string; items?: string[] };
 type Stat = { count: number; suffix: string; label: string };
 type Nav = { prev?: { href: string; title: string }; next?: { href: string; title: string } };
@@ -13,6 +13,7 @@ interface CaseProps {
   lede: string;
   visualBg: string;
   visualWord: React.ReactNode;
+  visualImage?: string;  // Optional hero image
   stats: Stat[];
   sections: [Section, Frame, Section, Frame, Section];
   nav: Nav;
@@ -20,13 +21,27 @@ interface CaseProps {
   desc: string;
 }
 
-export default function CasePage({ meta, h1, lede, visualBg, visualWord, stats, sections, nav, title, desc }: CaseProps) {
+export default function CasePage({ meta, h1, lede, visualBg, visualWord, visualImage, stats, sections, nav, title, desc }: CaseProps) {
   const [brief, frame1, what, frame2, outcome] = sections;
 
   const FrameEl = ({ f }: { f: Frame }) => (
-    <div style={{ margin: '48px 0', borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '16/10', background: f.bg, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ position: 'absolute', top: 16, left: 16, fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(246,245,240,0.7)', letterSpacing: '0.1em', padding: '4px 10px', background: 'rgba(0,0,0,0.3)', borderRadius: 'var(--r-pill)', zIndex: 1 }}>{f.label}</div>
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px,6vw,80px)', color: 'rgba(255,255,255,0.9)', letterSpacing: '-0.03em', textAlign: 'center', padding: '0 40px' }}>{f.word}</div>
+    <div style={{ 
+      margin: '48px 0', 
+      borderRadius: 'var(--r-lg)', 
+      overflow: 'hidden', 
+      minHeight: '100vh',
+      background: f.image ? `url(${f.image})` : f.bg,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center' 
+    }}>
+      {/* Dark overlay for better text readability when using images */}
+      {f.image && <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />}
+      <div style={{ position: 'absolute', top: 16, left: 16, fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(246,245,240,0.9)', letterSpacing: '0.1em', padding: '4px 10px', background: 'rgba(0,0,0,0.4)', borderRadius: 'var(--r-pill)', zIndex: 1 }}>{f.label}</div>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px,6vw,80px)', color: 'rgba(255,255,255,0.95)', letterSpacing: '-0.03em', textAlign: 'center', padding: '0 40px', zIndex: 1, textShadow: f.image ? '0 2px 8px rgba(0,0,0,0.5)' : 'none' }}>{f.word}</div>
     </div>
   );
 
@@ -75,9 +90,33 @@ export default function CasePage({ meta, h1, lede, visualBg, visualWord, stats, 
           <h1 style={{ fontSize: 'clamp(48px,7vw,96px)', maxWidth: '16ch' }}>{h1}</h1>
           <p style={{ marginTop: '32px', maxWidth: '60ch', fontSize: '20px', lineHeight: 1.5, color: 'rgba(13,18,64,0.78)' }}>{lede}</p>
         </div>
-        <div style={{ margin: '60px 0', borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '16/9', background: visualBg, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.15), transparent 60%)' }} />
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(60px,12vw,180px)', color: 'var(--paper)', fontWeight: 500, letterSpacing: '-0.04em', zIndex: 1, textAlign: 'center', lineHeight: 0.9 }}>{visualWord}</div>
+        <div style={{ 
+          margin: '60px 0', 
+          borderRadius: 'var(--r-xl)', 
+          overflow: 'hidden', 
+          minHeight: '100vh',
+          background: visualImage ? `url(${visualImage})` : visualBg,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          position: 'relative', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center' 
+        }}>
+          {/* Dark overlay for images or gradient overlay */}
+          <div style={{ position: 'absolute', inset: 0, background: visualImage ? 'rgba(0,0,0,0.3)' : 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.15), transparent 60%)' }} />
+          <div style={{ 
+            fontFamily: 'var(--font-display)', 
+            fontSize: 'clamp(60px,12vw,180px)', 
+            color: 'var(--paper)', 
+            fontWeight: 500, 
+            letterSpacing: '-0.04em', 
+            zIndex: 1, 
+            textAlign: 'center', 
+            lineHeight: 0.9,
+            textShadow: visualImage ? '0 4px 12px rgba(0,0,0,0.6)' : 'none',
+            padding: '0 40px'
+          }}>{visualWord}</div>
         </div>
       </section>
 

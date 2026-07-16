@@ -16,7 +16,7 @@ export default async function About() {
       <section className="page-hero container">
         <div className="blob cyan med" style={{ top: '-20%', right: '-10%', opacity: 0.35, position: 'absolute' }} />
         <div className="eyebrow"><span className="dot" />{d.hero_eyebrow}</div>
-        <h1>We&apos;re a studio of <em style={{ fontStyle: 'italic', color: 'var(--cyan-deep)', fontWeight: 400 }}>strategists, designers and engineers</em> building the full 360° for modern brands.</h1>
+        <h1>{d.hero_heading}</h1>
       </section>
 
       <section style={{ padding: '60px 0 120px' }}>
