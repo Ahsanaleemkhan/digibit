@@ -2,6 +2,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
 import { cmsContent } from '@/lib/db-mysql';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = { title: 'Careers — Digibit', description: 'Come make good work with good people.' };
 
 // Default fallback data

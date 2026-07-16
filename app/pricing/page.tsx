@@ -3,6 +3,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
 import { getPageData } from '@/lib/graphql';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = { title: 'Pricing — Digibit', description: 'Three ways to work with us. No surprises.' };
 
 export default async function Pricing() {

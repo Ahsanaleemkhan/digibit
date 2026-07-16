@@ -3,6 +3,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import type { Metadata } from 'next';
 import { getPageData } from '@/lib/graphql';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'About — Digibit',
   description: 'We\'re a studio of strategists, designers and engineers building the full 360° for modern brands.',
