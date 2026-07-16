@@ -15,6 +15,7 @@ import BlogPanel from './panels/BlogPanel';
 import InsightsIndexPanel from './panels/InsightsIndexPanel';
 import ContactPagePanel from './panels/ContactPagePanel';
 import CareersPanel from './panels/CareersPanel';
+import { AdminErrorBoundary } from './ErrorBoundary';
 
 const S = {
   shell: { display: 'flex', minHeight: '100vh', fontFamily: 'Inter, sans-serif', background: '#0f1117' } as React.CSSProperties,
@@ -175,24 +176,26 @@ export default function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         </div>
 
         <div style={S.content}>
-          {active === 'overview' && <Overview onNav={setActive} subCount={subCount} />}
-          {active === 'submissions' && <SubmissionsPanel />}
-          {active === 'theme' && <ThemePanel />}
-          {(active.startsWith('homepage-')) && (
-            <HomePagePanel initialSection={active.replace('homepage-', '')} />
-          )}
-          {active === 'work' && <WorkPanel />}
-          {active === 'work-page' && <WorkIndexPanel />}
-          {active === 'services' && <ServicesPanel />}
-          {active === 'services-index' && <ServicesIndexPanel />}
-          {active === 'header-footer' && <HeaderFooterPanel />}
-          {active === 'media' && <MediaPanel />}
-          {active === 'about' && <AboutPanel />}
-          {active === 'blog' && <BlogPanel />}
-          {active === 'insights-page' && <InsightsIndexPanel />}
-          {active === 'contact-page' && <ContactPagePanel />}
-          {active === 'careers' && <CareersPanel />}
-          {(active === 'contact' || active === 'nav') && <ContentPanel section={active} />}
+          <AdminErrorBoundary>
+            {active === 'overview' && <Overview onNav={setActive} subCount={subCount} />}
+            {active === 'submissions' && <SubmissionsPanel />}
+            {active === 'theme' && <ThemePanel />}
+            {(active.startsWith('homepage-')) && (
+              <HomePagePanel initialSection={active.replace('homepage-', '')} />
+            )}
+            {active === 'work' && <WorkPanel />}
+            {active === 'work-page' && <WorkIndexPanel />}
+            {active === 'services' && <ServicesPanel />}
+            {active === 'services-index' && <ServicesIndexPanel />}
+            {active === 'header-footer' && <HeaderFooterPanel />}
+            {active === 'media' && <MediaPanel />}
+            {active === 'about' && <AboutPanel />}
+            {active === 'blog' && <BlogPanel />}
+            {active === 'insights-page' && <InsightsIndexPanel />}
+            {active === 'contact-page' && <ContactPagePanel />}
+            {active === 'careers' && <CareersPanel />}
+            {(active === 'contact' || active === 'nav') && <ContentPanel section={active} />}
+          </AdminErrorBoundary>
         </div>
       </div>
     </div>
